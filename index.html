@@ -1528,19 +1528,80 @@
                 document.body.style.overflow = '';
             }
         }
+  function renderModules(yearName) {
+    const modules = siteData[yearName];
+    const modulesHtml = Object.keys(modules).map(moduleName => {
+        const module = modules[moduleName];
+        const cours = module['Cours'] || [];
+        const exos = module['Exercices'] || [];
+        const controle = module['Contrôle'] || [];
+        const efm = module['EFM'] || [];
 
-        // renderModules
-        function renderModules(yearName) {
-            const modules = siteData[yearName];
-            const modulesHtml = Object.keys(modules).map(moduleName => {
-                const module = modules[moduleName];
-                const cours = module['Cours'] || [];
-                const exos = module['Exercices'] || [];
-                const controle = module['Contrôle'] || [];
-                const efm = module['EFM'] || [];
+        return `
+            <div class="module-card bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700 card-hover">
+                <h3 class="text-lg font-bold text-blue-600 dark:text-blue-400 mb-4 text-center">${moduleName}</h3>
+                <div class="module-buttons grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                    <button data-module="${encodeURIComponent(moduleName)}" 
+                            data-year="${encodeURIComponent(yearName)}" 
+                            data-category="Cours"
+                            class="file-btn p-3 rounded-lg font-medium transition duration-300 shadow-md ${cours.length > 0 ? 'bg-blue-500 text-white hover:bg-blue-600' : 'bg-gray-200 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-not-allowed'} flex flex-col items-center justify-center"
+                            ${cours.length === 0 ? 'disabled' : ''}>
+                        <i class="fas fa-book-open mb-2 text-lg"></i>
+                        Cours (${cours.length})
+                    </button>
+                    <button data-module="${encodeURIComponent(moduleName)}" 
+                            data-year="${encodeURIComponent(yearName)}" 
+                            data-category="Exercices"
+                            class="file-btn p-3 rounded-lg font-medium transition duration-300 shadow-md ${exos.length > 0 ? 'bg-indigo-500 text-white hover:bg-indigo-600' : 'bg-gray-200 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-not-allowed'} flex flex-col items-center justify-center"
+                            ${exos.length === 0 ? 'disabled' : ''}>
+                        <i class="fas fa-pencil-alt mb-2 text-lg"></i>
+                        Exercices (${exos.length})
+                    </button>
+                    <button data-module="${encodeURIComponent(moduleName)}" 
+                            data-year="${encodeURIComponent(yearName)}" 
+                            data-category="Contrôle"
+                            class="file-btn p-3 rounded-lg font-medium transition duration-300 shadow-md ${controle.length > 0 ? 'bg-red-500 text-white hover:bg-red-600' : 'bg-gray-200 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-not-allowed'} flex flex-col items-center justify-center"
+                            ${controle.length === 0 ? 'disabled' : ''}>
+                        <i class="fas fa-clipboard-check mb-2 text-lg"></i>
+                        Contrôle (${controle.length})
+                    </button>
+                    <button data-module="${encodeURIComponent(moduleName)}" 
+                            data-year="${encodeURIComponent(yearName)}" 
+                            data-category="EFM"
+                            class="file-btn p-3 rounded-lg font-medium transition duration-300 shadow-md ${efm.length > 0 ? 'bg-purple-500 text-white hover:bg-purple-600' : 'bg-gray-200 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-not-allowed'} flex flex-col items-center justify-center"
+                            ${efm.length === 0 ? 'disabled' : ''}>
+                        <i class="fas fa-file-alt mb-2 text-lg"></i>
+                        EFM (${efm.length})
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join('');
 
-                return `
-                    <div class="module-card bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700 card-hover">
+    app.innerHTML = `
+        <button onclick="showHome()" class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mb-6 font-medium transition duration-300">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Retour à l'accueil
+        </button>
+        <h2 class="text-3xl font-extrabold text-center mb-8 text-gray-800 dark:text-gray-200">${yearName}</h2>
+        <div id="modulesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            ${modulesHtml}
+        </div>
+    `;
+
+    const container = document.getElementById('modulesContainer');
+    container.addEventListener('click', function(e) {
+        const btn = e.target.closest('.file-btn');
+        if (!btn || btn.disabled) return;
+
+        const moduleName = decodeURIComponent(btn.dataset.module);
+        const yearName = decodeURIComponent(btn.dataset.year);
+        const category = btn.dataset.category;
+
+        const files = siteData[yearName]?.[moduleName]?.[category] || [];
+        showFileModal(moduleName, category, files);
+    });
+}
 
         // Home
         function renderHome() {
@@ -1601,6 +1662,7 @@
                 </div>
             `;
         }
+
 
         function renderExtraPage(pageName) {
             let title = '', content = '';
@@ -1711,6 +1773,7 @@
     </script>
 </body>
 </html>
+
 
 
 
