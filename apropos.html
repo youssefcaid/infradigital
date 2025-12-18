@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - Infrastructure Digitale – Professeur Youssef</title>
+    <meta name="description" content="Informations sur la plateforme éducative Infrastructure Digitale et le Professeur Youssef - Mission, vision et objectifs pédagogiques">
+    
+    <!-- نفس الhead من index.html مع تغيير العنوان والوصف -->
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/fluency/96/000000/network.png">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Police Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* نفس الستايل من index.html */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark {
+            color-scheme: dark;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: row;
+                align-items: center;
+                padding: 0.5rem 0;
+            }
+            .nav-container {
+                display: flex;
+                gap: 0.25rem;
+            }
+            .nav-button {
+                padding: 0.4rem 0.5rem;
+                font-size: 0.7rem;
+                border-radius: 0.375rem;
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+                min-height: 2rem;
+            }
+            .nav-button i {
+                font-size: 0.7rem;
+            }
+            .nav-button span {
+                display: none;
+            }
+            #darkModeToggle span {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        'primary-dark': '#1d4ed8',
+                        secondary: '#10b981',
+                        accent: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+    <header class="shadow-lg dark:shadow-gray-800 sticky top-0 z-10 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2">
+            <div class="header-container flex justify-between items-center">
+                <a href="index.html" class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-500 transition duration-300">
+                    <i class="fas fa-network-wired mr-2 text-sm"></i>
+                    <span class="text-sm font-bold">Infrastructure Digitale</span>
+                </a>
+                <div class="nav-container flex items-center gap-2">
+                    <a href="apropos.html" class="nav-button text-xs font-medium text-blue-600 dark:text-blue-400 transition duration-300 bg-blue-50 dark:bg-blue-900/30">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="hidden sm:inline">À propos</span>
+                    </a>
+                    <a href="confidentialite.html" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="hidden sm:inline">Confidentialité</span>
+                    </a>
+                    <a href="contact.html" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-envelope"></i>
+                        <span class="hidden sm:inline">Contact</span>
+                    </a>
+                    <button id="darkModeToggle" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i id="moonIcon" class="fas fa-moon"></i>
+                        <i id="sunIcon" class="fas fa-sun hidden"></i>
+                        <span class="hidden sm:inline">Mode</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 w-full">
+        <a href="index.html" class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mb-6 font-medium transition duration-300">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Retour à l'accueil
+        </a>
+        
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-2xl card-hover">
+            <h1 class="text-3xl font-bold border-b pb-4 mb-6 text-gray-800 dark:text-gray-200">À propos de nous</h1>
+            
+            <div class="space-y-6 text-gray-700 dark:text-gray-300">
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">Notre Mission</h2>
+                    <p class="text-lg">
+                        Le site <strong>Infrastructure Digitale – Professeur Youssef</strong> est un projet éducatif visant à soutenir et accompagner les étudiants de la filière "Infrastructure Digitale" en formation professionnelle (OFPPT).
+                    </p>
+                    <p class="text-lg mt-3">
+                        Cette plateforme a été créée pour être une bibliothèque numérique centralisée, offrant un accès facile et gratuit à toutes les ressources pédagogiques fournies par le Professeur Youssef, des cours détaillés et exercices pratiques aux modèles de contrôles continus et examens finaux (EFM).
+                    </p>
+                </section>
+                
+                <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-lg border-l-4 border-blue-500">
+                    <p class="text-xl font-semibold text-blue-700 dark:text-blue-300">
+                        Notre mission est de simplifier le parcours d'apprentissage et d'assurer la réussite de tous nos étudiants dans le domaine de l'infrastructure digitale.
+                    </p>
+                </div>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">Notre Vision</h2>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Créer une communauté d'apprentissage collaborative</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Démocratiser l'accès aux ressources éducatives de qualité</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Préparer les étudiants aux défis du marché du travail numérique</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Développer des compétences pratiques en infrastructure digitale</span>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">Le Professeur Youssef</h2>
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="md:w-1/3">
+                            <div class="bg-gradient-to-br from-blue-400 to-blue-600 p-6 rounded-xl text-center text-white">
+                                <i class="fas fa-chalkboard-teacher text-5xl mb-4"></i>
+                                <h3 class="text-xl font-bold">Professeur Youssef</h3>
+                                <p class="text-blue-100 mt-2">Enseignant en Infrastructure Digitale</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3">
+                            <p class="text-lg">
+                                Avec plusieurs années d'expérience dans l'enseignement des technologies de l'information et des infrastructures digitales, le Professeur Youssef s'engage à fournir un enseignement de qualité adapté aux besoins des étudiants OFPPT.
+                            </p>
+                            <p class="text-lg mt-3">
+                                Son approche pédagogique combine théorie et pratique, avec un accent particulier sur les applications réelles des concepts enseignés en classe.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">Nos Valeurs</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <i class="fas fa-graduation-cap text-blue-500 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-lg">Excellence Académique</h4>
+                            <p>Des ressources pédagogiques de haute qualité et régulièrement mises à jour.</p>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <i class="fas fa-handshake text-green-500 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-lg">Accessibilité</h4>
+                            <p>Des contenus gratuits et accessibles à tous les étudiants.</p>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <i class="fas fa-users text-purple-500 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-lg">Communauté</h4>
+                            <p>Création d'un espace d'échange et d'entraide entre étudiants.</p>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <i class="fas fa-rocket text-orange-500 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-lg">Innovation</h4>
+                            <p>Adaptation constante aux nouvelles technologies et méthodes d'enseignement.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-8 border-t border-gray-200 dark:border-gray-700 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 text-center md:text-left">
+                    <h3 class="text-lg font-bold text-blue-600 dark:text-blue-400">Infrastructure Digitale</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Ressources pédagogiques pour étudiants OFPPT</p>
+                </div>
+                <div class="flex space-x-4 mb-4 md:mb-0">
+                    <a href="https://facebook.com/youssefelcaid1" target="_blank" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300" aria-label="Facebook">
+                        <i class="fab fa-facebook text-xl"></i>
+                    </a>
+                    <a href="https://instagram.com/youssefelcaid1" target="_blank" class="text-gray-500 hover:text-pink-600 dark:hover:text-pink-400 transition duration-300" aria-label="Instagram">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://youtube.com/professeuryoussef1" target="_blank" class="text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition duration-300" aria-label="YouTube">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
+                    <a href="https://wa.me/212708482810" target="_blank" class="text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition duration-300" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <p class="text-xs text-gray-500 dark:text-gray-400">&copy; <span id="currentYear"></span> Infrastructure Digitale – Professeur Youssef. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mode sombre
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+
+        function setDarkMode(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setDarkMode(savedTheme === 'dark');
+        } else {
+            setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+        }
+
+        darkModeToggle.addEventListener('click', () => setDarkMode(!document.documentElement.classList.contains('dark')));
+    </script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Infrastructure Digitale – Professeur Youssef</title>
+    <meta name="description" content="Contactez le Professeur Youssef pour toute question sur les modules Infrastructure Digitale - Email, WhatsApp, réseaux sociaux">
+    
+    <!-- نفس الhead من index.html مع تغيير العنوان والوصف -->
+    
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/fluency/96/000000/network.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* نفس الستايل من index.html */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark {
+            color-scheme: dark;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: row;
+                align-items: center;
+                padding: 0.5rem 0;
+            }
+            .nav-container {
+                display: flex;
+                gap: 0.25rem;
+            }
+            .nav-button {
+                padding: 0.4rem 0.5rem;
+                font-size: 0.7rem;
+                border-radius: 0.375rem;
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+                min-height: 2rem;
+            }
+            .nav-button i {
+                font-size: 0.7rem;
+            }
+            .nav-button span {
+                display: none;
+            }
+            #darkModeToggle span {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        'primary-dark': '#1d4ed8',
+                        secondary: '#10b981',
+                        accent: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+    <header class="shadow-lg dark:shadow-gray-800 sticky top-0 z-10 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2">
+            <div class="header-container flex justify-between items-center">
+                <a href="index.html" class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-500 transition duration-300">
+                    <i class="fas fa-network-wired mr-2 text-sm"></i>
+                    <span class="text-sm font-bold">Infrastructure Digitale</span>
+                </a>
+                <div class="nav-container flex items-center gap-2">
+                    <a href="apropos.html" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="hidden sm:inline">À propos</span>
+                    </a>
+                    <a href="confidentialite.html" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="hidden sm:inline">Confidentialité</span>
+                    </a>
+                    <a href="contact.html" class="nav-button text-xs font-medium text-blue-600 dark:text-blue-400 transition duration-300 bg-blue-50 dark:bg-blue-900/30">
+                        <i class="fas fa-envelope"></i>
+                        <span class="hidden sm:inline">Contact</span>
+                    </a>
+                    <button id="darkModeToggle" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i id="moonIcon" class="fas fa-moon"></i>
+                        <i id="sunIcon" class="fas fa-sun hidden"></i>
+                        <span class="hidden sm:inline">Mode</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 w-full">
+        <a href="index.html" class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mb-6 font-medium transition duration-300">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Retour à l'accueil
+        </a>
+        
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-2xl card-hover">
+            <h1 class="text-3xl font-bold border-b pb-4 mb-6 text-gray-800 dark:text-gray-200">Contactez-nous</h1>
+            
+            <div class="space-y-8 text-gray-700 dark:text-gray-300">
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-4">Informations de contact</h2>
+                    <p class="text-lg mb-6">
+                        Pour contacter le Professeur Youssef ou pour toute question sur le contenu des modules, vous pouvez utiliser l'une des méthodes suivantes :
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Email -->
+                        <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl card-hover">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-600 dark:text-blue-400 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold">Email</h3>
+                            </div>
+                            <p class="mb-4">Pour les questions académiques, demandes de ressources ou feedback :</p>
+                            <a href="mailto:professeurysf@gmail.com" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Envoyer un email
+                            </a>
+                        </div>
+                        
+                        <!-- WhatsApp -->
+                        <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl card-hover">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-green-100 dark:bg-green-900 p-3 rounded-full mr-4">
+                                    <i class="fab fa-whatsapp text-green-600 dark:text-green-400 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold">WhatsApp</h3>
+                            </div>
+                            <p class="mb-4">Pour les questions urgentes ou les discussions en direct :</p>
+                            <a href="https://wa.me/212708482810" target="_blank" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+                                <i class="fab fa-whatsapp mr-2"></i>
+                                Envoyer un message
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-4">Réseaux sociaux</h2>
+                    <p class="text-lg mb-6">
+                        Suivez-nous sur les réseaux sociaux pour les dernières mises à jour, annonces et contenu éducatif :
+                    </p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <!-- Facebook -->
+                        <a href="https://facebook.com/youssefelcaid1" target="_blank" class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl card-hover border border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-500 transition duration-300">
+                            <div class="text-center">
+                                <i class="fab fa-facebook text-blue-600 dark:text-blue-400 text-3xl mb-3"></i>
+                                <h4 class="font-bold">Facebook</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Annonces et actualités</p>
+                            </div>
+                        </a>
+                        
+                        <!-- Instagram -->
+                        <a href="https://instagram.com/youssefelcaid1" target="_blank" class="bg-pink-50 dark:bg-pink-900/20 p-5 rounded-xl card-hover border border-pink-200 dark:border-pink-800 hover:border-pink-400 dark:hover:border-pink-500 transition duration-300">
+                            <div class="text-center">
+                                <i class="fab fa-instagram text-pink-600 dark:text-pink-400 text-3xl mb-3"></i>
+                                <h4 class="font-bold">Instagram</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Contenu visuel</p>
+                            </div>
+                        </a>
+                        
+                        <!-- YouTube -->
+                        <a href="https://youtube.com/professeuryoussef1" target="_blank" class="bg-red-50 dark:bg-red-900/20 p-5 rounded-xl card-hover border border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-500 transition duration-300">
+                            <div class="text-center">
+                                <i class="fab fa-youtube text-red-600 dark:text-red-400 text-3xl mb-3"></i>
+                                <h4 class="font-bold">YouTube</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Tutoriels vidéo</p>
+                            </div>
+                        </a>
+                        
+                        <!-- Groupe facebook -->
+                        <a href="https://web.facebook.com/groups/1036313947122739/" target="_blank" class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl card-hover border border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-500 transition duration-300">
+                            <div class="text-center">
+                                <i class="fab fa-facebook text-blue-500 dark:text-blue-400 text-3xl mb-3"></i>
+                                <h4 class="font-bold">Groupe Facebook</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Communauté étudiante</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-4">Questions fréquentes</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg">
+                            <h4 class="font-bold text-lg mb-2 flex items-center">
+                                <i class="fas fa-question-circle text-blue-500 mr-3"></i>
+                                Comment accéder aux fichiers PDF ?
+                            </h4>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Tous les fichiers sont disponibles gratuitement sur les pages des modules (1ère année et 2ème année). Cliquez sur le bouton correspondant pour ouvrir ou télécharger le fichier.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg">
+                            <h4 class="font-bold text-lg mb-2 flex items-center">
+                                <i class="fas fa-question-circle text-blue-500 mr-3"></i>
+                                Les ressources sont-elles vraiment gratuites ?
+                            </h4>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Oui, toutes les ressources pédagogiques sur ce site sont entièrement gratuites. Notre mission est de soutenir les étudiants OFPPT sans frais.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg">
+                            <h4 class="font-bold text-lg mb-2 flex items-center">
+                                <i class="fas fa-question-circle text-blue-500 mr-3"></i>
+                                Comment signaler un problème avec un fichier ?
+                            </h4>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Si vous rencontrez un problème avec un fichier (lien brisé, erreur dans le contenu), contactez-nous par email avec le nom du module et la nature du problème.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-200 dark:border-blue-800">
+                    <h3 class="text-xl font-bold text-blue-600 dark:text-blue-400 mb-3">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        Conseils pour une communication efficace
+                    </h3>
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Mentionnez toujours le module concerné dans votre message</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Soyez précis dans votre question ou problème</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Pour WhatsApp, envoyez d'abord un message texte avant d'appeler</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Respectez les horaires de disponibilité</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-8 border-t border-gray-200 dark:border-gray-700 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 text-center md:text-left">
+                    <h3 class="text-lg font-bold text-blue-600 dark:text-blue-400">Infrastructure Digitale</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Ressources pédagogiques pour étudiants OFPPT</p>
+                </div>
+                <div class="flex space-x-4 mb-4 md:mb-0">
+                    <a href="https://facebook.com/youssefelcaid1" target="_blank" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300" aria-label="Facebook">
+                        <i class="fab fa-facebook text-xl"></i>
+                    </a>
+                    <a href="https://instagram.com/youssefelcaid1" target="_blank" class="text-gray-500 hover:text-pink-600 dark:hover:text-pink-400 transition duration-300" aria-label="Instagram">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://youtube.com/professeuryoussef1" target="_blank" class="text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition duration-300" aria-label="YouTube">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
+                    <a href="https://wa.me/212708482810" target="_blank" class="text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition duration-300" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <p class="text-xs text-gray-500 dark:text-gray-400">&copy; <span id="currentYear"></span> Infrastructure Digitale – Professeur Youssef. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mode sombre
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+
+        function setDarkMode(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setDarkMode(savedTheme === 'dark');
+        } else {
+            setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+        }
+
+        darkModeToggle.addEventListener('click', () => setDarkMode(!document.documentElement.classList.contains('dark')));
+    </script>
+</body>
+</html>

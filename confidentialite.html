@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de confidentialité - Infrastructure Digitale</title>
+    <meta name="description" content="Politique de confidentialité de la plateforme Infrastructure Digitale - Protection des données et utilisation des cookies">
+    
+    <!-- نفس الhead من index.html مع تغيير العنوان والوصف -->
+    
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/fluency/96/000000/network.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* نفس الستايل من index.html */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark {
+            color-scheme: dark;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: row;
+                align-items: center;
+                padding: 0.5rem 0;
+            }
+            .nav-container {
+                display: flex;
+                gap: 0.25rem;
+            }
+            .nav-button {
+                padding: 0.4rem 0.5rem;
+                font-size: 0.7rem;
+                border-radius: 0.375rem;
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+                min-height: 2rem;
+            }
+            .nav-button i {
+                font-size: 0.7rem;
+            }
+            .nav-button span {
+                display: none;
+            }
+            #darkModeToggle span {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        'primary-dark': '#1d4ed8',
+                        secondary: '#10b981',
+                        accent: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+    <header class="shadow-lg dark:shadow-gray-800 sticky top-0 z-10 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2">
+            <div class="header-container flex justify-between items-center">
+                <a href="index.html" class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-500 transition duration-300">
+                    <i class="fas fa-network-wired mr-2 text-sm"></i>
+                    <span class="text-sm font-bold">Infrastructure Digitale</span>
+                </a>
+                <div class="nav-container flex items-center gap-2">
+                    <a href="apropos.html" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="hidden sm:inline">À propos</span>
+                    </a>
+                    <a href="confidentialite.html" class="nav-button text-xs font-medium text-blue-600 dark:text-blue-400 transition duration-300 bg-blue-50 dark:bg-blue-900/30">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="hidden sm:inline">Confidentialité</span>
+                    </a>
+                    <a href="contact.html" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-envelope"></i>
+                        <span class="hidden sm:inline">Contact</span>
+                    </a>
+                    <button id="darkModeToggle" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i id="moonIcon" class="fas fa-moon"></i>
+                        <i id="sunIcon" class="fas fa-sun hidden"></i>
+                        <span class="hidden sm:inline">Mode</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 w-full">
+        <a href="index.html" class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mb-6 font-medium transition duration-300">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Retour à l'accueil
+        </a>
+        
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-2xl card-hover">
+            <h1 class="text-3xl font-bold border-b pb-4 mb-6 text-gray-800 dark:text-gray-200">Politique de confidentialité</h1>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">Dernière mise à jour : 18 décembre 2024</p>
+            
+            <div class="space-y-6 text-gray-700 dark:text-gray-300">
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">1. Introduction</h2>
+                    <p class="text-lg">
+                        Chez <strong>Professeur Youssef</strong>, nous respectons la vie privée de tous nos utilisateurs. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre site web.
+                    </p>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">2. Collecte des informations</h2>
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 p-5 rounded-lg border-l-4 border-yellow-500 mb-4">
+                        <p class="text-lg">
+                            <strong>Important :</strong> Notre site est une plateforme éducative simple basée sur l'affichage de fichiers PDF. Nous ne collectons aucune donnée personnelle ou information de suivi des utilisateurs.
+                        </p>
+                    </div>
+                    <p class="text-lg">
+                        Le site <strong>Infrastructure Digitale</strong> ne nécessite pas de création de compte, ne collecte pas d'adresses email, et ne demande aucune information personnelle pour accéder aux ressources pédagogiques.
+                    </p>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">3. Fichiers PDF et hébergement externe</h2>
+                    <p class="text-lg">
+                        Tous les fichiers PDF disponibles sur ce site sont hébergés sur des plateformes externes telles que Google Drive. Nous ne sommes pas responsables des politiques de confidentialité de ces plateformes.
+                    </p>
+                    <ul class="mt-3 space-y-2 text-lg">
+                        <li class="flex items-start">
+                            <i class="fas fa-external-link-alt text-blue-500 mt-1 mr-3"></i>
+                            <span>Les fichiers s'ouvrent dans de nouveaux onglets/fenêtres</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-cloud text-blue-500 mt-1 mr-3"></i>
+                            <span>L'hébergement est géré par des services tiers</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-shield-alt text-green-500 mt-1 mr-3"></i>
+                            <span>Nous ne stockons aucun fichier sur nos serveurs</span>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">4. Google Analytics</h2>
+                    <p class="text-lg">
+                        Nous utilisons Google Analytics pour analyser l'utilisation de notre site. Google Analytics collecte des informations telles que :
+                    </p>
+                    <ul class="mt-3 space-y-2 text-lg ml-4">
+                        <li class="list-disc">Pages visitées</li>
+                        <li class="list-disc">Temps passé sur le site</li>
+                        <li class="list-disc">Type de navigateur et appareil</li>
+                        <li class="list-disc">Région géographique approximative</li>
+                    </ul>
+                    <p class="text-lg mt-3">
+                        Ces données sont anonymisées et ne permettent pas de vous identifier personnellement.
+                    </p>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">5. Publicité (Google AdSense)</h2>
+                    <p class="text-lg">
+                        <strong>AdSense :</strong> En cas d'ajout de publicités à l'avenir, elles seront soumises aux politiques de Google AdSense, qui peuvent utiliser des cookies pour proposer des publicités pertinentes.
+                    </p>
+                    <p class="text-lg mt-3">
+                        Si des publicités sont affichées sur le site, Google AdSense peut utiliser des cookies pour :
+                    </p>
+                    <ul class="mt-3 space-y-2 text-lg ml-4">
+                        <li class="list-disc">Personnaliser les publicités selon vos intérêts</li>
+                        <li class="list-disc">Limiter le nombre de fois qu'une publicité est affichée</li>
+                        <li class="list-disc">Mesurer l'efficacité des campagnes publicitaires</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">6. Cookies</h2>
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-lg border-l-4 border-blue-500">
+                        <p class="text-lg font-semibold">
+                            Notre site n'utilise pas de cookies de suivi ou de cookies publicitaires. Les seuls cookies potentiellement utilisés sont ceux de Google Analytics pour les statistiques anonymes.
+                        </p>
+                    </div>
+                    <p class="text-lg mt-4">
+                        Vous pouvez configurer votre navigateur pour refuser tous les cookies ou pour vous avertir lorsqu'un cookie est envoyé. Cependant, certaines fonctionnalités du site pourraient ne pas fonctionner correctement sans cookies.
+                    </p>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">7. Sécurité</h2>
+                    <p class="text-lg">
+                        Nous prenons des mesures raisonnables pour protéger la sécurité de notre site web. Cependant, aucune transmission de données sur Internet n'est totalement sécurisée.
+                    </p>
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <i class="fas fa-lock text-green-500 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-lg">Protection du site</h4>
+                            <p>Utilisation de HTTPS pour toutes les connexions</p>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <i class="fas fa-user-shield text-blue-500 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-lg">Données minimales</h4>
+                            <p>Collecte minimale d'informations personnelles</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">8. Modifications de cette politique</h2>
+                    <p class="text-lg">
+                        Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Les modifications seront publiées sur cette page avec la date de mise à jour.
+                    </p>
+                </section>
+                
+                <section>
+                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">9. Nous contacter</h2>
+                    <p class="text-lg">
+                        Si vous avez des questions concernant cette politique de confidentialité, vous pouvez nous contacter :
+                    </p>
+                    <ul class="mt-3 space-y-3 text-lg">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-blue-500 mt-1 mr-3"></i>
+                            <div>
+                                <span class="font-bold">Email :</span>
+                                <a href="mailto:professeurysf@gmail.com" class="text-blue-600 dark:text-blue-400 hover:underline ml-2">professeurysf@gmail.com</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-whatsapp text-green-500 mt-1 mr-3"></i>
+                            <div>
+                                <span class="font-bold">WhatsApp :</span>
+                                <a href="https://wa.me/212708482810" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline ml-2">+212708482810</a>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-8 border-t border-gray-200 dark:border-gray-700 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 text-center md:text-left">
+                    <h3 class="text-lg font-bold text-blue-600 dark:text-blue-400">Infrastructure Digitale</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Ressources pédagogiques pour étudiants OFPPT</p>
+                </div>
+                <div class="flex space-x-4 mb-4 md:mb-0">
+                    <a href="https://facebook.com/youssefelcaid1" target="_blank" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300" aria-label="Facebook">
+                        <i class="fab fa-facebook text-xl"></i>
+                    </a>
+                    <a href="https://instagram.com/youssefelcaid1" target="_blank" class="text-gray-500 hover:text-pink-600 dark:hover:text-pink-400 transition duration-300" aria-label="Instagram">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://youtube.com/professeuryoussef1" target="_blank" class="text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition duration-300" aria-label="YouTube">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
+                    <a href="https://wa.me/212708482810" target="_blank" class="text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition duration-300" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <p class="text-xs text-gray-500 dark:text-gray-400">&copy; <span id="currentYear"></span> Infrastructure Digitale – Professeur Youssef. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mode sombre
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+
+        function setDarkMode(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setDarkMode(savedTheme === 'dark');
+        } else {
+            setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+        }
+
+        darkModeToggle.addEventListener('click', () => setDarkMode(!document.documentElement.classList.contains('dark')));
+    </script>
+</body>
+</html>
