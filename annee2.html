@@ -52,33 +52,64 @@
             }
         }
         
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: #4b5563;
+            transition: color 0.2s ease, background-color 0.2s ease;
+        }
+        .nav-link:hover {
+            color: #2563eb;
+            background-color: #eff6ff;
+        }
+        .nav-link.active {
+            color: #2563eb;
+            background-color: #eff6ff;
+        }
+        .dark .nav-link {
+            color: #d1d5db;
+        }
+        .dark .nav-link:hover {
+            color: #60a5fa;
+            background-color: rgba(30, 58, 138, 0.25);
+        }
+        .dark .nav-link.active {
+            color: #60a5fa;
+            background-color: rgba(30, 58, 138, 0.3);
+        }
+        .mode-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 9999px;
+            color: #6b7280;
+            font-size: 0.85rem;
+            transition: color 0.2s ease, background-color 0.2s ease;
+        }
+        .mode-toggle:hover {
+            color: #2563eb;
+            background-color: #eff6ff;
+        }
+        .dark .mode-toggle {
+            color: #9ca3af;
+        }
+        .dark .mode-toggle:hover {
+            color: #60a5fa;
+            background-color: rgba(30, 58, 138, 0.25);
+        }
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: row;
-                align-items: center;
-                padding: 0.5rem 0;
-            }
-            .nav-container {
-                display: flex;
-                gap: 0.25rem;
-            }
-            .nav-button {
-                padding: 0.4rem 0.5rem;
-                font-size: 0.7rem;
-                border-radius: 0.375rem;
-                display: flex;
-                align-items: center;
-                gap: 0.25rem;
-                min-height: 2rem;
-            }
-            .nav-button i {
-                font-size: 0.7rem;
-            }
-            .nav-button span {
+            .nav-link span {
                 display: none;
             }
-            #darkModeToggle span {
-                display: none;
+            .nav-link {
+                padding: 0.5rem;
             }
             
             .module-buttons {
@@ -107,792 +138,119 @@
             }
         }
         
-        // بيانات السنة الثانية كاملة
-        const siteData = {
-            '2ème année': {
-'M201: Mise en place d\'une infrastructure réseaux': 
-				{
-		'Cours': [
-        { 
-            name: 'Résumé théorique M201 METTRE EN PLACE UNE INFRASTRUCTURE RÉSEAUX', 
-            viewLink: 'https://drive.google.com/file/d/158-pNrlLP1b-Tt3EJzdh8fhk8xUNo81S/view?usp=drive_link',
-            downloadLink: 'https://drive.google.com/uc?export=download&id=158-pNrlLP1b-Tt3EJzdh8fhk8xUNo81S'
-        },
-        { 
-            name: 'Travaux pratiques M201 METTRE EN PLACE UNE INFRASTRUCTURE RÉSEAUX', 
-            viewLink: 'https://drive.google.com/file/d/1EURkoJhPnRSQt-cPeDkGoUojBJfhsBV7/view?usp=drive_link',
-            downloadLink: 'https://drive.google.com/uc?export=download&id=1EURkoJhPnRSQt-cPeDkGoUojBJfhsBV7'
-        },
-    { 
-        name: 'M201 METTRE EN PLACE UNE INFRASTRUCTURE RÉSEAUX M.MANGAD', 
-        viewLink: 'https://drive.google.com/file/d/1LyvTzT96msuVq6EXIfRna4RnFsOjRG3s/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1LyvTzT96msuVq6EXIfRna4RnFsOjRG3s'
-    },
-    {
-        "name": "SRWE_Module_1",
-        "viewLink": "https://drive.google.com/file/d/1F1O8KNFndAsF6jf5aEjdS3gnBnXTGRKZ/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1F1O8KNFndAsF6jf5aEjdS3gnBnXTGRKZ"
-    },
-    {
-        "name": "SRWE_Module_2",
-        "viewLink": "https://drive.google.com/file/d/1nfemvf6mlQigv1zyywsJtvj274c-vuuh/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1nfemvf6mlQigv1zyywsJtvj274c-vuuh"
-    },
-    {
-        "name": "SRWE_Module_3",
-        "viewLink": "https://drive.google.com/file/d/1btAItWOgeq6LptVZl6X-cXbSjT1CXjvx/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1btAItWOgeq6LptVZl6X-cXbSjT1CXjvx"
-    },
-    {
-        "name": "SRWE_Module_4",
-        "viewLink": "https://drive.google.com/file/d/14YqNEhVkMdwQUOuj6o6Q7lZ7x4XiHHqI/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=14YqNEhVkMdwQUOuj6o6Q7lZ7x4XiHHqI"
-    },
-    {
-        "name": "SRWE_Module_5",
-        "viewLink": "https://drive.google.com/file/d/1jopuAsqzo1TCCFd6GLoszpc-VNWlBAG9/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1jopuAsqzo1TCCFd6GLoszpc-VNWlBAG9"
-    },
-    {
-        "name": "SRWE_Module_6",
-        "viewLink": "https://drive.google.com/file/d/1CYtCYX1m3x9NkQpiSzGS0PYMkdagxOD4/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1CYtCYX1m3x9NkQpiSzGS0PYMkdagxOD4"
-    },
-    {
-        "name": "SRWE_Module_7",
-        "viewLink": "https://drive.google.com/file/d/1t4uL-yZy5TYGG0nqQx9X7ugICEMxnC2R/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1t4uL-yZy5TYGG0nqQx9X7ugICEMxnC2R"
-    },
-    {
-        "name": "SRWE_Module_8",
-        "viewLink": "https://drive.google.com/file/d/1aCKENkuXyQ9UQJejZ_YgNYJUfe7NZlYI/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1aCKENkuXyQ9UQJejZ_YgNYJUfe7NZlYI"
-    },
-    {
-        "name": "SRWE_Module_9",
-        "viewLink": "https://drive.google.com/file/d/1EkdWJ6LF7wFmFc4BrpIimiz1q3Gdd9dp/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1EkdWJ6LF7wFmFc4BrpIimiz1q3Gdd9dp"
-    },
-    {
-        "name": "SRWE_Module_10",
-        "viewLink": "https://drive.google.com/file/d/1nsNayruSaLB2O2knnCi9u7UacuUk8KBX/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1nsNayruSaLB2O2knnCi9u7UacuUk8KBX"
-    },
-    {
-        "name": "SRWE_Module_11",
-        "viewLink": "https://drive.google.com/file/d/1oeZ4yvsSoFNdfcojXxvzE5sdj4DwYqHU/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1oeZ4yvsSoFNdfcojXxvzE5sdj4DwYqHU"
-    },
-    {
-        "name": "SRWE_Module_12",
-        "viewLink": "https://drive.google.com/file/d/1YCx2av02_8rJq_vpD7qZLz4FhCDtEo8s/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1YCx2av02_8rJq_vpD7qZLz4FhCDtEo8s"
-    },
-    {
-        "name": "SRWE_Module_13",
-        "viewLink": "https://drive.google.com/file/d/1ujuwV57rUtqJpYc6fgNdt8oRiPsCKmQf/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1ujuwV57rUtqJpYc6fgNdt8oRiPsCKmQf"
-    },
-    {
-        "name": "SRWE_Module_14",
-        "viewLink": "https://drive.google.com/file/d/1GUbMITHnWqHuRajoN1JodKA9YRSw4b-Q/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1GUbMITHnWqHuRajoN1JodKA9YRSw4b-Q"
-    },
-    {
-        "name": "SRWE_Module_15",
-        "viewLink": "https://drive.google.com/file/d/1DW6J2u_U5sQfdnXGeANl4HUYEigGWC2f/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1DW6J2u_U5sQfdnXGeANl4HUYEigGWC2f"
-    },
-    {
-        "name": "SRWE_Module_16",
-        "viewLink": "https://drive.google.com/file/d/1s8O8exDqtc5ur2ExT418wjg_lIlGCAwb/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1s8O8exDqtc5ur2ExT418wjg_lIlGCAwb"
-    },
-    {
-        "name": "Le Protocole STP",
-        "viewLink": "https://drive.google.com/file/d/1pYWRZpKqulZm5UUM-sPXsYCuPeaXD0TQ/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1pYWRZpKqulZm5UUM-sPXsYCuPeaXD0TQ"
-    },
-    {
-        "name": "Le Protocole HSRP",
-        "viewLink": "https://drive.google.com/file/d/1WfZxkAaa9vEjBTkoC7huAgB35h1p5n4z/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1WfZxkAaa9vEjBTkoC7huAgB35h1p5n4z"
-    },
-    {
-        "name": "Le Protocole CDP",
-        "viewLink": "https://drive.google.com/file/d/1QJzNemoL3ocs3wWXg1g7GAFGUhxdV_vC/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1QJzNemoL3ocs3wWXg1g7GAFGUhxdV_vC"
-    },
-    {
-        "name": "Le Protocole VTP",
-        "viewLink": "https://drive.google.com/file/d/1g4OAhVK-XIj7KhPnZeicfB0cLodWDnRn/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1g4OAhVK-XIj7KhPnZeicfB0cLodWDnRn"
-    },
-    {
-        "name": "Le Protocole RIP",
-        "viewLink": "https://drive.google.com/file/d/1E-IXAIekw6jD1q_rynUdPygASt4V4vs0/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1E-IXAIekw6jD1q_rynUdPygASt4V4vs0"
-    },
-    {
-        "name": "Les ACL (Access Control List)",
-        "viewLink": "https://drive.google.com/file/d/1wOjfaH433PaR9UjDFOP4QaincuhvmUWQ/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1wOjfaH433PaR9UjDFOP4QaincuhvmUWQ"
-    }
-    ],
-		'Exercices': [
-    { 
-        name: 'Exercice 01 Configuration de base d\'un commutateur et accès sécurisé à distance', 
-        viewLink: 'https://drive.google.com/file/d/1fvj0rUCttoH6m1IjgazSdW9TrkgCJwFv/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1fvj0rUCttoH6m1IjgazSdW9TrkgCJwFv'
-    },
-    { 
-        name: 'Exercice VLAN', 
-        viewLink: 'https://drive.google.com/file/d/1TfVOuqeL7WuKb_lrcM287-8A7YLCZsnd/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1TfVOuqeL7WuKb_lrcM287-8A7YLCZsnd'
-    },
-    { 
-        name: 'Exercice Routage Inter-VLAN', 
-        viewLink: 'https://drive.google.com/file/d/1pkHwOo6Y3yXcib3WNgk0xavL-iWQEVgr/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1pkHwOo6Y3yXcib3WNgk0xavL-iWQEVgr'
-    },
-    { 
-        name: 'Exercice MultiLayer Switch (MLS)', 
-        viewLink: 'https://drive.google.com/file/d/1Ukdi9pSxYbk1JN8nYkL23_sdsyDEIH0u/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1Ukdi9pSxYbk1JN8nYkL23_sdsyDEIH0u'
-    },
-    { 
-        name: 'Exercice STP (Spanning-tree Protocol)', 
-        viewLink: 'https://drive.google.com/file/d/1rwEcSHhdrbp9PIkKr2mUUWnD2s5HoEJx/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1rwEcSHhdrbp9PIkKr2mUUWnD2s5HoEJx'
-    },
-    { 
-        name: 'Exercice VLAN - InterVLAN - STP - Etherchannel', 
-        viewLink: 'https://drive.google.com/file/d/1D12j1-TL9ycN983Ae0MjD0xlmop0TBeY/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1D12j1-TL9ycN983Ae0MjD0xlmop0TBeY'
-    },
-    { 
-        name: 'Exercice VLAN - InterVLAN - STP - Etherchannel - Correction', 
-        viewLink: 'https://drive.google.com/file/d/1Ekmm2qSmw30dLfOtVF7HYqaJ-xibjnlV/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1Ekmm2qSmw30dLfOtVF7HYqaJ-xibjnlV'
-    },
-    { 
-        name: 'Correction Exercices VLAN + Intervlan + etherchannel', 
-        viewLink: 'https://drive.google.com/file/d/1208TcPxKWX3aAbKfzfG0LurVvcWcSts7/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1208TcPxKWX3aAbKfzfG0LurVvcWcSts7'
-    },
-    { 
-        name: 'Exercice FHRP (HSRP & VRRP & GLBP)', 
-        viewLink: 'https://drive.google.com/file/d/1FLtGggtt9wD8MN9RiBipVgxCBI3hANKH/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1FLtGggtt9wD8MN9RiBipVgxCBI3hANKH'
-    },
-    { 
-        name: 'Exercice FHRP (HSRP & VRRP & GLBP) avec Correction', 
-        viewLink: 'https://drive.google.com/file/d/10Ssh6rODsdJYtbcuxaFLzPa2yqtgXCIJ/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=10Ssh6rODsdJYtbcuxaFLzPa2yqtgXCIJ'
-    },
-    { 
-        name: 'Exercice VTP', 
-        viewLink: 'https://drive.google.com/file/d/1CzFknPGwdiHahgE_Fp00b25Ml2v5t1mn/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1CzFknPGwdiHahgE_Fp00b25Ml2v5t1mn'
-    },
-    { 
-        name: 'Exercice 3 Théorique + Pratique', 
-        viewLink: 'https://drive.google.com/file/d/1gEP10gHdYCSwlEYDI4YwPZwSXP4Lslhl/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1gEP10gHdYCSwlEYDI4YwPZwSXP4Lslhl'
-    },
-    { 
-        name: 'Exercice 3 Théorique + Pratique - Correction', 
-        viewLink: 'https://drive.google.com/file/d/1jQnp00KYUnpU5OiWs4QubzhaZZ9Xu0a1/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1jQnp00KYUnpU5OiWs4QubzhaZZ9Xu0a1'
-    },
-    { 
-        name: 'Exercice sécurité des ports (port security)', 
-        viewLink: 'https://drive.google.com/file/d/1MJvhjB8q2om1qmH-c3IibPgkSFWj62Ov/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1MJvhjB8q2om1qmH-c3IibPgkSFWj62Ov'
-    },
-    { 
-        name: 'Exercice sécurité des ports (port security) avec Correction', 
-        viewLink: 'https://drive.google.com/file/d/18y3lNM1Z24_1-dmwjLczJimIxRIcYxy9/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=18y3lNM1Z24_1-dmwjLczJimIxRIcYxy9'
-    },
-    { 
-        name: 'Exercice CDP + LLDP', 
-        viewLink: 'https://drive.google.com/file/d/1n0IgH7cPjpli56W6eV2bXiYItJ6flM1K/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1n0IgH7cPjpli56W6eV2bXiYItJ6flM1K'
-    },
-    { 
-        name: 'Exercice CDP + LLDP avec correction', 
-        viewLink: 'https://drive.google.com/file/d/15ANRr_0MY-J31YwT0GDTKfHOvTrYSoul/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=15ANRr_0MY-J31YwT0GDTKfHOvTrYSoul'
-    },
-    { 
-        name: 'Exercice DHCPv4 et DHCPv6', 
-        viewLink: 'https://drive.google.com/file/d/1sg9Ee2XaX76znr9MruHk80Wcoc62_qs3/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1sg9Ee2XaX76znr9MruHk80Wcoc62_qs3'
-    },
-    { 
-        name: 'Exercice DHCPv4 et DHCPv6 avec correction', 
-        viewLink: 'https://drive.google.com/file/d/1m3IgtYuaCjmyQJjRZUb--LMZxldbGydS/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1m3IgtYuaCjmyQJjRZUb--LMZxldbGydS'
-    },
-    { 
-        name: 'Exercice DHCP IPv6', 
-        viewLink: 'https://drive.google.com/file/d/1hgEEF9apS2OPqYj78yOjWN_8nXc3trMM/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1hgEEF9apS2OPqYj78yOjWN_8nXc3trMM'
-    },
-    { 
-        name: 'Exercice VLAN, InterVLAN, Routage OSPF', 
-        viewLink: 'https://drive.google.com/file/d/135LlMDAqJUpkMKgbZ-cj_Ixcw6qUrdaU/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=135LlMDAqJUpkMKgbZ-cj_Ixcw6qUrdaU'
-    },
-    { 
-        name: 'Exercice routage statique IPv6', 
-        viewLink: 'https://drive.google.com/file/d/1OzZHevFOejhaP6U6nzJ8nnEaYVdxAumb/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1OzZHevFOejhaP6U6nzJ8nnEaYVdxAumb'
-    },
-    { 
-        name: 'Exercice ospf - acl - portsecurity', 
-        viewLink: 'https://drive.google.com/file/d/1BPkAyephPEwLW_-fHriChJhBpZ1uYzUQ/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1BPkAyephPEwLW_-fHriChJhBpZ1uYzUQ'
-    },
-    { 
-        name: 'Travail Pratique M201 mise en place d\'une infrastrucuture réseau', 
-        viewLink: 'https://drive.google.com/file/d/1lzQujvi87I71ucU9y3D-bE_1vmOP5Z1s/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1lzQujvi87I71ucU9y3D-bE_1vmOP5Z1s'
-    },
-    { 
-        name: 'Travail Pratique M201 mise en place d\'une infrastrucuture réseau avec correction', 
-        viewLink: 'https://drive.google.com/file/d/1uyPLh_aedgHGfLoH_dFoAqpaLlXCgXQT/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1uyPLh_aedgHGfLoH_dFoAqpaLlXCgXQT'
-    },
-    { 
-        name: 'Exercice routage dynamique RIP', 
-        viewLink: 'https://drive.google.com/file/d/13hvzHjocSGBmJfw3JiyI0cCLwpcoLvQh/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=13hvzHjocSGBmJfw3JiyI0cCLwpcoLvQh'
-    },
-    { 
-        name: 'Exercice le protocole de routage EIGRP', 
-        viewLink: 'https://drive.google.com/file/d/1YEy-35cQyluqEeWt7HcHT_ncQPW3NnQ7/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1YEy-35cQyluqEeWt7HcHT_ncQPW3NnQ7'
-    },
-    { 
-        name: 'Exercice Routage Statique - DHCP - ACL', 
-        viewLink: 'https://drive.google.com/file/d/1CuNa_xcgOvQCiUnrFpHZCJoYSbMOhR5q/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1CuNa_xcgOvQCiUnrFpHZCJoYSbMOhR5q'
-    },
-    { 
-        name: 'Exercice M201', 
-        viewLink: 'https://drive.google.com/file/d/1CtXL2smD0dqZBT6qi-X3k-RclO9J5eZc/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1CtXL2smD0dqZBT6qi-X3k-RclO9J5eZc'
-    },
-    { 
-        name: 'Exercice VPN GRE', 
-        viewLink: 'https://drive.google.com/file/d/1H0Y0XARYk8Zvg_XiiymaB_MtKYka2WOc/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1H0Y0XARYk8Zvg_XiiymaB_MtKYka2WOc'
-    },
-    { 
-        name: 'Configuration du NAT sur un routeur Cisco', 
-        viewLink: 'https://drive.google.com/file/d/10AzpPiMax7tUiw3iTiFIA740YYTOa_lo/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=10AzpPiMax7tUiw3iTiFIA740YYTOa_lo'
-    }
-],
- 'Contrôle': [], 
- 'EFM': [
-    { 
-        name: 'EFMR M201 Béni Mellal Khénifra 2023 V1', 
-        viewLink: 'https://drive.google.com/file/d/1FN3piaB1mc8LyyN5P6LTFjUDh0cRi3bY/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1FN3piaB1mc8LyyN5P6LTFjUDh0cRi3bY'
-    },
-    { 
-        name: 'EFMR M201 Béni Mellal Khénifra 2023 V2', 
-        viewLink: 'https://drive.google.com/file/d/1GFObLlYi6yxjMCbq0tBfQCt2a4zO_ZJ-/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1GFObLlYi6yxjMCbq0tBfQCt2a4zO_ZJ-'
-    },
-    { 
-        name: 'EFMR M201 Béni Mellal Khénifra 2024 V1', 
-        viewLink: 'https://drive.google.com/file/d/1TAGgb1RjBYTg36HXhDPLdnDj4aLMR0T-/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1TAGgb1RjBYTg36HXhDPLdnDj4aLMR0T-'
-    },
-    { 
-        name: 'EFMR M201 Béni Mellal Khénifra 2024 V2', 
-        viewLink: 'https://drive.google.com/file/d/16MvobzFlH2G0-fj3VQnNZPcD2zOWa6vP/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=16MvobzFlH2G0-fj3VQnNZPcD2zOWa6vP'
-    },
-    { 
-        name: 'EFMR M201 Casa settat 2022-2023 V1', 
-        viewLink: 'https://drive.google.com/file/d/1Awx8nQ5VvFxg11-51xV8H0TwYJoXwtOC/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1Awx8nQ5VvFxg11-51xV8H0TwYJoXwtOC'
-    },
-    { 
-        name: 'EFMR M201 Casablanca Settat 2022-2023 V2', 
-        viewLink: 'https://drive.google.com/file/d/1WH5X-MDWiCcVVvFQiO1fC9_uw2cptzIN/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1WH5X-MDWiCcVVvFQiO1fC9_uw2cptzIN'
-    },
-    { 
-        name: 'EFMR M201 Casablanca Settat 2023-2024 V1', 
-        viewLink: 'https://drive.google.com/file/d/14HTXK4ap2_SPIqj1gMSjgz8K9Ude2aPn/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=14HTXK4ap2_SPIqj1gMSjgz8K9Ude2aPn'
-    },
-    { 
-        name: 'EFMR M201 Casablanca Settat 2023-2024 V2', 
-        viewLink: 'https://drive.google.com/file/d/1FBbVi5JREmGu3YtM6BCfgnvGeVPbrTGT/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1FBbVi5JREmGu3YtM6BCfgnvGeVPbrTGT'
-    },
-    { 
-        name: 'EFMR M201 Drâa Tafilalet 23-24 pratique', 
-        viewLink: 'https://drive.google.com/file/d/1-_NbKDKTHmYQqbpB2VPUIPqLEh-N3S4h/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1-_NbKDKTHmYQqbpB2VPUIPqLEh-N3S4h'
-    },
-    { 
-        name: 'EFMR M201 Fès Meknès 22-23', 
-        viewLink: 'https://drive.google.com/file/d/1EhVLeGhBWWnTCPVqCf2X1lzVe_24wGwA/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1EhVLeGhBWWnTCPVqCf2X1lzVe_24wGwA'
-    },
-    { 
-        name: 'EFMR M201 Marrakech-safi 23-24', 
-        viewLink: 'https://drive.google.com/file/d/1DAjCTydKXKGwAXlfxIsXNdgzWwdU9mPo/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1DAjCTydKXKGwAXlfxIsXNdgzWwdU9mPo'
-    },
-    { 
-        name: 'EFMR M201 RABAT-SALÉ-KENITRA 22-23', 
-        viewLink: 'https://drive.google.com/file/d/1D2DnUK1bzai_4UydpoVCjtzzf5snYgNl/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1D2DnUK1bzai_4UydpoVCjtzzf5snYgNl'
-    },
-    { 
-        name: 'EFMR M201 RABAT-SALÉ-KENITRA 22-23 Correction', 
-        viewLink: 'https://drive.google.com/file/d/1TR82WHVR40KL8F6-YPkWKLKttmcvvCuG/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1TR82WHVR40KL8F6-YPkWKLKttmcvvCuG'
-    },
-    { 
-        name: 'EFMR M201 RABAT-SALÉ-KENITRA 2025', 
-        viewLink: 'https://drive.google.com/file/d/1JP9dyuE7EOCI8fb5fccPAXhLvUVQ_x8u/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1JP9dyuE7EOCI8fb5fccPAXhLvUVQ_x8u'
-    },
-    { 
-        name: 'EFMR M201 Souss Massa 22-23 V1', 
-        viewLink: 'https://drive.google.com/file/d/1jkCO1SlwR6r7qukzBxmh8OK5M-ZQTYs-/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1jkCO1SlwR6r7qukzBxmh8OK5M-ZQTYs-'
-    }
-],
- },
-		
-'M202: Administration d\'un environnement Windows': { 
-    'Cours': [
-        { 
-            name: 'RÉSUMÉ THÉORIQUE – M202 – Administrer un environnement Windows', 
-            viewLink: 'https://drive.google.com/file/d/1XlJEhWdO-kajW9ngQ0EjkIAqgZ1jFKfw/view?usp=drive_link',
-            downloadLink: 'https://drive.google.com/uc?export=download&id=1XlJEhWdO-kajW9ngQ0EjkIAqgZ1jFKfw'
-        },
-        { 
-            name: 'M202 Administrer un environnement Windows M.MANGAD', 
-            viewLink: 'https://drive.google.com/file/d/1IwINblCxShFAzrT-Vrk4BYJDcUrNpapK/view?usp=drive_link',
-            downloadLink: 'https://drive.google.com/uc?export=download&id=1IwINblCxShFAzrT-Vrk4BYJDcUrNpapK'
-        },
-        { 
-            name: 'TRAVAUX PRATIQUES – M202 – Administrer un environnement Windows', 
-            viewLink: 'https://drive.google.com/file/d/1dBN6LXZ6hkrl2G9VWJo1R9YNp_XNlDz9/view?usp=drive_link',
-            downloadLink: 'https://drive.google.com/uc?export=download&id=1dBN6LXZ6hkrl2G9VWJo1R9YNp_XNlDz9'
+        // Chargement dynamique des donnees depuis Google Drive via api/drive.js
+        let modulesData = {};
+
+        function normalizeName(str) {
+            return (str || '')
+                .trim()
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '');
         }
-    ],
-	'Exercices': [], 
 
-'Contrôle': [
-    { 
-        name: '01- Contrôle continu M202 – Administrer un environnement Windows', 
-        viewLink: 'https://drive.google.com/file/d/1XlJEhWdO-kajW9ngQ0EjkIAqgZ1jFKfw/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1XlJEhWdO-kajW9ngQ0EjkIAqgZ1jFKfw'
-    },
-    { 
-        name: '02- Contrôle continu M202 – Administrer un environnement Windows', 
-        viewLink: 'https://drive.google.com/file/d/1GqpiuOQei5k-I2euGqZWASiH0s-1XBGA/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1GqpiuOQei5k-I2euGqZWASiH0s-1XBGA'
-    },
-    { 
-        name: '03- Contrôle continu M202 – Administrer un environnement Windows', 
-        viewLink: 'https://drive.google.com/file/d/1XpLx7lO5XYWGN11vmH-eaDvLLas9kdjs/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1XpLx7lO5XYWGN11vmH-eaDvLLas9kdjs'
-    },
-    { 
-        name: '04- Contrôle continu M202 – Administrer un environnement Windows', 
-        viewLink: 'https://drive.google.com/file/d/15JdIUIU9F6BZzbDv2IHyDjb68CWGrnRl/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=15JdIUIU9F6BZzbDv2IHyDjb68CWGrnRl'
-    },
-    { 
-        name: '05- Contrôle continu M202 – Administrer un environnement Windows', 
-        viewLink: 'https://drive.google.com/file/d/164zCG97Z8zEn7S8dub1iHqjEaL0zUg3e/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=164zCG97Z8zEn7S8dub1iHqjEaL0zUg3e'
-    },
-    { 
-        name: '06- Contrôle continu M202 – Administrer un environnement Windows', 
-        viewLink: 'https://drive.google.com/file/d/15te1lCMyjQaeGHMC6detULInCZIsQ5Dh/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=15te1lCMyjQaeGHMC6detULInCZIsQ5Dh'
-    },
-    { 
-        name: '07- Contrôle continu M202 – Administrer un environnement Windows', 
-        viewLink: 'https://drive.google.com/file/d/1loiA_AtPDdyu-xw_OyATx5qYRvUVFfdV/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1loiA_AtPDdyu-xw_OyATx5qYRvUVFfdV'
-    }
-],
-	'EFM': [
-	    { 
-        name: 'EFMR M202 Administration d\'un environnement Windows TTA 2023 V2', 
-        viewLink: 'https://drive.google.com/file/d/1ZQ9-kgRy3CNNvohlo6Ews74uXAn5_NAU/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1ZQ9-kgRy3CNNvohlo6Ews74uXAn5_NAU'
-    },
-    { 
-        name: 'EFMR M202 Administration d\'un environnement Windows rabat 2023', 
-        viewLink: 'https://drive.google.com/file/d/1QRGcPSZi-WCe4Ge6CJtrGAHx4u0u2wdj/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1QRGcPSZi-WCe4Ge6CJtrGAHx4u0u2wdj'
-    },
-    { 
-        name: 'EFMR M202 Administration d\'un environnement Windows BMKH 2023', 
-        viewLink: 'https://drive.google.com/file/d/11W4WBQiEBGnDH8VPPlGw2MJ0BSbBUopo/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=11W4WBQiEBGnDH8VPPlGw2MJ0BSbBUopo'
-    },
-    { 
-        name: 'EFMR M202 Administration d\'un environnement Windows BMKH 2024', 
-        viewLink: 'https://drive.google.com/file/d/1ou9wlZZzyiUa3hGnRpJQhsNe_Bx8JVbz/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1ou9wlZZzyiUa3hGnRpJQhsNe_Bx8JVbz'
-    },
-    { 
-        name: 'EFMR M202 Administration d\'un environnement Windows CASA 2022 V2', 
-        viewLink: 'https://drive.google.com/file/d/1hK0TYt9H8BzSMJo2SVVpzXkddxwZBd2c/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1hK0TYt9H8BzSMJo2SVVpzXkddxwZBd2c'
-    },
-    { 
-        name: 'EFMR M202 Administration d\'un environnement Windows CASA 2023 V1', 
-        viewLink: 'https://drive.google.com/file/d/1DAAriF2jWhe8OUQ7EJi7yVhPQGTKaldH/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1DAAriF2jWhe8OUQ7EJi7yVhPQGTKaldH'
-    },
-    { 
-        name: 'EFMR M202 Administration d\'un environnement Windows GLELMIM 22-23 V1', 
-        viewLink: 'https://drive.google.com/file/d/1P659rN71nm4ik1OpMqWiW58fGsD0l0jB/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1P659rN71nm4ik1OpMqWiW58fGsD0l0jB'
-    },
-	{ 
-		name: 'EFMR M202 Administration d\'un environnement Windows l\'Oriental 2022-V1etV2 TALEB RACHIDI', 
-		viewLink: 'https://drive.google.com/file/d/1P659rN71nm4ik1OpMqWiW58fGsD0l0jB/view?usp=drive_link',
-		downloadLink: 'https://drive.google.com/uc?export=download&id=1P659rN71nm4ik1OpMqWiW58fGsD0l0jB'
-	},
-    { 
-        name: 'EFMR M202 Administration d\'un environnement Windows rabat 22-23 Corrige', 
-        viewLink: 'https://drive.google.com/file/d/1CktrFCISXOTDcxdufgMllfjtO923Yb-6/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1CktrFCISXOTDcxdufgMllfjtO923Yb-6'
-    },
-    { 
-        name: 'EFMR M202 Administration d\'un environnement Windows Rabat 2025', 
-        viewLink: 'https://drive.google.com/file/d/1rDBJaHpQqxLE3nw5S5D8vkVK31XTzh7F/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1rDBJaHpQqxLE3nw5S5D8vkVK31XTzh7F'
-    },
-    { 
-        name: 'EFMR M202 Administration d\'un environnement Windows V1 et V2 ZITI Ilham', 
-        viewLink: 'https://drive.google.com/file/d/1XIkltdbJvCia8nXkXkxzI4ehBtFaa3Xi/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1XIkltdbJvCia8nXkXkxzI4ehBtFaa3Xi'
-    },
-    { 
-        name: 'EFMR M202 Administration d\'un environnement Windows V2 Elements de correction', 
-        viewLink: 'https://drive.google.com/file/d/1d9CrGeU5jO8M6aGfGDngkTOhyQ3Nto7k/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1d9CrGeU5jO8M6aGfGDngkTOhyQ3Nto7k'
-    }
-	]
-	},
-    'M203: Administration d\'un environnement Linux': 
-	{'Cours': [
-    { 
-        name: '01- Configuration de base sous Linux', 
-        viewLink: 'https://drive.google.com/file/d/1A6wv_nyO2V-BYtIqgsOebCaLU2Gp6eb-/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1A6wv_nyO2V-BYtIqgsOebCaLU2Gp6eb-'
-    },
-    { 
-        name: '02 - Configuration du routage sous Linux', 
-        viewLink: 'https://drive.google.com/file/d/1cazJDmNWK0-0TfVmWk2CSr4lLcwPDcZv/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1cazJDmNWK0-0TfVmWk2CSr4lLcwPDcZv'
-    },
-    { 
-        name: '03- Installation et configuration du serveur DHCP', 
-        viewLink: 'https://drive.google.com/file/d/1sJMEPQifJzDcE7m-Gyxj3VGggAS3zPgk/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1sJMEPQifJzDcE7m-Gyxj3VGggAS3zPgk'
-    },
-    { 
-        name: '04- Installation et configuration du serveur DNS sous Centos', 
-        viewLink: 'https://drive.google.com/file/d/10jecVwcvsP_eHhylNqBzPfq3gA_UGvhd/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=10jecVwcvsP_eHhylNqBzPfq3gA_UGvhd'
-    },
-    { 
-        name: '05- Serveur NFS (Network File System)', 
-        viewLink: 'https://drive.google.com/file/d/1JGtGDdtANmoEjzgrVzgc3MiKaQq3iJZm/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1JGtGDdtANmoEjzgrVzgc3MiKaQq3iJZm'
-    },
-    { 
-        name: '06- Installation et configuration du serveur VSFTP sous Centos', 
-        viewLink: 'https://drive.google.com/file/d/1sG5gIcK5w1z2e7lTcDPwuvBYEx8dcGf8/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1sG5gIcK5w1z2e7lTcDPwuvBYEx8dcGf8'
-    },
-    { 
-        name: '07- Installation et configuration du serveur Apache sous Centos', 
-        viewLink: 'https://drive.google.com/file/d/1Vnr0KHmOsS-sFoHDZwRgwrj1F7NQx_bC/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1Vnr0KHmOsS-sFoHDZwRgwrj1F7NQx_bC'
-    },
-    { 
-        name: '08- SAMBA sous Linux', 
-        viewLink: 'https://drive.google.com/file/d/1HA3UYbPkaezMUCcVAkt1G2XAFVh9FLXh/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1HA3UYbPkaezMUCcVAkt1G2XAFVh9FLXh'
-    },
-    { 
-        name: '09- OPENSSH sous Linux', 
-        viewLink: 'https://drive.google.com/file/d/1OPs1OTSLmcfSH5xFOvGuuVV0JOf6Ftzd/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1OPs1OTSLmcfSH5xFOvGuuVV0JOf6Ftzd'
-    },
-    { 
-        name: '10- résumé Administrer un environnement Linux', 
-        viewLink: 'https://drive.google.com/file/d/1hDuaZU6mQJQo6n5V67R7iZeEl26HvXLR/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1hDuaZU6mQJQo6n5V67R7iZeEl26HvXLR'
-    }
-],
-				'Exercices': [
-    { 
-        name: 'TP1: Configuration de base sous Linux', 
-        viewLink: 'https://drive.google.com/file/d/1UYRtDOWXHDgt0Vkq7YD-p2ltSR62H_1b/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1UYRtDOWXHDgt0Vkq7YD-p2ltSR62H_1b'
-    },
-    { 
-        name: 'TP2 : Commande réseaux', 
-        viewLink: 'https://drive.google.com/file/d/1OBvDlpJgbUUhqRA-5mYoykd16W7UevEe/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1OBvDlpJgbUUhqRA-5mYoykd16W7UevEe'
-    },
-    { 
-        name: 'TP3: DHCP', 
-        viewLink: 'https://drive.google.com/file/d/1FBizlYySelqkMXyFRtXE55NQPfwwNgY_/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1FBizlYySelqkMXyFRtXE55NQPfwwNgY_'
-    },
-    { 
-        name: 'TP4: DNS', 
-        viewLink: 'https://drive.google.com/file/d/1LW0RKNRJgf2RX2RGSi0j4wj3tuunCnGA/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1LW0RKNRJgf2RX2RGSi0j4wj3tuunCnGA'
-    },
-    { 
-        name: 'TP5: Apache', 
-        viewLink: 'https://drive.google.com/file/d/1GxXaBR7htMW6h9MydQ_RvnTc3h21Tgw2/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1GxXaBR7htMW6h9MydQ_RvnTc3h21Tgw2'
-    },
-    { 
-        name: 'TP6: FTP', 
-        viewLink: 'https://drive.google.com/file/d/1fgqKyUJYpaEklRkyOfqU16a5Ew5G_1NH/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1fgqKyUJYpaEklRkyOfqU16a5Ew5G_1NH'
-    },
-    { 
-        name: 'TP8: NFS', 
-        viewLink: 'https://drive.google.com/file/d/1B_N3KpPnOSYAko6TT1a9ESfBWrHoKoO0/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1B_N3KpPnOSYAko6TT1a9ESfBWrHoKoO0'
-    },
-    { 
-        name: 'TP9: SAMBA', 
-        viewLink: 'https://drive.google.com/file/d/1hDEfvH2LmsyGhMxNUa7yrONlAYfHDD8J/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1hDEfvH2LmsyGhMxNUa7yrONlAYfHDD8J'
-    },
-    { 
-        name: 'TP10: OpenLDAP', 
-        viewLink: 'https://drive.google.com/file/d/1GFRPnrq3a44byL6q1admKXAtjvFxl984/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1GFRPnrq3a44byL6q1admKXAtjvFxl984'
-    }
-],
+        function findCategoryFolder(items, names) {
+            if (!items) return null;
+            const targets = names.map(normalizeName);
+            return items.find(item => item.type === 'folder' && targets.includes(normalizeName(item.name)));
+        }
 
- 'Contrôle': [
-    { 
-        name: '01 - Contrôle Continu M203 Administration d’un environnement Linux', 
-        viewLink: 'https://drive.google.com/file/d/1h3mfZpnbbC3m705iB-n0gGr8wVaqI7LJ/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1h3mfZpnbbC3m705iB-n0gGr8wVaqI7LJ'
-    },
-    { 
-        name: '02 - Contrôle Continu M203 Administration d’un environnement Linux', 
-        viewLink: 'https://drive.google.com/file/d/1UneTx3igss1D_n2f3UP3nCAB1eddbn65/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1UneTx3igss1D_n2f3UP3nCAB1eddbn65'
-    },
-    { 
-        name: '03 - Contrôle Continu M203 Administration d’un environnement Linux', 
-        viewLink: 'https://drive.google.com/file/d/1bBmw5gVOgtxC8zjTnbEN7Clwd4JaQAIn/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1bBmw5gVOgtxC8zjTnbEN7Clwd4JaQAIn'
-    },
-    { 
-        name: '04 - Contrôle Continu M203 Administration d’un environnement Linux', 
-        viewLink: 'https://drive.google.com/file/d/1kVmivwWWymSU3-XI2roSBrms58djav1d/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1kVmivwWWymSU3-XI2roSBrms58djav1d'
-    },
-    { 
-        name: '05 - Contrôle Continu M203 Administration d’un environnement Linux', 
-        viewLink: 'https://drive.google.com/file/d/1j2diAENoFM-CX1sAk5mxWfGdm2H3wTNC/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1j2diAENoFM-CX1sAk5mxWfGdm2H3wTNC'
-    },
-    { 
-        name: '06 - Contrôle Continu M203 Administration d’un environnement Linux', 
-        viewLink: 'https://drive.google.com/file/d/11MKl1vmo9GMr5MKviK0xLpU7TSPMUnDq/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=11MKl1vmo9GMr5MKviK0xLpU7TSPMUnDq'
-    },
-    { 
-        name: '07 - Contrôle Continu M203 Administration d’un environnement Linux', 
-        viewLink: 'https://drive.google.com/file/d/1GEOVjcjR0vGXTPeyHNabxMI_I0LIMKul/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1GEOVjcjR0vGXTPeyHNabxMI_I0LIMKul'
-    },
-    { 
-        name: '08 - Contrôle Continu M203 Administration d’un environnement Linux', 
-        viewLink: 'https://drive.google.com/file/d/1PmM_2edlpJsxJ4aD5RlV2xT1q-Yzi6VI/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1PmM_2edlpJsxJ4aD5RlV2xT1q-Yzi6VI'
-    },
-    { 
-        name: '09 - Contrôle Continu M203 Administration d’un environnement Linux', 
-        viewLink: 'https://drive.google.com/file/d/1x35PDba4C7cUAVU73UMxfzU2ODOSSKHS/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1x35PDba4C7cUAVU73UMxfzU2ODOSSKHS'
-    },
-    { 
-        name: '10 - Contrôle Continu M203 Administration d’un environnement Linux', 
-        viewLink: 'https://drive.google.com/file/d/1xFlfXkuzfzgwJYCKGki5WHeg6NnNR4-E/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1xFlfXkuzfzgwJYCKGki5WHeg6NnNR4-E'
-    },
-    { 
-        name: '11 - Contrôle Continu M203 Administration d’un environnement Linux', 
-        viewLink: 'https://drive.google.com/file/d/1owFh1Tmj5DqoOPXS2h2tuln1miOrcA_U/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1owFh1Tmj5DqoOPXS2h2tuln1miOrcA_U'
-    }
-],  
- 'EFM': [
-    { 
-        name: 'EFMR M203 Administration d’un environnement Linux Béni Mellal Khénifra 2023', 
-        viewLink: 'https://drive.google.com/file/d/1Qj74wLnP2djtm1jj0TRixeAT4q5Dhs7v/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1Qj74wLnP2djtm1jj0TRixeAT4q5Dhs7v'
-    },
-    { 
-        name: 'EFMR M203 Administration d’un environnement Linux Béni Mellal Khénifra 2024 V1', 
-        viewLink: 'https://drive.google.com/file/d/1L7vom9XjhJuzSoA9vlLVpDXJSFMMK2MB/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1L7vom9XjhJuzSoA9vlLVpDXJSFMMK2MB'
-    },
-    { 
-        name: 'EFMR M203 Administration d’un environnement Linux Béni Mellal Khénifra 2024 V2', 
-        viewLink: 'https://drive.google.com/file/d/1A_jSmERA7l7ULciSrXknPhA0TvOoTBne/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1A_jSmERA7l7ULciSrXknPhA0TvOoTBne'
-    },
-    { 
-        name: 'EFMR M203 Administration d’un environnement Linux CASA 2023', 
-        viewLink: 'https://drive.google.com/file/d/1y2V36w5wXn2b2XmEjhEFy9Bnx6FFs1rH/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1y2V36w5wXn2b2XmEjhEFy9Bnx6FFs1rH'
-    },
-    { 
-        name: 'EFMR M203 Administration d’un environnement Linux Rabat-Sale-Kenitra 2023 - Correction', 
-        viewLink: 'https://drive.google.com/file/d/1bZDU-dv87KxEdoKDeeXeBpr5QJferDbz/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1bZDU-dv87KxEdoKDeeXeBpr5QJferDbz'
-    },
-    { 
-        name: 'EFMR M203 Administration d’un environnement Linux Rabat-Sale-Kenitra 2023', 
-        viewLink: 'https://drive.google.com/file/d/1AGgWaG_O3XRg7T5f5WTt84ab88EMY2wD/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1AGgWaG_O3XRg7T5f5WTt84ab88EMY2wD'
-    },
-    { 
-        name: 'EFMR M203 Administration d’un environnement Linux Rabat-Sale-Kenitra v1-2023', 
-        viewLink: 'https://drive.google.com/file/d/1gtfqnTEc7nvM0VPAB7qmsUTz-h0FlCTl/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1gtfqnTEc7nvM0VPAB7qmsUTz-h0FlCTl'
-    },
-    { 
-        name: 'EFMR M203 Administration d’un environnement Linux Souss Massa V1 2023', 
-        viewLink: 'https://drive.google.com/file/d/1hdh87DXVw0dxuVXJTFTCBannFL231Oq4/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1hdh87DXVw0dxuVXJTFTCBannFL231Oq4'
-    },
-    { 
-        name: 'EFMR M203 Administration d’un environnement Linux TTA 2023', 
-        viewLink: 'https://drive.google.com/file/d/1kuhB2pm928GcNtvJH7N6xDw10emdHmEf/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1kuhB2pm928GcNtvJH7N6xDw10emdHmEf'
-    }
-]},
- 
-                'M204: Enjeux de la technologie SDN (Software Defined Networking)': 
-				{'Cours': [     
-				{ 
-        name: 'résumé theorique M204 Enjeux de la technologie SDN', 
-        viewLink: 'https://drive.google.com/file/d/1sGAp1z8tYAkRjLMlLQFbR-z6gvKKUmkN/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1sGAp1z8tYAkRjLMlLQFbR-z6gvKKUmkN'
-    },
-				], 
-				'Exercices': [], 
-				
-				'Contrôle': [
-				{
-        "name": "Contrôle SDN (Software Defined Networking)",
-        "viewLink": "https://drive.google.com/file/d/1D2sHDTOTxZcJLXhLIAQseLvpxL-vKuhz/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1D2sHDTOTxZcJLXhLIAQseLvpxL-vKuhz"
-    }
-				], 
-				
-				'EFM': 
-				[
-				    {
-        "name": "Examen de fin de module M204 Enjeux de la technologie SDN 01",
-        "viewLink": "https://drive.google.com/file/d/1XLJ0SeruFF4NwJ17OCvlUrWmKa_q6Wk8/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1XLJ0SeruFF4NwJ17OCvlUrWmKa_q6Wk8"
-    },
-    {
-        "name": "Examen de fin de module M204 Enjeux de la technologie SDN 02",
-        "viewLink": "https://drive.google.com/file/d/1ypK2UsoKC0zr3S9JDm-eQpoG6Z2m2ln4/view?usp=drive_link",
-        "downloadLink": "https://drive.google.com/uc?export=download&id=1ypK2UsoKC0zr3S9JDm-eQpoG6Z2m2ln4"
-    },
-				{ 
-        name: 'Examen de fin de module M204 Enjeux de la technologie SDN 03', 
-        viewLink: 'https://drive.google.com/file/d/1UgoByDZ0ZudaDRIC5EX_fHMoq165S2cv/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1UgoByDZ0ZudaDRIC5EX_fHMoq165S2cv'
-    }
-				] },
-                'M205: Administration d\'un environnement Cloud': { 
-				'Cours': [
-    { 
-        name: 'M205 résumé théorique - Administrer un environnement Cloud', 
-        viewLink: 'https://drive.google.com/file/d/1_fwYEwr_tEJ6OJA3zjY-TT47bDz5XT04/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1_fwYEwr_tEJ6OJA3zjY-TT47bDz5XT04'
-    }
-],
-'Exercices': [], 'Contrôle': [], 'EFM': [] },
-                'M206: Sécurité d\'une infrastructure digitale': { 
-				'Cours': [
-	{			
-        name: 'M206 – résumé théorique SÉCURISER UNE INFRASTRUCTURE DIGITALE', 
-        viewLink: 'https://drive.google.com/file/d/1twZrABf-9aEsDRJuYcQ3cgPsTJ90LPIq/view?usp=drive_link',
-        downloadLink: 'https://drive.google.com/uc?export=download&id=1twZrABf-9aEsDRJuYcQ3cgPsTJ90LPIq'
-    }
-], 
-                    'Exercices': [], 
-                    'Contrôle': [], 
-                    'EFM': [] 
+        function collectFiles(items) {
+            let files = [];
+            if (!items) return files;
+            for (const item of items) {
+                if (item.type === 'file') {
+                    files.push({
+                        name: item.name,
+                        viewLink: item.viewUrl,
+                        downloadLink: item.downloadUrl || item.viewUrl
+                    });
+                } else if (item.type === 'folder') {
+                    files = files.concat(collectFiles(item.children));
                 }
             }
-        };
-        
-        // بيانات السنة الثانية فقط
-        const modulesData = siteData['2ème année'];
+            return files;
+        }
+
+        function buildModulesData(modules) {
+            const data = {};
+            (modules || []).forEach(module => {
+                data[module.name] = {
+                    'Cours': collectFiles(findCategoryFolder(module.content, ['cours', 'course'])?.children),
+                    'Exercices': collectFiles(findCategoryFolder(module.content, ['exercices', 'exercice'])?.children),
+                    'Contrôle': collectFiles(findCategoryFolder(module.content, ['contrôle', 'controle', 'contrôles', 'controles'])?.children),
+                    'EFM': collectFiles(findCategoryFolder(module.content, ['efm'])?.children)
+                };
+            });
+            return data;
+        }
+
+        async function loadSiteData() {
+            const container = document.getElementById('modulesContainer');
+            if (container) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-16 text-gray-500 dark:text-gray-400">
+                        <i class="fas fa-spinner fa-spin text-3xl mb-3"></i>
+                        <p>Chargement des modules depuis Google Drive...</p>
+                    </div>
+                `;
+            }
+
+            try {
+                const response = await fetch('/api/drive');
+                const json = await response.json();
+
+                if (!json.success) {
+                    throw new Error(json.error || 'Erreur inconnue');
+                }
+
+                const yearModules = json.years['2eme année'] || [];
+                modulesData = buildModulesData(yearModules);
+                generateModules();
+            } catch (error) {
+                console.error('Erreur de chargement des données Google Drive :', error);
+                if (container) {
+                    container.innerHTML = `
+                        <div class="col-span-full text-center py-16 text-red-500 dark:text-red-400">
+                            <i class="fas fa-triangle-exclamation text-3xl mb-3"></i>
+                            <p>Impossible de charger les modules depuis Google Drive pour le moment.</p>
+                            <button onclick="loadSiteData()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Réessayer</button>
+                        </div>
+                    `;
+                }
+            }
+        }
     </script>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
-    <header class="shadow-lg dark:shadow-gray-800 sticky top-0 z-10 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2">
-            <div class="header-container flex justify-between items-center">
-                <a href="index.html" class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-500 transition duration-300">
-                    <i class="fas fa-network-wired mr-2 text-sm"></i>
-                    <span class="text-sm font-bold">Infrastructure Digitale</span>
+    <header class="sticky top-0 z-20 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="header-container flex items-center justify-between h-14 sm:h-16">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md group-hover:scale-105 transition-transform duration-300">
+                        <i class="fas fa-network-wired text-sm"></i>
+                    </span>
+                    <span class="text-sm sm:text-base font-bold tracking-tight text-gray-900 dark:text-white">Infrastructure <span class="text-blue-600 dark:text-blue-400">Digitale</span></span>
                 </a>
-                <div class="nav-container flex items-center gap-2">
-                    <a href="apropos.html" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <nav class="nav-container flex items-center gap-1 sm:gap-1.5">
+                    <a href="apropos.html" class="nav-link">
                         <i class="fas fa-info-circle"></i>
                         <span class="hidden sm:inline">À propos</span>
                     </a>
-                    <a href="confidentialite.html" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <a href="confidentialite.html" class="nav-link">
                         <i class="fas fa-shield-alt"></i>
                         <span class="hidden sm:inline">Confidentialité</span>
                     </a>
-                    <a href="contact.html" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <a href="contact.html" class="nav-link">
                         <i class="fas fa-envelope"></i>
                         <span class="hidden sm:inline">Contact</span>
                     </a>
-                    <button id="darkModeToggle" class="nav-button text-xs font-medium hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <span class="hidden sm:block w-px h-5 bg-gray-200 dark:bg-gray-700 mx-1"></span>
+                    <button id="darkModeToggle" class="mode-toggle" aria-label="Changer de thème">
                         <i id="moonIcon" class="fas fa-moon"></i>
                         <i id="sunIcon" class="fas fa-sun hidden"></i>
-                        <span class="hidden sm:inline">Mode</span>
                     </button>
-                </div>
+                </nav>
             </div>
         </div>
     </header>
@@ -1206,7 +564,7 @@
         darkModeToggle.addEventListener('click', () => setDarkMode(!document.documentElement.classList.contains('dark')));
         
         // توليد الوحدات عند تحميل الصفحة
-        document.addEventListener('DOMContentLoaded', generateModules);
+        document.addEventListener('DOMContentLoaded', loadSiteData);
     </script>
 </body>
 </html>
