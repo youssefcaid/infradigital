@@ -259,14 +259,48 @@
         }
         .app-card:hover .app-card-media img { transform: scale(1.05); }
 
-        .app-card-title { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .app-card-title .icon {
-            width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
-            display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; font-size: 1rem;
+        /* ---------- APP HEADER (icône + titre) ---------- */
+        .app-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+        .app-icon {
+            width: 64px; height: 64px; flex-shrink: 0; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 6px 16px -6px rgba(245,158,11,0.5);
+            border: 1px solid rgba(245,158,11,0.3);
         }
-        .app-card-title h3 { font-size: 1.25rem; font-weight: 700; color: #0f172a; }
-        .dark .app-card-title h3 { color: #f4ead0; }
+        .app-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .app-head h3 { font-size: 1.2rem; font-weight: 700; line-height: 1.25; color: #0f172a; }
+        .dark .app-head h3 { color: #f4ead0; }
+        .app-head .tagline { font-size: .82rem; color: #d97706; font-weight: 600; margin-top: 3px; }
+        .dark .app-head .tagline { color: #fbbf24; }
+
+        /* ---------- SCREENSHOTS CAROUSEL ---------- */
+        .app-shots {
+            position: relative; width: 100%; max-width: 260px; margin: 14px auto;
+            border-radius: 14px; overflow: hidden; aspect-ratio: 9 / 16;
+            background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.2);
+        }
+        .app-shots .shot {
+            position: absolute; inset: 0; opacity: 0; transition: opacity .4s ease;
+        }
+        .app-shots .shot.is-active { opacity: 1; }
+        .app-shots img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .app-shots .shot-nav {
+            position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+            width: 30px; height: 30px; border-radius: 50%; border: none; cursor: pointer;
+            background: rgba(15,23,42,0.45); color: #fff; display: flex; align-items: center; justify-content: center;
+            font-size: .8rem; transition: background .2s ease;
+        }
+        .app-shots .shot-nav:hover { background: rgba(15,23,42,0.7); }
+        .app-shots .shot-prev { left: 8px; }
+        .app-shots .shot-next { right: 8px; }
+        .app-shots .shot-dots {
+            position: absolute; bottom: 10px; left: 0; right: 0; z-index: 2;
+            display: flex; justify-content: center; gap: 6px;
+        }
+        .app-shots .shot-dots button {
+            width: 7px; height: 7px; border-radius: 50%; border: none; padding: 0; cursor: pointer;
+            background: rgba(255,255,255,0.5); transition: background .2s ease, transform .2s ease;
+        }
+        .app-shots .shot-dots button.is-active { background: #f59e0b; transform: scale(1.3); }
 
         .app-card p.app-desc {
             color: #52607a; font-size: .95rem; line-height: 1.65; flex-grow: 1;
@@ -351,14 +385,30 @@
 
         <div class="apps-grid">
             <div class="app-card animate-fadeIn">
-                <div class="app-card-media">
-                    <img src="2.png" alt="Quiz Réseaux Informatiques" loading="lazy">
+                <div class="app-head">
+                    <span class="app-icon"><img src="2.png" alt="Quiz Réseau Informatique" loading="lazy"></span>
+                    <div>
+                        <h3>Quiz Réseau Informatique</h3>
+                        <p class="tagline">Testez et améliorez vos connaissances en réseaux informatiques !</p>
+                    </div>
                 </div>
-                <div class="app-card-title">
-                    <span class="icon"><i class="fas fa-network-wired"></i></span>
-                    <h3>Quiz Réseaux Informatiques</h3>
+                <p class="app-desc">Testez et améliorez vos connaissances en réseaux informatiques avec des centaines de questions couvrant TCP/IP, OSI, sécurité, protocoles et bien plus encore.</p>
+
+                <div class="app-shots" data-carousel>
+                    <div class="shot is-active"><img src="q1/screen1.jpg" alt="Quiz Réseau Informatique - capture 1" loading="lazy"></div>
+                    <div class="shot"><img src="q1/screen2.jpg" alt="Quiz Réseau Informatique - capture 2" loading="lazy"></div>
+                    <div class="shot"><img src="q1/screen3.jpg" alt="Quiz Réseau Informatique - capture 3" loading="lazy"></div>
+                    <div class="shot"><img src="q1/screen4.jpg" alt="Quiz Réseau Informatique - capture 4" loading="lazy"></div>
+                    <button type="button" class="shot-nav shot-prev" aria-label="Capture précédente"><i class="fas fa-chevron-left"></i></button>
+                    <button type="button" class="shot-nav shot-next" aria-label="Capture suivante"><i class="fas fa-chevron-right"></i></button>
+                    <div class="shot-dots">
+                        <button type="button" class="is-active" aria-label="Capture 1"></button>
+                        <button type="button" aria-label="Capture 2"></button>
+                        <button type="button" aria-label="Capture 3"></button>
+                        <button type="button" aria-label="Capture 4"></button>
+                    </div>
                 </div>
-                <p class="app-desc">Testez et développez vos connaissances en réseaux informatiques grâce à une collection de questions couvrant les principaux concepts du domaine.</p>
+
                 <a href="https://play.google.com/store/apps/details?id=com.profysf.quizreseaux" target="_blank" rel="noopener noreferrer" class="app-store-btn">
                     <i class="fab fa-google-play"></i>
                     <span>Télécharger sur<small>Disponible sur Google Play</small></span>
@@ -366,14 +416,30 @@
             </div>
 
             <div class="app-card animate-fadeIn">
-                <div class="app-card-media">
-                    <img src="1.png" alt="NetQuiz Millionaire" loading="lazy">
+                <div class="app-head">
+                    <span class="app-icon"><img src="1.png" alt="NetQuiz Millionaire" loading="lazy"></span>
+                    <div>
+                        <h3>NetQuiz Millionaire</h3>
+                        <p class="tagline">Testez vos connaissances en réseaux informatiques !</p>
+                    </div>
                 </div>
-                <div class="app-card-title">
-                    <span class="icon"><i class="fas fa-trophy"></i></span>
-                    <h3>NetQuiz Millionaire</h3>
+                <p class="app-desc">NetQuiz Millionaire est un jeu éducatif inspiré du célèbre concept de « Qui veut gagner des millions ? ». Apprenez, révisez et testez vos connaissances en réseaux informatiques d'une manière interactive, progressive et amusante.</p>
+
+                <div class="app-shots" data-carousel>
+                    <div class="shot is-active"><img src="q2/screen1.jpg" alt="NetQuiz Millionaire - capture 1" loading="lazy"></div>
+                    <div class="shot"><img src="q2/screen2.jpg" alt="NetQuiz Millionaire - capture 2" loading="lazy"></div>
+                    <div class="shot"><img src="q2/screen3.jpg" alt="NetQuiz Millionaire - capture 3" loading="lazy"></div>
+                    <div class="shot"><img src="q2/screen4.jpg" alt="NetQuiz Millionaire - capture 4" loading="lazy"></div>
+                    <button type="button" class="shot-nav shot-prev" aria-label="Capture précédente"><i class="fas fa-chevron-left"></i></button>
+                    <button type="button" class="shot-nav shot-next" aria-label="Capture suivante"><i class="fas fa-chevron-right"></i></button>
+                    <div class="shot-dots">
+                        <button type="button" class="is-active" aria-label="Capture 1"></button>
+                        <button type="button" aria-label="Capture 2"></button>
+                        <button type="button" aria-label="Capture 3"></button>
+                        <button type="button" aria-label="Capture 4"></button>
+                    </div>
                 </div>
-                <p class="app-desc">Une expérience de quiz inspirée du célèbre jeu de questions à choix multiples. Testez vos connaissances en réseaux informatiques, progressez à travers différents niveaux et relevez le défi.</p>
+
                 <a href="https://play.google.com/store/apps/details?id=com.profysf.netquizmillionaire" target="_blank" rel="noopener noreferrer" class="app-store-btn">
                     <i class="fab fa-google-play"></i>
                     <span>Télécharger sur<small>Disponible sur Google Play</small></span>
@@ -462,6 +528,34 @@
             var current = location.pathname.split('/').pop() || 'index.html';
             navLinks.forEach(function (a) {
                 if (a.getAttribute('href') === current) a.classList.add('active');
+            });
+        })();
+
+        // Carousel des captures d'écran (App Store)
+        (function () {
+            document.querySelectorAll('[data-carousel]').forEach(function (root) {
+                var shots = root.querySelectorAll('.shot');
+                var dots = root.querySelectorAll('.shot-dots button');
+                var index = 0, timer = null;
+
+                function show(i) {
+                    index = (i + shots.length) % shots.length;
+                    shots.forEach(function (s, n) { s.classList.toggle('is-active', n === index); });
+                    dots.forEach(function (d, n) { d.classList.toggle('is-active', n === index); });
+                }
+                function next() { show(index + 1); }
+                function startAuto() { timer = setInterval(next, 3500); }
+                function stopAuto() { clearInterval(timer); }
+
+                root.querySelector('.shot-prev').addEventListener('click', function () { show(index - 1); stopAuto(); startAuto(); });
+                root.querySelector('.shot-next').addEventListener('click', function () { show(index + 1); stopAuto(); startAuto(); });
+                dots.forEach(function (d, n) {
+                    d.addEventListener('click', function () { show(n); stopAuto(); startAuto(); });
+                });
+                root.addEventListener('mouseenter', stopAuto);
+                root.addEventListener('mouseleave', startAuto);
+
+                startAuto();
             });
         })();
     </script>
