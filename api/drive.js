@@ -113,6 +113,24 @@ function findCategory(module, names) {
   return module.children.find(item => item.type === "folder" && target.includes(item.name.trim().toLowerCase()));
 }
 
+function isEffFolder(name) {
+  const n = name.trim().toLowerCase();
+  return n === "eff" || n.startsWith("eff -") || n.startsWith("eff-") || n.startsWith("eff ");
+}
+
+function collectPdfFiles(items) {
+  const files = [];
+  for (const item of items) {
+    if (item.type === "file") {
+      const isPDF = item.mimeType === "application/pdf" || item.name.toLowerCase().endsWith(".pdf");
+      if (isPDF) files.push(item);
+    } else if (item.type === "folder") {
+      files.push(...collectPdfFiles(item.children));
+    }
+  }
+  return files;
+}
+
 module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET");
@@ -122,8 +140,13 @@ module.exports = async (req, res) => {
     const yearEntries = Object.entries(ROOTS);
     const yearResults = await Promise.all(yearEntries.map(async ([yearName, rootId]) => {
       const rootItems = await readFolder(rootId, token);
+
+      // فولدر EFF غير موجود جوه المودولات، هو فولدر منفصل بجانب المودولات (M201, M202...)
+      const effFolder = rootItems.find(item => item.type === "folder" && isEffFolder(item.name));
+      const effFiles = effFolder ? collectPdfFiles(effFolder.children) : [];
+
       const modules = rootItems
-        .filter(item => item.type === "folder")
+        .filter(item => item.type === "folder" && !isEffFolder(item.name))
         .map(module => {
           const cours = findCategory(module, ["cours", "course"]);
           const exercices = findCategory(module, ["exercices", "exercice"]);
@@ -138,7 +161,7 @@ module.exports = async (req, res) => {
             content: module.children
           };
         });
-      return [yearName, modules];
+      return [yearName, { modules, eff: effFiles }];
     }));
     const result = Object.fromEntries(yearResults);
     res.status(200).json({ success: true, updated: new Date().toISOString(), years: result });
