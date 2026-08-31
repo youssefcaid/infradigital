@@ -331,13 +331,12 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            background: rgba(15, 15, 20, 0.65);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
+            background: rgba(15, 15, 20, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             opacity: 0;
             visibility: hidden;
-            will-change: opacity;
-            transition: opacity 0.25s ease, visibility 0.25s ease;
+            transition: opacity 0.45s ease, visibility 0.45s ease;
         }
         #duaOverlay.dua-visible {
             opacity: 1;
@@ -357,8 +356,7 @@
             text-align: center;
             transform: scale(0.85);
             opacity: 0;
-            will-change: transform, opacity;
-            transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.28s ease;
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.45s ease;
         }
         #duaOverlay.dua-visible #duaCard {
             transform: scale(1);
@@ -405,8 +403,7 @@
             box-shadow: 0 10px 22px rgba(212, 175, 55, 0.45);
         }
         #duaBtn:active {
-            transform: translateY(0) scale(0.96);
-            transition: transform 0.08s ease;
+            transform: translateY(0);
         }
         @media (max-width: 380px) {
             #duaCard {
@@ -451,6 +448,7 @@
             </a>
 
             <nav class="nav-links" id="navLinks">
+                <a href="applications.html" data-nav>Applications</a>
                 <a href="apropos.html" data-nav>À propos</a>
                 <a href="confidentialite.html" data-nav>Confidentialité</a>
                 <a href="contact.html" data-nav>Contact</a>
@@ -468,6 +466,7 @@
         </div>
 
         <div class="mobile-menu" id="mobileMenu">
+            <a href="applications.html" data-nav>Applications</a>
             <a href="apropos.html" data-nav>À propos</a>
             <a href="confidentialite.html" data-nav>Confidentialité</a>
             <a href="contact.html" data-nav>Contact</a>
@@ -633,7 +632,7 @@
     <script>
         (function () {
             // ⭐ لإضافة دعاء جديد لاحقاً: أضف السطر داخل هذه القائمة فقط ⭐
-            var duaList = [
+           var duaList = [
                 "اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",
                 "اللَّهُمَّ مُصَرِّفَ الْقُلُوبِ صَرِّفْ قُلُوبَنَا عَلَى طَاعَتِكَ",
                 "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ وَالْعَجْزِ وَالْكَسَلِ وَالْجُبْنِ وَالْبُخْلِ وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",

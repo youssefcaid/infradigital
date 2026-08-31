@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Infrastructure Digitale – Professeur Youssef</title>
-    <meta name="description" content="Contactez le Professeur Youssef pour toute question sur les modules Infrastructure Digitale - Email, WhatsApp, réseaux sociaux">
+    <title>Applications - Infrastructure Digitale – Professeur Youssef</title>
+    <meta name="description" content="Découvrez les applications éducatives Infrastructure Digitale pour apprendre, réviser et tester vos connaissances en réseaux informatiques.">
     
-    <!-- نفس الhead من index.html مع تغيير العنوان والوصف -->
-    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Police Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
         /* نفس الستايل من index.html */
@@ -40,6 +43,13 @@
         }
         .dark .card-hover:hover {
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         html { background: #f9fafb; }
@@ -202,6 +212,84 @@
         @media (prefers-reduced-motion: reduce) {
             .navbar, .mobile-menu, .theme-toggle svg, .burger span, .nav-links a::after, .brand-mark { transition: none !important; }
         }
+
+        /* ---------- APPLICATIONS ---------- */
+        .apps-hero { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+        .apps-hero h1 {
+            font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em;
+            color: #0f172a;
+        }
+        .dark .apps-hero h1 { color: #e8ecff; }
+        .apps-hero p { margin-top: 12px; font-size: 1.05rem; color: #475569; line-height: 1.7; }
+        .dark .apps-hero p { color: #93a2c9; }
+
+        .apps-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 26px; align-items: stretch;
+        }
+        .app-card {
+            position: relative; display: flex; flex-direction: column;
+            border-radius: 20px; padding: 26px;
+            background: linear-gradient(180deg, rgba(245,158,11,0.05) 0%, rgba(255,255,255,0.9) 22%);
+            border: 1.5px solid rgba(245,158,11,0.35);
+            box-shadow: 0 10px 30px -18px rgba(15,23,42,0.25);
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+            overflow: hidden;
+        }
+        .dark .app-card {
+            background: linear-gradient(180deg, rgba(245,158,11,0.10) 0%, rgba(9,14,32,0.92) 24%);
+            border-color: rgba(245,158,11,0.4);
+            box-shadow: 0 10px 34px -16px rgba(0,0,0,0.55);
+        }
+        .app-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px -16px rgba(245,158,11,0.35);
+            border-color: rgba(245,158,11,0.6);
+        }
+        .dark .app-card:hover { box-shadow: 0 18px 44px -14px rgba(245,158,11,0.28); }
+
+        .app-card-media {
+            width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden;
+            margin-bottom: 18px; background: rgba(245,158,11,0.08);
+            border: 1px solid rgba(245,158,11,0.2);
+        }
+        .app-card-media img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform .35s ease;
+        }
+        .app-card:hover .app-card-media img { transform: scale(1.05); }
+
+        .app-card-title { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .app-card-title .icon {
+            width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; font-size: 1rem;
+        }
+        .app-card-title h3 { font-size: 1.25rem; font-weight: 700; color: #0f172a; }
+        .dark .app-card-title h3 { color: #f4ead0; }
+
+        .app-card p.app-desc {
+            color: #52607a; font-size: .95rem; line-height: 1.65; flex-grow: 1;
+        }
+        .dark .app-card p.app-desc { color: #a9b3d1; }
+
+        .app-store-btn {
+            margin-top: 20px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 12px 20px; border-radius: 12px; font-weight: 600; font-size: .95rem;
+            text-decoration: none; color: #fff;
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            box-shadow: 0 8px 20px -8px rgba(59,130,246,0.55);
+            transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+        }
+        .app-store-btn:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 12px 26px -8px rgba(59,130,246,0.6); }
+        .app-store-btn i { font-size: 1.3rem; }
+        .app-store-btn span { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+        .app-store-btn small { font-size: .68rem; font-weight: 400; opacity: .85; }
+
+        @media (max-width: 640px) {
+            .app-card { padding: 20px; }
+            .app-store-btn { width: 100%; }
+        }
     </style>
     <script>
         tailwind.config = {
@@ -256,117 +344,40 @@
     </header>
 
     <main class="flex-grow max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 w-full">
-        <a href="index.html" class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mb-6 font-medium transition duration-300">
-            <i class="fas fa-arrow-left mr-2"></i>
-            Retour à l'accueil
-        </a>
-        
-        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-2xl card-hover">
-            <h1 class="text-3xl font-bold border-b pb-4 mb-6 text-gray-800 dark:text-gray-200">Contactez-nous</h1>
-            
-            <div class="space-y-8 text-gray-700 dark:text-gray-300">
-                <section>
-                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-4">Réseaux sociaux</h2>
-                    <p class="text-lg mb-6">
-                        Suivez-nous sur les réseaux sociaux pour les dernières mises à jour, annonces et contenu éducatif :
-                    </p>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                        <!-- Facebook -->
-                        <a href="https://facebook.com/youssefelcaid1" target="_blank" class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl card-hover border border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-500 transition duration-300">
-                            <div class="text-center">
-                                <i class="fab fa-facebook text-blue-600 dark:text-blue-400 text-3xl mb-3"></i>
-                                <h4 class="font-bold">Facebook</h4>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Annonces et actualités</p>
-                            </div>
-                        </a>
-                        
-                        <!-- Instagram -->
-                        <a href="https://instagram.com/youssefelcaid1" target="_blank" class="bg-pink-50 dark:bg-pink-900/20 p-5 rounded-xl card-hover border border-pink-200 dark:border-pink-800 hover:border-pink-400 dark:hover:border-pink-500 transition duration-300">
-                            <div class="text-center">
-                                <i class="fab fa-instagram text-pink-600 dark:text-pink-400 text-3xl mb-3"></i>
-                                <h4 class="font-bold">Instagram</h4>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Contenu visuel</p>
-                            </div>
-                        </a>
-                        
-                        <!-- YouTube -->
-                        <a href="https://youtube.com/professeuryoussef1" target="_blank" class="bg-red-50 dark:bg-red-900/20 p-5 rounded-xl card-hover border border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-500 transition duration-300">
-                            <div class="text-center">
-                                <i class="fab fa-youtube text-red-600 dark:text-red-400 text-3xl mb-3"></i>
-                                <h4 class="font-bold">YouTube</h4>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Tutoriels vidéo</p>
-                            </div>
-                        </a>
-                        
-                        <!-- Groupe facebook -->
-                        <a href="https://web.facebook.com/groups/1036313947122739/" target="_blank" class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl card-hover border border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-500 transition duration-300">
-                            <div class="text-center">
-                                <i class="fab fa-facebook text-blue-500 dark:text-blue-400 text-3xl mb-3"></i>
-                                <h4 class="font-bold">Groupe Facebook</h4>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Communauté étudiante</p>
-                            </div>
-                        </a>
+        <div class="apps-hero animate-fadeIn">
+            <h1>Nos Applications</h1>
+            <p>Découvrez nos applications éducatives pour apprendre, réviser et tester vos connaissances en réseaux informatiques.</p>
+        </div>
 
-                        <!-- WhatsApp -->
-                        <a href="https://wa.me/212708482810" target="_blank" class="bg-green-50 dark:bg-green-900/20 p-5 rounded-xl card-hover border border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-500 transition duration-300">
-                            <div class="text-center">
-                                <i class="fab fa-whatsapp text-green-600 dark:text-green-400 text-3xl mb-3"></i>
-                                <h4 class="font-bold">WhatsApp</h4>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Contact direct</p>
-                            </div>
-                        </a>
-                    </div>
-                </section>
-                
-                <section>
-                    <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-4">Questions fréquentes</h2>
-                    
-                    <div class="space-y-4">
-                        <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg">
-                            <h4 class="font-bold text-lg mb-2 flex items-center">
-                                <i class="fas fa-question-circle text-blue-500 mr-3"></i>
-                                Comment accéder aux fichiers PDF ?
-                            </h4>
-                            <p class="text-gray-600 dark:text-gray-300">
-                                Tous les fichiers sont disponibles gratuitement sur les pages des modules (1ère année et 2ème année). Cliquez sur le bouton correspondant pour ouvrir ou télécharger le fichier.
-                            </p>
-                        </div>
-                        
-                        <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg">
-                            <h4 class="font-bold text-lg mb-2 flex items-center">
-                                <i class="fas fa-question-circle text-blue-500 mr-3"></i>
-                                Les ressources sont-elles vraiment gratuites ?
-                            </h4>
-                            <p class="text-gray-600 dark:text-gray-300">
-                                Oui, toutes les ressources pédagogiques sur ce site sont entièrement gratuites. Notre mission est de soutenir les étudiants OFPPT sans frais.
-                            </p>
-                        </div>
-                        
-                        <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg">
-                            <h4 class="font-bold text-lg mb-2 flex items-center">
-                                <i class="fas fa-question-circle text-blue-500 mr-3"></i>
-                                Comment signaler un problème avec un fichier ?
-                            </h4>
-                            <p class="text-gray-600 dark:text-gray-300">
-                                Si vous rencontrez un problème avec un fichier (lien brisé, erreur dans le contenu), contactez-nous par email avec le nom du module et la nature du problème.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-                
-                <section class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-200 dark:border-blue-800">
-                    <h3 class="text-xl font-bold text-blue-600 dark:text-blue-400 mb-3">
-                        <i class="fas fa-lightbulb mr-2"></i>
-                        Conseils pour une communication efficace
-                    </h3>
-                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Mentionnez toujours le module concerné dans votre message</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Soyez précis dans votre question ou problème</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Pour WhatsApp, envoyez d'abord un message texte avant d'appeler</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Respectez les horaires de disponibilité</li>
-                    </ul>
-                </section>
+        <div class="apps-grid">
+            <div class="app-card animate-fadeIn">
+                <div class="app-card-media">
+                    <img src="2.png" alt="Quiz Réseaux Informatiques" loading="lazy">
+                </div>
+                <div class="app-card-title">
+                    <span class="icon"><i class="fas fa-network-wired"></i></span>
+                    <h3>Quiz Réseaux Informatiques</h3>
+                </div>
+                <p class="app-desc">Testez et développez vos connaissances en réseaux informatiques grâce à une collection de questions couvrant les principaux concepts du domaine.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.profysf.quizreseaux" target="_blank" rel="noopener noreferrer" class="app-store-btn">
+                    <i class="fab fa-google-play"></i>
+                    <span>Télécharger sur<small>Disponible sur Google Play</small></span>
+                </a>
+            </div>
+
+            <div class="app-card animate-fadeIn">
+                <div class="app-card-media">
+                    <img src="1.png" alt="NetQuiz Millionaire" loading="lazy">
+                </div>
+                <div class="app-card-title">
+                    <span class="icon"><i class="fas fa-trophy"></i></span>
+                    <h3>NetQuiz Millionaire</h3>
+                </div>
+                <p class="app-desc">Une expérience de quiz inspirée du célèbre jeu de questions à choix multiples. Testez vos connaissances en réseaux informatiques, progressez à travers différents niveaux et relevez le défi.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.profysf.netquizmillionaire" target="_blank" rel="noopener noreferrer" class="app-store-btn">
+                    <i class="fab fa-google-play"></i>
+                    <span>Télécharger sur<small>Disponible sur Google Play</small></span>
+                </a>
             </div>
         </div>
     </main>
