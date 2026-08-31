@@ -27,14 +27,7 @@ function createJWT() {
   return `${unsignedToken}.${signature}`;
 }
 
-let cachedToken = null;
-let cachedTokenExpiry = 0;
-
 async function getAccessToken() {
-  const now = Math.floor(Date.now() / 1000);
-  if (cachedToken && now < cachedTokenExpiry - 60) {
-    return cachedToken;
-  }
   const jwt = createJWT();
   const response = await fetch(TOKEN_URL, {
     method: "POST",
@@ -46,9 +39,7 @@ async function getAccessToken() {
     throw new Error(`Google Auth Error: ${error}`);
   }
   const data = await response.json();
-  cachedToken = data.access_token;
-  cachedTokenExpiry = now + (data.expires_in || 3600);
-  return cachedToken;
+  return data.access_token;
 }
 
 async function driveRequest(url, token) {
@@ -80,19 +71,21 @@ async function listFolder(folderId, token) {
 
 async function readFolder(folderId, token) {
   const items = await listFolder(folderId, token);
-  const results = await Promise.all(items.map(async item => {
+  const result = [];
+  for (const item of items) {
     if (item.mimeType === "application/vnd.google-apps.folder") {
       const children = await readFolder(item.id, token);
-      return { id: item.id, name: item.name, type: "folder", children };
+      result.push({ id: item.id, name: item.name, type: "folder", children });
+    } else {
+      result.push({
+        id: item.id, name: item.name, type: "file", mimeType: item.mimeType,
+        size: item.size || null, modifiedTime: item.modifiedTime || null,
+        viewUrl: item.webViewLink || `https://drive.google.com/file/d/${item.id}/view`,
+        downloadUrl: item.webContentLink || null
+      });
     }
-    return {
-      id: item.id, name: item.name, type: "file", mimeType: item.mimeType,
-      size: item.size || null, modifiedTime: item.modifiedTime || null,
-      viewUrl: item.webViewLink || `https://drive.google.com/file/d/${item.id}/view`,
-      downloadUrl: item.webContentLink || null
-    };
-  }));
-  return results;
+  }
+  return result;
 }
 
 function countPDFs(items) {
@@ -134,11 +127,11 @@ function collectPdfFiles(items) {
 module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET");
-  res.setHeader("Cache-Control", "s-maxage=600, stale-while-revalidate=86400");
+  res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=300");
   try {
     const token = await getAccessToken();
-    const yearEntries = Object.entries(ROOTS);
-    const yearResults = await Promise.all(yearEntries.map(async ([yearName, rootId]) => {
+    const result = {};
+    for (const [yearName, rootId] of Object.entries(ROOTS)) {
       const rootItems = await readFolder(rootId, token);
 
       // فولدر EFF غير موجود جوه المودولات، هو فولدر منفصل بجانب المودولات (M201, M202...)
@@ -161,9 +154,8 @@ module.exports = async (req, res) => {
             content: module.children
           };
         });
-      return [yearName, { modules, eff: effFiles }];
-    }));
-    const result = Object.fromEntries(yearResults);
+      result[yearName] = { modules, eff: effFiles };
+    }
     res.status(200).json({ success: true, updated: new Date().toISOString(), years: result });
   } catch (error) {
     console.error(error);
