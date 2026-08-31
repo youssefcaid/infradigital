@@ -8,7 +8,7 @@
     
     <!-- نفس الhead من index.html مع تغيير العنوان والوصف -->
     
-    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/fluency/96/000000/network.png">
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -21,6 +21,8 @@
             --accent: #f59e0b;
             --dark: #1f2937;
             --light: #f9fafb;
+            --indigo: #4f46e5;
+            --nav-h: 68px;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -40,65 +42,165 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 0.75rem;
-            border-radius: 0.5rem;
-            font-size: 0.8125rem;
-            font-weight: 500;
-            color: #4b5563;
-            transition: color 0.2s ease, background-color 0.2s ease;
+        html { background: #f9fafb; }
+        html.dark { background: #050a18; }
+        body {
+            position: relative;
         }
-        .nav-link:hover {
-            color: #2563eb;
-            background-color: #eff6ff;
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background:
+                radial-gradient(ellipse at 15% 8%, rgba(59,130,246,0.10) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 12%, rgba(79,70,229,0.06) 0%, transparent 45%),
+                radial-gradient(ellipse at 50% 90%, rgba(59,130,246,0.07) 0%, transparent 55%);
+            pointer-events: none; z-index: -2;
+            transition: opacity .4s ease;
         }
-        .nav-link.active {
-            color: #2563eb;
-            background-color: #eff6ff;
+        .dark body::before {
+            background:
+                radial-gradient(ellipse at 15% 8%, rgba(0,144,255,0.10) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 12%, rgba(255,200,0,0.07) 0%, transparent 45%),
+                radial-gradient(ellipse at 50% 85%, rgba(0,200,255,0.06) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 30%, #0b1a40 0%, #050a18 60%, #020510 100%);
         }
-        .dark .nav-link {
-            color: #d1d5db;
+        body::after {
+            content: '';
+            position: fixed; inset: -50px;
+            background-image:
+                linear-gradient(rgba(59,130,246,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59,130,246,0.05) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none; z-index: -2;
+            animation: gridDrift 40s linear infinite;
         }
-        .dark .nav-link:hover {
-            color: #60a5fa;
-            background-color: rgba(30, 58, 138, 0.25);
+        .dark body::after {
+            background-image:
+                linear-gradient(rgba(0,170,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,170,255,0.035) 1px, transparent 1px);
         }
-        .dark .nav-link.active {
-            color: #60a5fa;
-            background-color: rgba(30, 58, 138, 0.3);
+        @keyframes gridDrift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(48px, 48px); }
         }
-        .mode-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.25rem;
-            height: 2.25rem;
-            border-radius: 9999px;
-            color: #6b7280;
-            font-size: 0.85rem;
-            transition: color 0.2s ease, background-color 0.2s ease;
+        @media (prefers-reduced-motion: reduce) {
+            body::after { animation: none; }
         }
-        .mode-toggle:hover {
-            color: #2563eb;
-            background-color: #eff6ff;
+
+        /* ---------- NAVBAR (thème néon) ---------- */
+        .navbar {
+            position: sticky; top: 0; z-index: 100; height: var(--nav-h);
+            display: flex; align-items: center;
+            background: rgba(255,255,255,0.78);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(15,23,42,0.08);
+            transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease;
         }
-        .dark .mode-toggle {
-            color: #9ca3af;
+        .dark .navbar {
+            background: rgba(5,10,24,0.55);
+            border-bottom-color: rgba(0,150,255,0.12);
         }
-        .dark .mode-toggle:hover {
-            color: #60a5fa;
-            background-color: rgba(30, 58, 138, 0.25);
+        .navbar.scrolled { box-shadow: 0 10px 26px -16px rgba(15,23,42,0.35); }
+        .dark .navbar.scrolled {
+            background: rgba(5,10,24,0.85);
+            border-bottom-color: rgba(0,180,255,0.22);
+            box-shadow: 0 8px 30px rgba(0,10,30,0.5);
         }
+        .nav-inner {
+            width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px;
+            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        }
+        .brand { display: flex; align-items: center; gap: 9px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+        .brand-mark {
+            width: 34px; height: 34px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .brand-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .brand-name { font-size: 1rem; letter-spacing: -.01em; color: #0f172a; }
+        .dark .brand-name { color: #e8ecff; }
+        .brand-name strong { color: var(--primary); }
+        .dark .brand-name strong {
+            background: linear-gradient(135deg,#ffe066,#ffc800 60%,#ff9500);
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+        }
+        .nav-links { display: flex; align-items: center; gap: 30px; margin-left: auto; margin-right: 22px; }
+        .nav-links a {
+            font-weight: 500; font-size: .9rem; color: #475569; text-decoration: none;
+            position: relative; padding: 6px 0; transition: color .2s ease;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; border-radius: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--indigo));
+            transition: width .25s ease, background .3s ease;
+        }
+        .nav-links a:hover { color: #0f172a; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a.active { color: var(--primary-dark); font-weight: 600; }
+        .dark .nav-links a { color: #8899cc; }
+        .dark .nav-links a:hover { color: #fff; }
+        .dark .nav-links a::after { background: linear-gradient(90deg,#00c8ff,#ffc800); }
+        .dark .nav-links a.active { color: #00c8ff; }
+        .nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+        .theme-toggle {
+            width: 38px; height: 38px; border-radius: 10px; border: 1.5px solid rgba(59,130,246,0.25);
+            background: rgba(59,130,246,0.06); color: var(--primary-dark);
+            display: flex; align-items: center; justify-content: center; cursor: pointer; position: relative;
+            transition: background-color .2s ease, border-color .2s ease, color .3s ease;
+        }
+        .theme-toggle:hover { background: rgba(59,130,246,0.14); }
+        .dark .theme-toggle { border-color: rgba(0,180,255,0.3); background: rgba(0,144,255,0.08); color: #00c8ff; }
+        .dark .theme-toggle:hover { background: rgba(0,170,255,0.18); }
+        .theme-toggle svg { width: 17px; height: 17px; position: absolute; transition: opacity .25s ease, transform .3s ease; }
+        .theme-toggle .icon-sun { opacity: 0; transform: rotate(-40deg) scale(.6); }
+        .theme-toggle .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
+        .dark .theme-toggle .icon-sun { opacity: 1; transform: rotate(0) scale(1); }
+        .dark .theme-toggle .icon-moon { opacity: 0; transform: rotate(40deg) scale(.6); }
+
+        /* ---------- BURGER (barres -> X) ---------- */
+        .burger {
+            display: none; width: 38px; height: 38px; border-radius: 10px;
+            border: 1.5px solid rgba(59,130,246,0.25); background: rgba(59,130,246,0.06);
+            align-items: center; justify-content: center; flex-direction: column; gap: 5px;
+            cursor: pointer; flex-shrink: 0;
+        }
+        .dark .burger { border-color: rgba(0,180,255,0.28); background: rgba(0,144,255,0.08); }
+        .burger span { width: 18px; height: 2px; border-radius: 2px; background: var(--primary-dark); transition: all .25s ease, background .3s ease; }
+        .dark .burger span { background: #00c8ff; }
+        .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+        .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ---------- MENU MOBILE (dropdown flouté) ---------- */
+        .mobile-menu {
+            position: absolute; top: 100%; left: 0; right: 0; z-index: 99;
+            background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(15,23,42,0.08);
+            display: flex; flex-direction: column; padding: 8px 20px 20px;
+            transform: translateY(-8px); opacity: 0; pointer-events: none;
+            transition: transform .25s ease, opacity .25s ease;
+            box-shadow: 0 16px 30px -18px rgba(15,23,42,0.25);
+        }
+        .mobile-menu.is-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .dark .mobile-menu {
+            background: rgba(6,12,28,0.97); border-bottom-color: rgba(0,180,255,0.2);
+            box-shadow: 0 16px 30px -18px rgba(0,0,0,0.6);
+        }
+        .mobile-menu a {
+            font-weight: 500; font-size: .95rem; color: #334155; text-decoration: none;
+            padding: 14px 4px; border-bottom: 1px solid rgba(15,23,42,0.06);
+        }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a.active { color: var(--primary-dark); font-weight: 600; }
+        .dark .mobile-menu a { color: #e8ecff; border-bottom-color: rgba(0,150,255,0.1); }
+        .dark .mobile-menu a.active { color: #00c8ff; }
+
+        @media (min-width: 769px) { .mobile-menu { display: none !important; } }
         @media (max-width: 768px) {
-            .nav-link span {
-                display: none;
-            }
-            .nav-link {
-                padding: 0.5rem;
-            }
+            .nav-links { display: none; }
+            .burger { display: flex; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .navbar, .mobile-menu, .theme-toggle svg, .burger span, .nav-links a::after, .brand-mark { transition: none !important; }
         }
     </style>
     <script>
@@ -117,36 +219,37 @@
         }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
-    <header class="sticky top-0 z-20 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="header-container flex items-center justify-between h-14 sm:h-16">
-                <a href="index.html" class="flex items-center gap-2 group">
-                    <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md group-hover:scale-105 transition-transform duration-300">
-                        <i class="fas fa-network-wired text-sm"></i>
-                    </span>
-                    <span class="text-sm sm:text-base font-bold tracking-tight text-gray-900 dark:text-white">Infrastructure <span class="text-blue-600 dark:text-blue-400">Digitale</span></span>
-                </a>
-                <nav class="nav-container flex items-center gap-1 sm:gap-1.5">
-                    <a href="apropos.html" class="nav-link">
-                        <i class="fas fa-info-circle"></i>
-                        <span class="hidden sm:inline">À propos</span>
-                    </a>
-                    <a href="confidentialite.html" class="nav-link active">
-                        <i class="fas fa-shield-alt"></i>
-                        <span class="hidden sm:inline">Confidentialité</span>
-                    </a>
-                    <a href="contact.html" class="nav-link">
-                        <i class="fas fa-envelope"></i>
-                        <span class="hidden sm:inline">Contact</span>
-                    </a>
-                    <span class="hidden sm:block w-px h-5 bg-gray-200 dark:bg-gray-700 mx-1"></span>
-                    <button id="darkModeToggle" class="mode-toggle" aria-label="Changer de thème">
-                        <i id="moonIcon" class="fas fa-moon"></i>
-                        <i id="sunIcon" class="fas fa-sun hidden"></i>
-                    </button>
-                </nav>
+<body class="text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+    <header class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="brand">
+                <span class="brand-mark">
+                    <img src="logo.png" alt="Infrastructure Digitale">
+                </span>
+                <span class="brand-name">Infrastructure&nbsp;<strong>Digitale</strong></span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="apropos.html" data-nav>À propos</a>
+                <a href="confidentialite.html" data-nav>Confidentialité</a>
+                <a href="contact.html" data-nav>Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="themeToggle" type="button" class="theme-toggle" aria-label="Activer le thème sombre">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.6 6.6 0 0 0 10.5 10.5Z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"/></svg>
+                </button>
+                <button class="burger" id="burgerBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="apropos.html" data-nav>À propos</a>
+            <a href="confidentialite.html" data-nav>Confidentialité</a>
+            <a href="contact.html" data-nav>Contact</a>
         </div>
     </header>
 
@@ -327,33 +430,57 @@
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
-        // Mode sombre
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const sunIcon = document.getElementById('sunIcon');
-        const moonIcon = document.getElementById('moonIcon');
+        // Thème, scroll, et menu burger (header néon)
+        (function () {
+            var navbar = document.getElementById('navbar');
+            var burgerBtn = document.getElementById('burgerBtn');
+            var mobileMenu = document.getElementById('mobileMenu');
+            var themeToggle = document.getElementById('themeToggle');
+            var navLinks = document.querySelectorAll('[data-nav]');
 
-        function setDarkMode(isDark) {
-            if (isDark) {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
+            window.addEventListener('scroll', function () {
+                navbar.classList.toggle('scrolled', window.scrollY > 8);
+            }, { passive: true });
+
+            function applyTheme(isDark) {
+                document.documentElement.classList.toggle('dark', isDark);
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                themeToggle.setAttribute('aria-label', isDark ? 'Activer le thème clair' : 'Activer le thème sombre');
             }
-        }
+            var saved = localStorage.getItem('theme');
+            applyTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+            themeToggle.addEventListener('click', function () {
+                applyTheme(!document.documentElement.classList.contains('dark'));
+            });
 
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            setDarkMode(savedTheme === 'dark');
-        } else {
-            setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
-        }
+            function openMenu() {
+                burgerBtn.setAttribute('aria-expanded', 'true');
+                burgerBtn.setAttribute('aria-label', 'Fermer le menu');
+                mobileMenu.classList.add('is-open');
+                document.addEventListener('keydown', onKeydown);
+                document.addEventListener('click', onOutsideClick, true);
+            }
+            function closeMenu() {
+                burgerBtn.setAttribute('aria-expanded', 'false');
+                burgerBtn.setAttribute('aria-label', 'Ouvrir le menu');
+                mobileMenu.classList.remove('is-open');
+                document.removeEventListener('keydown', onKeydown);
+                document.removeEventListener('click', onOutsideClick, true);
+            }
+            function onKeydown(e) { if (e.key === 'Escape') closeMenu(); }
+            function onOutsideClick(e) {
+                if (!mobileMenu.contains(e.target) && !burgerBtn.contains(e.target)) closeMenu();
+            }
+            burgerBtn.addEventListener('click', function () {
+                burgerBtn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+            });
+            navLinks.forEach(function (a) { a.addEventListener('click', closeMenu); });
 
-        darkModeToggle.addEventListener('click', () => setDarkMode(!document.documentElement.classList.contains('dark')));
+            var current = location.pathname.split('/').pop() || 'index.html';
+            navLinks.forEach(function (a) {
+                if (a.getAttribute('href') === current) a.classList.add('active');
+            });
+        })();
     </script>
 </body>
 </html>
