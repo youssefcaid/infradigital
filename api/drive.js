@@ -8,6 +8,13 @@ const ROOTS = {
   "2eme année": "1Piu6Tbhhjwd5vzYbze7b6BlJ9yeZSxG3"
 };
 
+// ------------------------------------------------------------------
+// 1) Cache ديال access token فالميموري (كان كيتصنع token جديد فكل
+//    request، هادشي كيضيف round-trip زايدة ديال OAuth فكل مرة)
+// ------------------------------------------------------------------
+let cachedToken = null;
+let tokenExpiresAt = 0;
+
 function createJWT() {
   const now = Math.floor(Date.now() / 1000);
   const header = { alg: "RS256", typ: "JWT" };
@@ -28,6 +35,10 @@ function createJWT() {
 }
 
 async function getAccessToken() {
+  // إلا كاين token صالح فالكاش، نستعملوه بلا ما نديرو request جديدة
+  if (cachedToken && Date.now() < tokenExpiresAt) {
+    return cachedToken;
+  }
   const jwt = createJWT();
   const response = await fetch(TOKEN_URL, {
     method: "POST",
@@ -39,7 +50,10 @@ async function getAccessToken() {
     throw new Error(`Google Auth Error: ${error}`);
   }
   const data = await response.json();
-  return data.access_token;
+  cachedToken = data.access_token;
+  // نخبيو الـ token شوية قبل ما يفوت الوقت ديالو (مارجن ديال دقيقة)
+  tokenExpiresAt = Date.now() + (data.expires_in - 60) * 1000;
+  return cachedToken;
 }
 
 async function driveRequest(url, token) {
@@ -69,23 +83,30 @@ async function listFolder(folderId, token) {
   return files;
 }
 
+// ------------------------------------------------------------------
+// 2) Recursion موازية (parallel) عوض ما تكون سلسلة (sequential)
+//    قبل: كل فولدر فرعي كيتسنى لي قبلو يسالي (for...await) —
+//    مع M101..M108 وكل وحدة فيها Cours/Exercices/Contrôle/EFM،
+//    هادشي كيدير عشرات ديال الـ round-trips وحدة ورا وحدة.
+//    دابا: كاع الفولدرات الفرعية كيتقراو فنفس الوقت ب Promise.all.
+// ------------------------------------------------------------------
 async function readFolder(folderId, token) {
   const items = await listFolder(folderId, token);
-  const result = [];
-  for (const item of items) {
+
+  const results = await Promise.all(items.map(async item => {
     if (item.mimeType === "application/vnd.google-apps.folder") {
       const children = await readFolder(item.id, token);
-      result.push({ id: item.id, name: item.name, type: "folder", children });
-    } else {
-      result.push({
-        id: item.id, name: item.name, type: "file", mimeType: item.mimeType,
-        size: item.size || null, modifiedTime: item.modifiedTime || null,
-        viewUrl: item.webViewLink || `https://drive.google.com/file/d/${item.id}/view`,
-        downloadUrl: item.webContentLink || null
-      });
+      return { id: item.id, name: item.name, type: "folder", children };
     }
-  }
-  return result;
+    return {
+      id: item.id, name: item.name, type: "file", mimeType: item.mimeType,
+      size: item.size || null, modifiedTime: item.modifiedTime || null,
+      viewUrl: item.webViewLink || `https://drive.google.com/file/d/${item.id}/view`,
+      downloadUrl: item.webContentLink || null
+    };
+  }));
+
+  return results;
 }
 
 function countPDFs(items) {
@@ -124,39 +145,68 @@ function collectPdfFiles(items) {
   return files;
 }
 
+async function buildYearResult(yearName, rootId, token) {
+  const rootItems = await readFolder(rootId, token);
+
+  const effFolder = rootItems.find(item => item.type === "folder" && isEffFolder(item.name));
+  const effFiles = effFolder ? collectPdfFiles(effFolder.children) : [];
+
+  const modules = rootItems
+    .filter(item => item.type === "folder" && !isEffFolder(item.name))
+    .map(module => {
+      const cours = findCategory(module, ["cours", "course"]);
+      const exercices = findCategory(module, ["exercices", "exercice"]);
+      const controle = findCategory(module, ["contrôle", "controle", "contrôles"]);
+      const efm = findCategory(module, ["efm"]);
+      return {
+        id: module.id, name: module.name,
+        cours: cours ? countPDFs(cours.children) : 0,
+        exercices: exercices ? countPDFs(exercices.children) : 0,
+        controle: controle ? countPDFs(controle.children) : 0,
+        efm: efm ? countPDFs(efm.children) : 0,
+        content: module.children
+      };
+    });
+
+  return { modules, eff: effFiles };
+}
+
+// ------------------------------------------------------------------
+// 3) Cache ديال النتيجة كاملة فالميموري لمدة دقيقة (60s)
+//    باش إلا جا request جديد قريب من لي قبل (نفس الـ warm instance)
+//    ما نرجعوش نديرو كاع الـ calls ليGoogle Drive من جديد — كيرجع
+//    الجواب فوري بلا تأخير.
+// ------------------------------------------------------------------
+let cachedResult = null;
+let cachedAt = 0;
+const CACHE_TTL_MS = 60 * 1000;
+
 module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET");
   res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=300");
   try {
-    const token = await getAccessToken();
-    const result = {};
-    for (const [yearName, rootId] of Object.entries(ROOTS)) {
-      const rootItems = await readFolder(rootId, token);
-
-      // فولدر EFF غير موجود جوه المودولات، هو فولدر منفصل بجانب المودولات (M201, M202...)
-      const effFolder = rootItems.find(item => item.type === "folder" && isEffFolder(item.name));
-      const effFiles = effFolder ? collectPdfFiles(effFolder.children) : [];
-
-      const modules = rootItems
-        .filter(item => item.type === "folder" && !isEffFolder(item.name))
-        .map(module => {
-          const cours = findCategory(module, ["cours", "course"]);
-          const exercices = findCategory(module, ["exercices", "exercice"]);
-          const controle = findCategory(module, ["contrôle", "controle", "contrôles"]);
-          const efm = findCategory(module, ["efm"]);
-          return {
-            id: module.id, name: module.name,
-            cours: cours ? countPDFs(cours.children) : 0,
-            exercices: exercices ? countPDFs(exercices.children) : 0,
-            controle: controle ? countPDFs(controle.children) : 0,
-            efm: efm ? countPDFs(efm.children) : 0,
-            content: module.children
-          };
-        });
-      result[yearName] = { modules, eff: effFiles };
+    if (cachedResult && Date.now() - cachedAt < CACHE_TTL_MS) {
+      return res.status(200).json(cachedResult);
     }
-    res.status(200).json({ success: true, updated: new Date().toISOString(), years: result });
+
+    const token = await getAccessToken();
+
+    // الجلب ديال السنتين كيتصاوب فنفس الوقت (parallel) عوض واحدة
+    // ورا الأخرى
+    const entries = await Promise.all(
+      Object.entries(ROOTS).map(async ([yearName, rootId]) => [
+        yearName,
+        await buildYearResult(yearName, rootId, token)
+      ])
+    );
+    const result = Object.fromEntries(entries);
+
+    const payload = { success: true, updated: new Date().toISOString(), years: result };
+    cachedResult = payload;
+    cachedAt = Date.now();
+
+    res.status(200).json(payload);
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, error: error.message });
