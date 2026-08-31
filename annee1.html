@@ -245,7 +245,6 @@
         
         // Chargement dynamique des donnees depuis Google Drive via api/drive.js
         let modulesData = {};
-        let effFilesData = [];
 
         function normalizeName(str) {
             return (str || '')
@@ -310,16 +309,9 @@
                     throw new Error(json.error || 'Erreur inconnue');
                 }
 
-                const yearData = json.years['1er année'] || {};
-                const yearModules = yearData.modules || [];
-                effFilesData = (yearData.eff || []).map(item => ({
-                    name: item.name,
-                    viewLink: item.viewUrl,
-                    downloadLink: item.downloadUrl || item.viewUrl
-                }));
+                const yearModules = json.years['1er année'] || [];
                 modulesData = buildModulesData(yearModules);
                 generateModules();
-                generateEffSection();
             } catch (error) {
                 console.error('Erreur de chargement des données Google Drive :', error);
                 if (container) {
@@ -400,20 +392,6 @@
         
         <div id="modulesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- سيتم إضافة الوحدات هنا -->
-        </div>
-
-        <div id="effSection" class="mt-6 mb-8 hidden">
-            <button id="effToggleBtn" onclick="toggleEffSection()"
-                    class="w-full flex items-center justify-between bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700 card-hover transition">
-                <span class="flex items-center text-lg font-bold text-green-600 dark:text-green-400">
-                    <i class="fas fa-graduation-cap mr-2"></i>
-                    EFF - Examen de Fin de Formation
-                </span>
-                <i id="effToggleIcon" class="fas fa-chevron-down text-gray-500 dark:text-gray-400 transition-transform"></i>
-            </button>
-            <div id="effFilesList" class="hidden mt-3 bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700 divide-y divide-gray-200 dark:divide-gray-700">
-                <!-- سيتم إضافة ملفات EFF هنا -->
-            </div>
         </div>
         
         <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -645,46 +623,9 @@
             
             container.innerHTML = html;
         }
-
-        // عرض ملفات EFF (فولدر منفصل، مباشرة PDFs بدون تصنيف فرعي)
-        function generateEffSection() {
-            const section = document.getElementById('effSection');
-            const list = document.getElementById('effFilesList');
-            if (!section || !list) return;
-
-            if (!effFilesData.length) {
-                section.classList.add('hidden');
-                list.innerHTML = '';
-                return;
-            }
-
-            section.classList.remove('hidden');
-            list.innerHTML = effFilesData.map(file => `
-                <div class="flex items-center justify-between py-3 px-1">
-                    <div class="flex items-center gap-3 min-w-0">
-                        <i class="fas fa-file-pdf text-red-500 text-lg flex-shrink-0"></i>
-                        <span class="truncate">${file.name}</span>
-                    </div>
-                    <div class="flex items-center gap-3 flex-shrink-0">
-                        <a href="${file.viewLink}" target="_blank" rel="noopener" class="text-blue-500 hover:text-blue-600" title="Voir">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="${file.downloadLink}" target="_blank" rel="noopener" class="text-green-500 hover:text-green-600" title="Télécharger">
-                            <i class="fas fa-download"></i>
-                        </a>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // فتح/غلق نافذة ملفات EFF
-        function toggleEffSection() {
-            const list = document.getElementById('effFilesList');
-            const icon = document.getElementById('effToggleIcon');
-            if (!list || !icon) return;
-            list.classList.toggle('hidden');
-            icon.classList.toggle('rotate-180');
-        }
+        
+        // عرض الملفات في المودال
+        function showFiles(moduleName, category) {
             const files = modulesData[moduleName]?.[category] || [];
             
             if (files.length === 0) {
