@@ -576,12 +576,11 @@
                 const exos = module['Exercices'] || [];
                 const controle = module['Contrôle'] || [];
                 const efm = module['EFM'] || [];
-                const eff = module['EFF'] || [];
                 
                 html += `
                     <div class="module-card bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700 card-hover">
                         <h3 class="text-lg font-bold text-blue-600 dark:text-blue-400 mb-4 text-center">${moduleName}</h3>
-                        <div class="module-buttons grid grid-cols-2 sm:grid-cols-5 gap-3 text-center">
+                        <div class="module-buttons grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
                             <button onclick="showFiles('${moduleName.replace(/'/g, "\\'")}', 'Cours')" 
                                     class="file-btn p-3 rounded-lg font-medium transition duration-300 shadow-md ${cours.length > 0 ? 'bg-blue-500 text-white hover:bg-blue-600' : 'bg-gray-200 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-not-allowed'} flex flex-col items-center justify-center"
                                     ${cours.length === 0 ? 'disabled' : ''}>
@@ -605,12 +604,6 @@
                                     ${efm.length === 0 ? 'disabled' : ''}>
                                 <i class="fas fa-file-alt mb-2 text-lg"></i>
                                 EFM (${efm.length})
-                            </button>
-                            <button onclick="showFiles('${moduleName.replace(/'/g, "\\'")}', 'EFF')" 
-                                    class="file-btn p-3 rounded-lg font-medium transition duration-300 shadow-md ${eff.length > 0 ? 'bg-green-500 text-white hover:bg-green-600' : 'bg-gray-200 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-not-allowed'} flex flex-col items-center justify-center"
-                                    ${eff.length === 0 ? 'disabled' : ''}>
-                                <i class="fas fa-graduation-cap mb-2 text-lg"></i>
-                                EFF (${eff.length})
                             </button>
                         </div>
                     </div>

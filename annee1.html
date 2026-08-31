@@ -245,6 +245,7 @@
         
         // Chargement dynamique des donnees depuis Google Drive via api/drive.js
         let modulesData = {};
+        let effFilesData = [];
 
         function normalizeName(str) {
             return (str || '')
@@ -309,9 +310,16 @@
                     throw new Error(json.error || 'Erreur inconnue');
                 }
 
-                const yearModules = json.years['1er année'] || [];
+                const yearData = json.years['1er année'] || {};
+                const yearModules = yearData.modules || [];
+                effFilesData = (yearData.eff || []).map(item => ({
+                    name: item.name,
+                    viewLink: item.viewUrl,
+                    downloadLink: item.downloadUrl || item.viewUrl
+                }));
                 modulesData = buildModulesData(yearModules);
                 generateModules();
+                generateEffSection();
             } catch (error) {
                 console.error('Erreur de chargement des données Google Drive :', error);
                 if (container) {
@@ -390,6 +398,16 @@
             </p>
         </div>
         
+        <div id="effSection" class="mb-8 hidden">
+            <h3 class="text-xl font-bold mb-4 flex items-center text-green-600 dark:text-green-400">
+                <i class="fas fa-graduation-cap mr-2"></i>
+                EFF - Examen de Fin de Formation
+            </h3>
+            <div id="effFilesList" class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700 divide-y divide-gray-200 dark:divide-gray-700">
+                <!-- سيتم إضافة ملفات EFF هنا -->
+            </div>
+        </div>
+
         <div id="modulesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- سيتم إضافة الوحدات هنا -->
         </div>
@@ -623,9 +641,37 @@
             
             container.innerHTML = html;
         }
-        
-        // عرض الملفات في المودال
-        function showFiles(moduleName, category) {
+
+        // عرض ملفات EFF (فولدر منفصل، مباشرة PDFs بدون تصنيف فرعي)
+        function generateEffSection() {
+            const section = document.getElementById('effSection');
+            const list = document.getElementById('effFilesList');
+            if (!section || !list) return;
+
+            if (!effFilesData.length) {
+                section.classList.add('hidden');
+                list.innerHTML = '';
+                return;
+            }
+
+            section.classList.remove('hidden');
+            list.innerHTML = effFilesData.map(file => `
+                <div class="flex items-center justify-between py-3 px-1">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <i class="fas fa-file-pdf text-red-500 text-lg flex-shrink-0"></i>
+                        <span class="truncate">${file.name}</span>
+                    </div>
+                    <div class="flex items-center gap-3 flex-shrink-0">
+                        <a href="${file.viewLink}" target="_blank" rel="noopener" class="text-blue-500 hover:text-blue-600" title="Voir">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        <a href="${file.downloadLink}" target="_blank" rel="noopener" class="text-green-500 hover:text-green-600" title="Télécharger">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
             const files = modulesData[moduleName]?.[category] || [];
             
             if (files.length === 0) {
