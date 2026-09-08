@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'OFPPT, le métier et le référentiel de formation – Cours 2 – M101 – Infrastructure Digitale</title>
+    <meta name="description" content="L'OFPPT, le métier de technicien spécialisé en infrastructure digitale et le référentiel de formation — Cours 2 du module M101 (Métier et formation).">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TMFJG7WBV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1TMFJG7WBV');
+    </script>
+    <link rel="icon" type="image/png" href="../../../../logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        'primary-dark': '#1d4ed8',
+                        secondary: '#10b981',
+                        accent: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --primary: #3b82f6; --primary-dark: #1d4ed8; --secondary: #10b981;
+    --accent: #f59e0b; --dark: #1f2937; --light: #f9fafb; --indigo: #4f46e5; --nav-h: 68px;
+}
+html { background: #f9fafb; }
+.dark { color-scheme: dark; }
+html.dark { background: #050a18; }
+body { font-family: 'Inter', sans-serif; transition: background-color .3s, color .3s; }
+.card-hover { transition: transform .3s ease, box-shadow .3s ease; }
+.card-hover:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,.1); }
+.dark .card-hover:hover { box-shadow: 0 5px 15px rgba(0,0,0,.3); }
+.animate-fadeIn { animation: fadeIn .6s ease-out; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
+
+.navbar { position: sticky; top: 0; z-index: 100; height: var(--nav-h); display:flex; align-items:center;
+    background: rgba(255,255,255,0.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(15,23,42,0.08); transition: background-color .3s, border-color .3s, box-shadow .3s; }
+.dark .navbar { background: rgba(5,10,24,0.55); border-bottom-color: rgba(0,150,255,0.12); }
+.navbar.scrolled { box-shadow: 0 10px 26px -16px rgba(15,23,42,0.35); }
+.dark .navbar.scrolled { background: rgba(5,10,24,0.85); border-bottom-color: rgba(0,180,255,0.22); box-shadow: 0 8px 30px rgba(0,10,30,0.5); }
+.nav-inner { width:100%; max-width:1180px; margin:0 auto; padding:0 20px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.brand { display:flex; align-items:center; gap:9px; font-weight:700; text-decoration:none; white-space:nowrap; }
+.brand-mark { width:34px; height:34px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+.brand-mark img { width:100%; height:100%; object-fit:contain; display:block; }
+.brand-name { font-size:1rem; letter-spacing:-.01em; color:#0f172a; }
+.dark .brand-name { color:#e8ecff; }
+.brand-name strong { color: var(--primary); }
+.dark .brand-name strong { background: linear-gradient(135deg,#ffe066,#ffc800 60%,#ff9500); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+.nav-links { display:flex; align-items:center; gap:30px; margin-left:auto; margin-right:22px; }
+.nav-links a { font-weight:500; font-size:.9rem; color:#475569; text-decoration:none; position:relative; padding:6px 0; transition:color .2s ease; }
+.nav-links a::after { content:''; position:absolute; left:0; bottom:0; width:0; height:2px; border-radius:2px; background:linear-gradient(90deg,var(--primary),var(--indigo)); transition:width .25s ease, background .3s ease; }
+.nav-links a:hover { color:#0f172a; }
+.nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+.nav-links a.active { color:var(--primary-dark); font-weight:600; }
+.dark .nav-links a { color:#8899cc; }
+.dark .nav-links a:hover { color:#fff; }
+.dark .nav-links a::after { background:linear-gradient(90deg,#00c8ff,#ffc800); }
+.dark .nav-links a.active { color:#00c8ff; }
+.nav-actions { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.theme-toggle { width:38px; height:38px; border-radius:10px; border:1.5px solid rgba(59,130,246,0.25); background:rgba(59,130,246,0.06); color:var(--primary-dark);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative; transition:background-color .2s, border-color .2s, color .3s; }
+.theme-toggle:hover { background:rgba(59,130,246,0.14); }
+.dark .theme-toggle { border-color:rgba(0,180,255,0.3); background:rgba(0,144,255,0.08); color:#00c8ff; }
+.dark .theme-toggle:hover { background:rgba(0,170,255,0.18); }
+.theme-toggle svg { width:17px; height:17px; position:absolute; transition:opacity .25s, transform .3s; }
+.theme-toggle .icon-sun { opacity:0; transform:rotate(-40deg) scale(.6); }
+.theme-toggle .icon-moon { opacity:1; transform:rotate(0) scale(1); }
+.dark .theme-toggle .icon-sun { opacity:1; transform:rotate(0) scale(1); }
+.dark .theme-toggle .icon-moon { opacity:0; transform:rotate(40deg) scale(.6); }
+.burger { display:none; width:38px; height:38px; border-radius:10px; border:1.5px solid rgba(59,130,246,0.25); background:rgba(59,130,246,0.06);
+    align-items:center; justify-content:center; flex-direction:column; gap:5px; cursor:pointer; flex-shrink:0; }
+.dark .burger { border-color:rgba(0,180,255,0.28); background:rgba(0,144,255,0.08); }
+.burger span { width:18px; height:2px; border-radius:2px; background:var(--primary-dark); transition:all .25s ease, background .3s ease; }
+.dark .burger span { background:#00c8ff; }
+.burger[aria-expanded="true"] span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity:0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+.mobile-menu { position:absolute; top:100%; left:0; right:0; z-index:99; background:rgba(255,255,255,0.97); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(15,23,42,0.08); display:flex; flex-direction:column; padding:8px 20px 20px;
+    transform:translateY(-8px); opacity:0; pointer-events:none; transition:transform .25s ease, opacity .25s ease; box-shadow:0 16px 30px -18px rgba(15,23,42,0.25); }
+.mobile-menu.is-open { transform:translateY(0); opacity:1; pointer-events:auto; }
+.dark .mobile-menu { background:rgba(6,12,28,0.97); border-bottom-color:rgba(0,180,255,0.2); box-shadow:0 16px 30px -18px rgba(0,0,0,0.6); }
+.mobile-menu a { font-weight:500; font-size:.95rem; color:#334155; text-decoration:none; padding:14px 4px; border-bottom:1px solid rgba(15,23,42,0.06); }
+.mobile-menu a:last-child { border-bottom:none; }
+.mobile-menu a.active { color:var(--primary-dark); font-weight:600; }
+.dark .mobile-menu a { color:#e8ecff; border-bottom-color:rgba(0,150,255,0.1); }
+.dark .mobile-menu a.active { color:#00c8ff; }
+.mobile-menu-label { font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#94a3b8; padding:14px 4px 4px; }
+.dark .mobile-menu-label { color:#5b6b96; }
+@media (min-width:769px) { .mobile-menu { display:none !important; } }
+@media (max-width:768px) { .nav-links { display:none; } .burger { display:flex; } }
+
+.nav-drop { position:relative; }
+.nav-drop > button { font-weight:500; font-size:.9rem; color:#475569; background:none; border:none; cursor:pointer;
+    display:flex; align-items:center; gap:5px; padding:6px 0; font-family:inherit; line-height:1; }
+.nav-drop > button:hover { color:#0f172a; }
+.dark .nav-drop > button { color:#8899cc; }
+.dark .nav-drop > button:hover { color:#fff; }
+.nav-drop svg { width:12px; height:12px; transition:transform .2s ease; }
+.nav-drop.is-open > button svg { transform:rotate(180deg); }
+.nav-drop-menu { position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%) translateY(-6px);
+    min-width:190px; background:rgba(255,255,255,0.98); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(15,23,42,0.08); border-radius:12px; padding:8px; box-shadow:0 16px 30px -14px rgba(15,23,42,0.25);
+    opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease; }
+.nav-drop.is-open .nav-drop-menu { opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+.nav-drop:hover .nav-drop-menu, .nav-drop:focus-within .nav-drop-menu { opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+.nav-drop:hover > button svg, .nav-drop:focus-within > button svg { transform:rotate(180deg); }
+.dark .nav-drop-menu { background:rgba(6,12,28,0.98); border-color:rgba(0,180,255,0.2); box-shadow:0 16px 30px -14px rgba(0,0,0,0.55); }
+.nav-drop-menu a { display:flex; align-items:center; gap:8px; padding:9px 12px; border-radius:8px; font-size:.88rem; font-weight:500; color:#334155; text-decoration:none; }
+.nav-drop-menu a:hover { background:rgba(59,130,246,0.08); color:#1d4ed8; }
+.dark .nav-drop-menu a { color:#c9d3f0; }
+.dark .nav-drop-menu a:hover { background:rgba(0,144,255,0.12); color:#00c8ff; }
+
+/* Contenu rédigé (pages cours/exercices/controles/efm) */
+.contenu-redige { line-height:1.85; }
+.contenu-redige h2 { font-size:1.35rem; font-weight:800; margin-top:2rem; margin-bottom:.75rem; color:#1d4ed8; }
+.dark .contenu-redige h2 { color:#5aa9ff; }
+.contenu-redige h3 { font-size:1.1rem; font-weight:700; margin-top:1.5rem; margin-bottom:.5rem; color:#1f2937; }
+.dark .contenu-redige h3 { color:#e8ecff; }
+.contenu-redige p { margin-bottom:1rem; color:#374151; }
+.dark .contenu-redige p { color:#c3cbe6; }
+.contenu-redige ul, .contenu-redige ol { margin:0 0 1rem 1.4rem; color:#374151; }
+.dark .contenu-redige ul, .dark .contenu-redige ol { color:#c3cbe6; }
+.contenu-redige li { margin-bottom:.4rem; }
+.contenu-redige code { background:rgba(59,130,246,0.1); color:#1d4ed8; padding:2px 6px; border-radius:4px; font-size:.9em; }
+.dark .contenu-redige code { background:rgba(0,144,255,0.15); color:#5aa9ff; }
+.contenu-redige pre { background:#0f172a; color:#e2e8f0; padding:1rem; border-radius:10px; overflow-x:auto; margin-bottom:1rem; }
+.contenu-redige pre code { background:none; color:inherit; padding:0; }
+.contenu-redige blockquote { border-inline-start:4px solid var(--primary); padding:.5rem 1rem; background:rgba(59,130,246,0.06); border-radius:0 8px 8px 0; margin-bottom:1rem; color:#374151; }
+.dark .contenu-redige blockquote { color:#c3cbe6; background:rgba(0,144,255,0.08); }
+.contenu-redige table { width:100%; border-collapse:collapse; margin-bottom:1.25rem; font-size:.9rem; }
+.contenu-redige th, .contenu-redige td { border:1px solid #d1d5db; padding:.55rem .75rem; text-align:start; color:#374151; }
+.dark .contenu-redige th, .dark .contenu-redige td { border-color:#374151; color:#c3cbe6; }
+.contenu-redige th { background:rgba(59,130,246,0.08); font-weight:700; color:#1d4ed8; }
+.dark .contenu-redige th { background:rgba(0,144,255,0.12); color:#5aa9ff; }
+.contenu-redige .table-wrap { overflow-x:auto; margin-bottom:1.25rem; -webkit-overflow-scrolling:touch; }
+.contenu-redige .table-wrap table { margin-bottom:0; }
+</style>
+    
+</head>
+<body class="text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+    <header class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="../../../../index.html" class="brand">
+                <span class="brand-mark"><img src="../../../../logo.png" alt="Infrastructure Digitale"></span>
+                <span class="brand-name">Infrastructure&nbsp;<strong>Digitale</strong></span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <div class="nav-drop" id="modulesDrop">
+                    <button type="button" aria-haspopup="true" aria-expanded="false">
+                        Modules
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="nav-drop-menu">
+                        <a href="../../../../modules/annee1/index.html"><i class="fas fa-book-reader"></i> 1ère année</a>
+                        <a href="../../../../modules/annee2/index.html"><i class="fas fa-laptop-code"></i> 2ème année</a>
+                    </div>
+                </div>
+                <a href="../../../../applications.html">Applications</a>
+                <a href="../../../../apropos.html">À propos</a>
+                <a href="../../../../confidentialite.html">Confidentialité</a>
+                <a href="../../../../contact.html">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button id="themeToggle" type="button" class="theme-toggle" aria-label="Activer le thème sombre">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.6 6.6 0 0 0 10.5 10.5Z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"/></svg>
+                </button>
+                <button class="burger" id="burgerBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <span class="mobile-menu-label">Modules</span>
+            <a href="../../../../modules/annee1/index.html"><i class="fas fa-book-reader mr-2"></i>1ère année</a>
+            <a href="../../../../modules/annee2/index.html"><i class="fas fa-laptop-code mr-2"></i>2ème année</a>
+            <a href="../../../../applications.html">Applications</a>
+            <a href="../../../../apropos.html">À propos</a>
+            <a href="../../../../confidentialite.html">Confidentialité</a>
+            <a href="../../../../contact.html">Contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 w-full">
+        <nav class="text-sm text-gray-500 dark:text-gray-400 mb-6 flex flex-wrap items-center gap-1" aria-label="Fil d'Ariane">
+            <a href="../../../../index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Accueil</a>
+            <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
+            <a href="../../../../modules/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Modules</a>
+            <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
+            <a href="../../../../modules/annee1/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">1ère année</a>
+            <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
+            <a href="../../../../modules/annee1/M101/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">M101</a>
+            <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
+            <a href="../../../../modules/annee1/M101/cours/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Cours</a>
+            <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
+            <span class="text-gray-700 dark:text-gray-300 font-medium">Cours 2</span>
+        </nav>
+
+        <div class="animate-fadeIn">
+            <div class="mb-6">
+                <span class="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-300 text-xs font-bold mb-3">Cours 2</span>
+                <h1 class="text-3xl font-extrabold mb-2">Se situer au regard du métier et De la démarche de formation</h1>
+                <p class="text-gray-500 dark:text-gray-400">Module M101 — Métier et formation en Infrastructure Digitale</p>
+            </div>
+            <article class="contenu-redige bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+
+                <h2>1. Présentation de l'OFPPT</h2>
+                <p>
+                    L'Office de la Formation Professionnelle et de la Promotion du Travail est un organisme public
+                    créé en 1974, qui propose des formations courtes et pratiques permettant aux jeunes une
+                    intégration rapide dans le marché du travail.
+                </p>
+
+                <h3>Objectifs de l'OFPPT</h3>
+                <ul>
+                    <li>Intégration rapide dans le marché du travail.</li>
+                    <li>Satisfaire les besoins en ressources humaines qualifiées au profit des entreprises, et contribuer ainsi à l'amélioration de leur compétitivité.</li>
+                    <li>Assurer le perfectionnement des compétences des salariés, pour appuyer l'essor des entreprises.</li>
+                    <li>Favoriser l'employabilité des jeunes à travers des cursus diplômants et/ou qualifiants, et l'aide à la création des entreprises.</li>
+                    <li>Lutte contre le chômage : la formation professionnelle offre aux jeunes sans formation académique une opportunité d'apprendre un métier et de travailler, ce qui réduit ainsi le chômage.</li>
+                </ul>
+
+                <h3>Types de formation</h3>
+                <ul>
+                    <li><strong>La formation initiale :</strong> une formation dont le cursus est sanctionné par un diplôme marquant la fin du parcours de formation. Après l'obtention du diplôme, le lauréat est apte à exercer son métier.</li>
+                    <li><strong>La formation qualifiante :</strong> des formations de courte durée, de trois à neuf mois, qui complètent la formation initiale et ouvrent davantage les portes du marché du travail.</li>
+                    <li><strong>Cours du soir :</strong> alternative par excellence pour la formation et le perfectionnement des salariés et des demandeurs d'emploi.</li>
+                </ul>
+
+                <h3>Niveaux de formation</h3>
+                <ul>
+                    <li><strong>Technicien Spécialisé :</strong> formation de 2 ans accessible aux Bacheliers, Licenciés ou stagiaires bénéficiant du système de passerelles.</li>
+                    <li><strong>Technicien :</strong> formation de 2 ans accessible aux élèves du niveau BAC ou stagiaires bénéficiant du système de passerelles.</li>
+                    <li><strong>Qualification :</strong> formation de 18 mois ou 24 mois, accessible aux élèves de la 3ème année du collège ou stagiaires bénéficiant du système de passerelles.</li>
+                    <li><strong>Spécialisation :</strong> formation accessible à partir de la 6ème année du primaire.</li>
+                    <li><strong>Bac pro :</strong> formation accessible aux élèves à partir de l'année du Tronc Commun.</li>
+                </ul>
+
+                <h3>Système de passerelles</h3>
+                <p>
+                    L'OFPPT offre aux meilleurs lauréats le droit de bénéficier du système de passerelles. Ce
+                    système consiste en l'accession d'un niveau de formation donné au niveau immédiatement supérieur.
+                </p>
+
+                <h3>Mode de formation</h3>
+                <p>
+                    Depuis l'apparition du COVID 19, l'OFPPT a adopté le mode de formation Hybride (une formule
+                    pédagogique qui combine 2 modes de formation : mode de formation présentiel + mode de formation
+                    à distance).
+                </p>
+                <ul>
+                    <li><strong>Formation résidentielle :</strong> la formation inclut les cours théoriques et les travaux pratiques. Elle se déroule à 100% au sein de l'établissement de formation, et est complétée par des stages en entreprises.</li>
+                    <li><strong>Formation alternée :</strong> une formation initiale au cours de laquelle 50% de la formation se déroule au sein de l'établissement et 50% en entreprise. L'objectif de ce mode de formation est d'assurer une meilleure adéquation formation/emploi.</li>
+                </ul>
+
+                <h3>Plateformes de formation</h3>
+                <ul>
+                    <li><strong>Plateforme OFPPT ACADEMY :</strong> une médiathèque de ressources didactiques qui couvre la totalité des modules dispensés dans toutes les filières.</li>
+                    <li><strong>Plateforme OFPPT LANGUES (Altissia) :</strong> une plateforme e-learning d'apprentissage de langues étrangères (Français / Anglais / Espagnol).</li>
+                    <li><strong>Plateforme WEBFORCE LIFE :</strong> accompagne le stagiaire pendant la formation, avec des tutoriels, des fiches de révisions et des quizz...</li>
+                    <li><strong>Plateforme SCHOLARVOX :</strong> une bibliothèque numérique communautaire proposant des livres électroniques de divers éditeurs, dont des éditeurs-phares pour l'enseignement universitaire, tels que Dunod, Gualino ou Eyrolles.</li>
+                </ul>
+
+                <h3>La bourse à l'OFPPT</h3>
+                <p>
+                    <strong>Méthode d'inscription :</strong> la bourse d'études est accordée aux stagiaires
+                    bacheliers inscrits dans une filière de niveau Technicien ou Technicien Spécialisé. Les
+                    candidats au baccalauréat désireux de bénéficier de bourses sont appelés à s'inscrire en ligne
+                    à travers le portail « Minhaty ».
+                </p>
+                <p>
+                    <strong>Conditions d'attribution :</strong> la bourse complète est consacrée annuellement et
+                    uniquement aux stagiaires dont les parents/tuteurs résident en dehors du périmètre urbain de la
+                    ville où se trouve l'établissement dans lequel ils poursuivent leur formation. Cette bourse est
+                    versée en trois tranches : octobre, février et mai. Les stagiaires habitant les mêmes villes où
+                    se trouvent leurs établissements reçoivent une demi-bourse, également versée en trois tranches.
+                    Il est à signaler qu'en plus de ce dispositif, les stagiaires de l'OFPPT bénéficient
+                    nécessairement du régime de l'Assurance Maladie Obligatoire (AMO).
+                </p>
+
+                <h3>Assurance maladie (AMO)</h3>
+                <p>
+                    <strong>Conditions d'éligibilité :</strong> afin de bénéficier de l'AMO de base des étudiants,
+                    il faut être âgé de 30 ans au maximum et ne pas être bénéficiaire, en tant qu'assuré ou en tant
+                    qu'ayant droit d'un assuré, d'une autre couverture médicale quelle que soit sa nature.
+                </p>
+                <p>
+                    <strong>Périmètre de couverture :</strong> l'AMO étudiant couvre un large panier de prestations
+                    médicales, à savoir : les soins préventifs, les actes chirurgicaux, la radiologie, les
+                    médicaments et dispositifs médicaux remboursables via l'AMO, etc.
+                </p>
+
+                <h2>2. Le métier de technicien spécialisé en infrastructure digitale</h2>
+                <p>
+                    Un technicien spécialisé en infrastructure digitale est un professionnel chargé d'exploiter,
+                    sécuriser, optimiser et faire évoluer les ressources informatiques de l'entreprise.
+                </p>
+                <p>4 options s'offrent au développeur digital pour se spécialiser :</p>
+                <ul>
+                    <li>Option : <strong><em>Systèmes et réseaux</em></strong></li>
+                    <li>Option : <strong><em>Cyber sécurité</em></strong></li>
+                    <li>Option : <strong><em>Cloud Computing</em></strong></li>
+                    <li>Option : <strong><em>IOT</em></strong> (Internet of Things), en français « internet des objets »</li>
+                </ul>
+
+                <h3>Description générale du métier — Systèmes et réseaux</h3>
+                <p>
+                    Un technicien spécialisé en infrastructure digitale — option systèmes et réseaux — est un
+                    professionnel chargé d'exploiter, sécuriser, optimiser et faire évoluer les ressources
+                    informatiques de l'entreprise. Il est le garant de la qualité du service attendu par
+                    l'informatique. Il prend en charge le support technique auprès des utilisateurs et apporte des
+                    solutions aux différents problèmes qu'ils rencontrent dans l'utilisation de moyens informatiques.
+                </p>
+
+                <h3>Description générale du métier — Cyber sécurité</h3>
+                <p>
+                    Un technicien spécialisé en infrastructure digitale — option cyber sécurité — est un
+                    professionnel chargé de la sécurité des données d'une entreprise. Comme son nom l'indique, il
+                    doit empêcher les intrusions afin d'éviter que des pirates informatiques exploitent une faille
+                    présente sur le site. Il doit appliquer les instructions définies dans le plan d'actions pour
+                    protéger le système en cas d'attaque.
+                </p>
+
+                <h3>Description générale du métier — Cloud Computing</h3>
+                <p>
+                    Un technicien spécialisé en infrastructure digitale — option Cloud Computing — est un
+                    professionnel chargé du stockage et de la gestion des données à l'extérieur de l'entreprise. Il
+                    est également affecté à la sécurisation de leur accès à partir des postes de travail et des
+                    appareils mobiles. Ce spécialiste de la virtualisation des données externes accompagne les
+                    sociétés dans leur mutation vers le numérique.
+                </p>
+
+                <h3>Description générale du métier — IOT</h3>
+                <p>
+                    Un technicien spécialisé en infrastructure digitale — option IoT — est un professionnel chargé
+                    d'adapter les solutions des objets connectés. Il s'occupe également de l'ajout des capteurs
+                    électroniques, la récupération de leurs données et leur communication via le réseau internet
+                    (le cloud) à des applications consultables sur smartphone ou autre écran connecté.
+                </p>
+
+                <h2>3. Profil de la formation par option</h2>
+
+                <h3>Profil de la formation — Systèmes et réseaux</h3>
+                <p>À l'issue de la formation, le stagiaire sera en mesure d'exécuter les opérations et activités suivantes :</p>
+                <p><em>Au niveau du support technique</em></p>
+                <ul>
+                    <li>Assurer la gestion du parc informatique de l'entreprise</li>
+                    <li>Suivre et faire évoluer le dispositif informatique</li>
+                    <li>Diagnostiquer et résoudre les problèmes sur les postes de travail</li>
+                </ul>
+                <p><em>Au niveau de la maintenance</em></p>
+                <ul>
+                    <li>Dépanner les micro-ordinateurs, les serveurs, le réseau</li>
+                    <li>Suivre et faire évoluer les systèmes d'exploitation</li>
+                </ul>
+                <p><em>Au niveau système</em></p>
+                <ul>
+                    <li>Installer et administrer un poste de travail</li>
+                    <li>Installer et administrer un système d'exploitation réseau</li>
+                    <li>Installer et administrer les serveurs d'application (messagerie, serveur web, ...)</li>
+                </ul>
+                <p><em>Au niveau du réseau</em></p>
+                <ul>
+                    <li>Participer au câblage du réseau</li>
+                    <li>Assurer la gestion et la supervision d'un réseau informatique</li>
+                    <li>Diagnostiquer et résoudre les problèmes du réseau informatique</li>
+                    <li>Installer, gérer et sécuriser les éléments actifs d'un réseau étendu</li>
+                </ul>
+
+                <h3>Profil de la formation — Cyber sécurité</h3>
+                <p>À l'issue de la formation, le stagiaire sera en mesure d'exécuter les opérations et activités suivantes :</p>
+                <ul>
+                    <li>Identifier les risques liés à la sécurité des données et du système</li>
+                    <li>Mettre en place un processus de sécurité et de prévention : cryptologie, pare-feu, antivirus, accès restreints, etc.</li>
+                    <li>Détecter les virus et mettre en échec les tentatives de hackers</li>
+                    <li>Analyser les malwares</li>
+                    <li>Réaliser une veille technologique pour faire évoluer le système de protection et former les utilisateurs</li>
+                </ul>
+
+                <h3>Profil de la formation — Cloud Computing</h3>
+                <p>À l'issue de la formation, le stagiaire sera en mesure d'exécuter les opérations et activités suivantes :</p>
+                <ul>
+                    <li>Participer à l'étude des différentes solutions par rapport aux besoins de l'entreprise</li>
+                    <li>Participer à l'organisation des éventuels appels d'offres</li>
+                    <li>Suivre la mise en œuvre des nouveaux systèmes intégrés à l'entreprise</li>
+                    <li>Accompagner l'appropriation des nouveaux systèmes par les utilisateurs</li>
+                </ul>
+
+                <h3>Profil de la formation — IOT</h3>
+                <p>À l'issue de la formation, le stagiaire sera en mesure d'exécuter les opérations et activités suivantes :</p>
+                <ul>
+                    <li>Participer à la mise en place d'une solution IoT</li>
+                    <li>Adapter et ajouter des capteurs électroniques à la solution</li>
+                    <li>Assurer la communication des objets connectés de la solution</li>
+                    <li>Programmer les fonctionnalités des capteurs de la solution IoT</li>
+                    <li>Capturer les données des capteurs</li>
+                    <li>S'occuper de la maintenance des composants d'une solution IoT</li>
+                </ul>
+
+                <h2>4. Aptitudes et compétences pour pratiquer le métier</h2>
+
+                <h3>Définition de la compétence</h3>
+                <ul>
+                    <li><strong>Le savoir :</strong> l'ensemble des connaissances acquises par l'apprentissage (études, lectures, documentaires, formation, etc.) ou l'expérience. Si ce savoir tend à s'enrichir, il peut aussi se dégrader.</li>
+                    <li><strong>Le savoir-faire :</strong> l'expérience pratique qui témoigne de la maîtrise technique d'un domaine et qui permet l'application d'une connaissance.</li>
+                    <li><strong>Le savoir-être :</strong> lié à l'attitude, aux valeurs. Ce sont les qualités personnelles et comportementales dont on fait preuve dans le domaine professionnel (courtoisie, maîtrise des émotions, bon relationnel, capacité à travailler en équipe, etc.).</li>
+                </ul>
+                <p>
+                    <strong>Définition Compétence :</strong> une compétence est un pouvoir d'agir, de réussir et de
+                    progresser qui permet de réaliser adéquatement des tâches ou des activités et qui se fonde sur
+                    un ensemble intégré de connaissances, d'habiletés, d'attitudes et de comportements.
+                </p>
+                <p><strong>Les compétences sont de deux types :</strong></p>
+                <ul>
+                    <li><strong>Les compétences spécifiques</strong> qui portent sur des tâches types du métier ou de la fonction de travail et qui rendent la personne apte à assurer avec efficacité la production d'un bien ou d'un service.</li>
+                    <li><strong>Les compétences transversales</strong> qui portent sur une activité de travail ou de vie professionnelle qui déborde du champ spécifique des tâches du métier lui-même ; ces compétences peuvent être transférables à plusieurs activités de travail.</li>
+                </ul>
+
+                <h3>Les aptitudes</h3>
+                <ul>
+                    <li><strong>Esprit de logique :</strong> c'est la base — l'informatique nécessite de la logique, un peu de maths élémentaires et un esprit plutôt ouvert aux concepts abstraits.</li>
+                    <li><strong>Esprit d'analyse :</strong> face à un problème complexe, il suffit de le découper pour trouver des solutions simples. De manière générale, le bon développeur doit prendre le temps de la réflexion avant de foncer sur son clavier.</li>
+                    <li><strong>Esprit d'équipe :</strong> la capacité d'une personne à participer à l'atteinte d'un objectif partagé, à collaborer avec les autres, à privilégier la réussite du groupe plutôt que sa réussite individuelle.</li>
+                    <li><strong>La curiosité, l'envie de s'auto-former :</strong> rester à jour au regard des nouvelles technologies du marché. L'amour de la technologie est nécessaire pour faire de vous un développeur hors pair.</li>
+                    <li><strong>La communication :</strong> en contact permanent avec ses collègues comme avec les clients, le développeur doit savoir écouter et s'adapter à chaque interlocuteur.</li>
+                    <li><strong>Méthode et rigueur :</strong> être un bon développeur exige de la rigueur.</li>
+                </ul>
+
+                <h2>5. Organisation et évaluation de la formation</h2>
+
+                <h3>Durée de formation</h3>
+                <p>La durée de formation est étalée sur 2 ans en mode résidentiel :</p>
+                <ul>
+                    <li><strong>1ère année :</strong> Tronc commun Infrastructure Digitale</li>
+                    <li><strong>2ème année :</strong> Spécialisation dans l'une des 4 options (Systèmes et réseaux, Cyber sécurité, Cloud Computing ou IOT)</li>
+                </ul>
+
+                <h3>Évaluation de formation</h3>
+                <p>Les conditions d'obtention du diplôme :</p>
+                <ul>
+                    <li>Contrôles continus</li>
+                    <li>Évaluations de fin de module</li>
+                    <li>Stage en entreprise</li>
+                    <li>Examen de fin de formation</li>
+                </ul>
+
+                <h3>Programme de formation de la 1ère année — Tronc commun</h3>
+                <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Numéro</th><th>Intitulé du module</th><th>Durée (heures)</th><th>EFM Régional</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>EGTS101</td><td>Arabe</td><td>20 h</td><td>N</td></tr>
+                        <tr><td>EGTS102</td><td>Français</td><td>115 h</td><td>N</td></tr>
+                        <tr><td>EGTS103</td><td>Anglais technique</td><td>50 h</td><td>N</td></tr>
+                        <tr><td>EGTS104</td><td>Culture entrepreneuriale partie 1</td><td>30 h</td><td>N</td></tr>
+                        <tr><td>EGTS105</td><td>Compétences comportementales et sociales</td><td>30 h</td><td>N</td></tr>
+                        <tr><td>EGTS106</td><td>Culture et techniques avancées du numérique</td><td>40 h</td><td>N</td></tr>
+                        <tr><td>EGTS108</td><td>Entreprenariat PIE 1</td><td>72 h</td><td>N</td></tr>
+                        <tr><td>M101</td><td>Métier et formation en infrastructure digitale</td><td>15 h</td><td>N</td></tr>
+                        <tr><td>M102</td><td>Les enjeux d'un système d'information</td><td>75 h</td><td>N</td></tr>
+                        <tr><td>M103</td><td>Conception d'un réseau informatique</td><td>120 h</td><td>O</td></tr>
+                        <tr><td>M104</td><td>Fonctionnement du système d'exploitation</td><td>135 h</td><td>O</td></tr>
+                        <tr><td>M105</td><td>Gestion de l'infrastructure virtualisée</td><td>90 h</td><td>N</td></tr>
+                        <tr><td>M106</td><td>Automatisation des tâches d'administration</td><td>105 h</td><td>N</td></tr>
+                        <tr><td>M107</td><td>Sécurité des systèmes d'information</td><td>90 h</td><td>N</td></tr>
+                        <tr><td>M108</td><td>Processus et outils de veille technologique</td><td>75 h</td><td>N</td></tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <h3>Les abréviations</h3>
+                <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Sigle</th><th>Signification</th></tr></thead>
+                    <tbody>
+                        <tr><td>OFPPT</td><td>Office de la Formation Professionnel et de la Promotion du Travail</td></tr>
+                        <tr><td>ISTA</td><td>Institut Spécialisé de Technologie Appliquée</td></tr>
+                        <tr><td>NTIC</td><td>Nouvelles Technologies de l'Information et de la Communication</td></tr>
+                        <tr><td>ID</td><td>Infrastructure Digitale</td></tr>
+                        <tr><td>DD</td><td>Développement Digitale</td></tr>
+                        <tr><td>CC</td><td>Contrôles Continus</td></tr>
+                        <tr><td>EFM</td><td>Examen de Fin de Module</td></tr>
+                        <tr><td>EP</td><td>Examen de Passage</td></tr>
+                        <tr><td>EFF</td><td>Examen de Fin de Formation</td></tr>
+                        <tr><td>PFE</td><td>Projet de Fin d'Étude</td></tr>
+                        <tr><td>EFP</td><td>Établissement de Formation Professionnelle</td></tr>
+                        <tr><td>CFP</td><td>Centre de Formation Professionnel</td></tr>
+                        <tr><td>CGCP</td><td>Conseil de Gestion et de Coordination Pédagogique</td></tr>
+                        <tr><td>CAD</td><td>Comité d'Auto Discipline</td></tr>
+                        <tr><td>SG</td><td>Surveillant Général</td></tr>
+                        <tr><td>D</td><td>Directeur</td></tr>
+                        <tr><td>CD</td><td>Conseil de Discipline</td></tr>
+                        <tr><td>DR</td><td>Directeur Régionale</td></tr>
+                        <tr><td>TS</td><td>Technicien Spécialisé</td></tr>
+                        <tr><td>FQ</td><td>Formation Qualifiante</td></tr>
+                        <tr><td>FAD</td><td>Formation à Distance</td></tr>
+                        <tr><td>URD</td><td>Unité de Ressources Didactiques</td></tr>
+                        <tr><td>CDS</td><td>Cours du Soir</td></tr>
+                        <tr><td>CDJ</td><td>Cours du Jour</td></tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <h2>6. Règlement intérieur et vie du stagiaire</h2>
+
+                <h3>Définition du règlement intérieur</h3>
+                <p>
+                    C'est un document qui contient des articles dans lesquels sont expliqués la démarche relative à
+                    la formation, à savoir les modules, les stages, les examens, les sanctions, la discipline,
+                    l'hygiène, la sécurité, les accidents, etc.
+                </p>
+
+                <h3>Les règles de comportement ou d'assiduité</h3>
+                <ul>
+                    <li>Tenue officielle (tablier)</li>
+                    <li>Coupe de cheveux respectable</li>
+                    <li>Respecter les formateurs</li>
+                    <li>Respecter les stagiaires</li>
+                    <li>Respecter le temps</li>
+                </ul>
+
+                <h3>Le stage</h3>
+                <p>
+                    Pendant les 2 années de formation, les stagiaires peuvent effectuer des stages, soit facultatif
+                    (observation) en 1ère année, soit obligatoire en 2ème année, dans lequel le stagiaire doit
+                    développer une application ou un projet de fin de formation avec un rapport, et il sera noté.
+                </p>
+                <p><strong>Les avantages des stages</strong></p>
+                <ul>
+                    <li><strong>Expérience pratique :</strong> acquérir des compétences concrètes en milieu professionnel.</li>
+                    <li><strong>Application des connaissances :</strong> mettre en pratique ce qui a été appris en formation.</li>
+                    <li><strong>Opportunités d'embauche :</strong> augmenter les chances d'être recruté directement par l'entreprise où le stage a été effectué.</li>
+                    <li><strong>Amélioration du CV :</strong> ajouter de la valeur au CV et mettre en avant une expérience pratique.</li>
+                    <li><strong>Développement des compétences :</strong> renforcer des compétences techniques et relationnelles.</li>
+                </ul>
+
+                <h3>Les droits et obligations des stagiaires</h3>
+                <p><strong>Droits des stagiaires :</strong></p>
+                <ul>
+                    <li><strong>Formation de qualité :</strong> accéder à une formation professionnelle adéquate.</li>
+                    <li><strong>Encadrement :</strong> recevoir un accompagnement et des conseils de la part des formateurs.</li>
+                    <li><strong>Ressources :</strong> utiliser les équipements et les ressources nécessaires à l'apprentissage.</li>
+                    <li><strong>Respect :</strong> être traité avec respect et équité par les formateurs et les autres membres du personnel.</li>
+                </ul>
+                <p><strong>Obligations des stagiaires :</strong></p>
+                <ul>
+                    <li><strong>Assiduité et ponctualité :</strong> être présent et arriver à l'heure aux sessions de formation.</li>
+                    <li><strong>Respect du règlement intérieur :</strong> suivre les règles et les procédures établies par l'OFPPT.</li>
+                    <li><strong>Participation active :</strong> s'impliquer pleinement dans les activités et les tâches assignées.</li>
+                    <li><strong>Comportement professionnel :</strong> adopter une attitude respectueuse envers les formateurs et les autres stagiaires.</li>
+                </ul>
+
+                <h3>CGCP</h3>
+                <p>
+                    Conseil de Gestion et de Coordination Pédagogique : c'est un groupe actif dans l'EFP constitué
+                    par le directeur de l'EFP, le surveillant, et des formateurs élus par l'ensemble des formateurs.
+                </p>
+                <p><strong>Le rôle du CGCP</strong> est d'intervenir dans la démarche administrative, éducative, pédagogique, financière...</p>
+                <ul>
+                    <li>La bonne marche de l'établissement</li>
+                    <li>L'organisation des activités parascolaires</li>
+                    <li>Il est consulté pour toutes les questions éducatives et pédagogiques</li>
+                </ul>
+                <p><strong>Les membres du CGCP :</strong> le directeur — la direction — la surveillance — le conseiller — les formateurs.</p>
+
+                <h3>Assiduité et comportement</h3>
+                <p><strong>Assiduité (/10 points)</strong></p>
+                <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Cumul des retards</th><th>Cumul des absences</th><th>Points à déduire</th><th>Sanctions</th><th>Autorité de décision</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>4 retards</td><td>1 journée</td><td>-1</td><td>1<sup>er</sup> mise en garde</td><td>SG</td></tr>
+                        <tr><td>8 retards</td><td>2 journées</td><td>-2</td><td>2ème mise en garde</td><td>SG</td></tr>
+                        <tr><td>12 retards</td><td>3 journées</td><td>-3</td><td>1<sup>er</sup> avertissement</td><td>D</td></tr>
+                        <tr><td>16 retards</td><td>4 journées</td><td>-4</td><td>2ème avertissement</td><td>D</td></tr>
+                        <tr><td>20 retards</td><td>5 journées</td><td>-5</td><td>Blâme</td><td>CD</td></tr>
+                        <tr><td>24 retards</td><td>6 journées</td><td>-6</td><td>Exclusion de 2 jours</td><td>CD</td></tr>
+                        <tr><td>28 retards</td><td>7 journées</td><td>-7</td><td>Exclusion temporaire ou définitive à l'appréciation du Conseil de Discipline</td><td>CD</td></tr>
+                        <tr><td>32 retards</td><td>8 journées</td><td>-8</td><td>—</td><td>CD</td></tr>
+                        <tr><td>36 retards</td><td>9 journées</td><td>-9</td><td>—</td><td>CD</td></tr>
+                        <tr><td>40 retards</td><td>10 journées</td><td>-10</td><td>—</td><td>CD</td></tr>
+                        <tr><td>Au-delà de 40 retards</td><td>Au-delà de 10 journées</td><td>—</td><td>Exclusion définitive</td><td>CD</td></tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <p><strong>Comportement (/5 points)</strong></p>
+                <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Motifs</th><th>Sanctions</th><th>Points à déduire</th><th>Autorité de décision</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1<sup>er</sup> indiscipline</td><td>Mise en garde</td><td>-1</td><td>SG</td></tr>
+                        <tr><td>2ème indiscipline</td><td>Avertissement</td><td>-2</td><td>D</td></tr>
+                        <tr><td>3ème indiscipline</td><td>Blâme</td><td>-3</td><td>CD</td></tr>
+                        <tr><td>4ème indiscipline</td><td>Exclusion de 2 jours</td><td>-4</td><td>CD</td></tr>
+                        <tr><td>5ème indiscipline</td><td>Exclusion définitive</td><td>-5</td><td>CD</td></tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <blockquote>
+                    <strong>Légende :</strong> 1 séance = 2,5 heures ; 1 journée = 5 heures. 1 retard = -0,25 point ;
+                    une absence de 1 séance = -0,5 point. <strong>SG</strong> = Surveillant Général.
+                    <strong>D</strong> = Directeur. <strong>CD</strong> = Conseil de Discipline.
+                </blockquote>
+
+                <p>
+                    <strong>La note de la discipline :</strong> la note de la discipline obtenue (ND) est sur 15
+                    points à pondérer sur 20 selon la formule suivante : (ND x 20/15).
+                </p>
+
+                <h3>Évaluation et examen</h3>
+                <p>
+                    Pour chaque module, il y aura des contrôles continus écrits, pratiques ou oraux, notés sur 20.
+                    Et à la fin du module, il y aura un <strong>EFM</strong> : Examen de Fin de Module, local ou
+                    régional, noté sur 40. En 2ème année, il y aura un examen de fin de formation
+                    <strong>EFF</strong> contenant une épreuve théorique et une autre épreuve pratique.
+                </p>
+
+                <h3>Absences</h3>
+                <p>
+                    La présence des stagiaires est obligatoire à toutes les séances selon l'emploi du temps. Chaque
+                    absence ou retard non justifié est mentionné (enregistré) dans le dossier du stagiaire par le
+                    surveillant. Les absences doivent être justifiées soit par certificat médical, soit par
+                    autorisation d'absence auprès du formateur ou du surveillant. Le certificat médical doit être
+                    déposé à la surveillance avant 48 heures, accompagné d'une ordonnance validée à la pharmacie.
+                </p>
+
+            </article>
+            <div class="mt-8 flex justify-between items-center text-sm">
+                <a href="index.html" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
+                    <i class="fas fa-arrow-left mr-1"></i> Retour à la liste « Cours »
+                </a>
+            </div>
+        </div>
+
+    </main>
+    <footer class="mt-8 border-t border-gray-200 dark:border-gray-700 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 text-center md:text-left">
+                    <h3 class="text-lg font-bold text-blue-600 dark:text-blue-400">Infrastructure Digitale</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Ressources pédagogiques pour étudiants OFPPT</p>
+                </div>
+                <div class="flex space-x-4 mb-4 md:mb-0">
+                    <a href="https://facebook.com/youssefelcaid1" target="_blank" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400" aria-label="Facebook"><i class="fab fa-facebook text-xl"></i></a>
+                    <a href="https://instagram.com/youssefelcaid1" target="_blank" class="text-gray-500 hover:text-pink-600 dark:hover:text-pink-400" aria-label="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="https://youtube.com/professeuryoussef1" target="_blank" class="text-gray-500 hover:text-red-600 dark:hover:text-red-400" aria-label="YouTube"><i class="fab fa-youtube text-xl"></i></a>
+                    <a href="https://wa.me/212708482810" target="_blank" class="text-gray-500 hover:text-green-600 dark:hover:text-green-400" aria-label="WhatsApp"><i class="fab fa-whatsapp text-xl"></i></a>
+                </div>
+            </div>
+            <div class="text-center mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <p class="text-xs text-gray-500 dark:text-gray-400">&copy; <span id="currentYear"></span> Infrastructure Digitale – Professeur Youssef. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+(function () {
+    var navbar = document.getElementById('navbar');
+    var burgerBtn = document.getElementById('burgerBtn');
+    var mobileMenu = document.getElementById('mobileMenu');
+    var themeToggle = document.getElementById('themeToggle');
+    var drop = document.getElementById('modulesDrop');
+
+    window.addEventListener('scroll', function () {
+        navbar.classList.toggle('scrolled', window.scrollY > 8);
+    }, { passive: true });
+
+    function applyTheme(isDark) {
+        document.documentElement.classList.toggle('dark', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeToggle.setAttribute('aria-label', isDark ? 'Activer le thème clair' : 'Activer le thème sombre');
+    }
+    var saved = localStorage.getItem('theme');
+    applyTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+    themeToggle.addEventListener('click', function () { applyTheme(!document.documentElement.classList.contains('dark')); });
+
+    function openMenu() {
+        burgerBtn.setAttribute('aria-expanded', 'true');
+        mobileMenu.classList.add('is-open');
+        document.addEventListener('keydown', onKeydown);
+        document.addEventListener('click', onOutsideClick, true);
+    }
+    function closeMenu() {
+        burgerBtn.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('is-open');
+        document.removeEventListener('keydown', onKeydown);
+        document.removeEventListener('click', onOutsideClick, true);
+    }
+    function onKeydown(e) { if (e.key === 'Escape') closeMenu(); }
+    function onOutsideClick(e) { if (!mobileMenu.contains(e.target) && !burgerBtn.contains(e.target)) closeMenu(); }
+    burgerBtn.addEventListener('click', function () {
+        burgerBtn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+    });
+
+    if (drop) {
+        var dbtn = drop.querySelector('button');
+        function closeDrop() { drop.classList.remove('is-open'); dbtn.setAttribute('aria-expanded', 'false'); }
+        function toggleDrop() {
+            var open = drop.classList.toggle('is-open');
+            dbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        dbtn.addEventListener('click', function (e) { e.stopPropagation(); toggleDrop(); });
+        document.addEventListener('click', function (e) { if (!drop.contains(e.target)) closeDrop(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrop(); });
+    }
+})();
+
+    </script>
+</body>
+</html>

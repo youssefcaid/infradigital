@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correction — Examen de fin de module — Session 2022/2023 (Fès-Meknès) – EFM 3 – M101 – Infrastructure Digitale</title>
+    <meta name="description" content="Correction de l'examen de fin de module — Session 2022/2023 (Fès-Meknès) — EFM 3 du module M101 (Métier et formation).">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TMFJG7WBV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1TMFJG7WBV');
+    </script>
+    <link rel="icon" type="image/png" href="../../../../logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        'primary-dark': '#1d4ed8',
+                        secondary: '#10b981',
+                        accent: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --primary: #3b82f6; --primary-dark: #1d4ed8; --secondary: #10b981;
+    --accent: #f59e0b; --dark: #1f2937; --light: #f9fafb; --indigo: #4f46e5; --nav-h: 68px;
+}
+html { background: #f9fafb; }
+.dark { color-scheme: dark; }
+html.dark { background: #050a18; }
+body { font-family: 'Inter', sans-serif; transition: background-color .3s, color .3s; }
+.card-hover { transition: transform .3s ease, box-shadow .3s ease; }
+.card-hover:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,.1); }
+.dark .card-hover:hover { box-shadow: 0 5px 15px rgba(0,0,0,.3); }
+.animate-fadeIn { animation: fadeIn .6s ease-out; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
+
+.navbar { position: sticky; top: 0; z-index: 100; height: var(--nav-h); display:flex; align-items:center;
+    background: rgba(255,255,255,0.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(15,23,42,0.08); transition: background-color .3s, border-color .3s, box-shadow .3s; }
+.dark .navbar { background: rgba(5,10,24,0.55); border-bottom-color: rgba(0,150,255,0.12); }
+.navbar.scrolled { box-shadow: 0 10px 26px -16px rgba(15,23,42,0.35); }
+.dark .navbar.scrolled { background: rgba(5,10,24,0.85); border-bottom-color: rgba(0,180,255,0.22); box-shadow: 0 8px 30px rgba(0,10,30,0.5); }
+.nav-inner { width:100%; max-width:1180px; margin:0 auto; padding:0 20px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.brand { display:flex; align-items:center; gap:9px; font-weight:700; text-decoration:none; white-space:nowrap; }
+.brand-mark { width:34px; height:34px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+.brand-mark img { width:100%; height:100%; object-fit:contain; display:block; }
+.brand-name { font-size:1rem; letter-spacing:-.01em; color:#0f172a; }
+.dark .brand-name { color:#e8ecff; }
+.brand-name strong { color: var(--primary); }
+.dark .brand-name strong { background: linear-gradient(135deg,#ffe066,#ffc800 60%,#ff9500); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+.nav-links { display:flex; align-items:center; gap:30px; margin-left:auto; margin-right:22px; }
+.nav-links a { font-weight:500; font-size:.9rem; color:#475569; text-decoration:none; position:relative; padding:6px 0; transition:color .2s ease; }
+.nav-links a::after { content:''; position:absolute; left:0; bottom:0; width:0; height:2px; border-radius:2px; background:linear-gradient(90deg,var(--primary),var(--indigo)); transition:width .25s ease, background .3s ease; }
+.nav-links a:hover { color:#0f172a; }
+.nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+.nav-links a.active { color:var(--primary-dark); font-weight:600; }
+.dark .nav-links a { color:#8899cc; }
+.dark .nav-links a:hover { color:#fff; }
+.dark .nav-links a::after { background:linear-gradient(90deg,#00c8ff,#ffc800); }
+.dark .nav-links a.active { color:#00c8ff; }
+.nav-actions { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.theme-toggle { width:38px; height:38px; border-radius:10px; border:1.5px solid rgba(59,130,246,0.25); background:rgba(59,130,246,0.06); color:var(--primary-dark);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative; transition:background-color .2s, border-color .2s, color .3s; }
+.theme-toggle:hover { background:rgba(59,130,246,0.14); }
+.dark .theme-toggle { border-color:rgba(0,180,255,0.3); background:rgba(0,144,255,0.08); color:#00c8ff; }
+.dark .theme-toggle:hover { background:rgba(0,170,255,0.18); }
+.theme-toggle svg { width:17px; height:17px; position:absolute; transition:opacity .25s, transform .3s; }
+.theme-toggle .icon-sun { opacity:0; transform:rotate(-40deg) scale(.6); }
+.theme-toggle .icon-moon { opacity:1; transform:rotate(0) scale(1); }
+.dark .theme-toggle .icon-sun { opacity:1; transform:rotate(0) scale(1); }
+.dark .theme-toggle .icon-moon { opacity:0; transform:rotate(40deg) scale(.6); }
+.burger { display:none; width:38px; height:38px; border-radius:10px; border:1.5px solid rgba(59,130,246,0.25); background:rgba(59,130,246,0.06);
+    align-items:center; justify-content:center; flex-direction:column; gap:5px; cursor:pointer; flex-shrink:0; }
+.dark .burger { border-color:rgba(0,180,255,0.28); background:rgba(0,144,255,0.08); }
+.burger span { width:18px; height:2px; border-radius:2px; background:var(--primary-dark); transition:all .25s ease, background .3s ease; }
+.dark .burger span { background:#00c8ff; }
+.burger[aria-expanded="true"] span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity:0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+.mobile-menu { position:absolute; top:100%; left:0; right:0; z-index:99; background:rgba(255,255,255,0.97); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(15,23,42,0.08); display:flex; flex-direction:column; padding:8px 20px 20px;
+    transform:translateY(-8px); opacity:0; pointer-events:none; transition:transform .25s ease, opacity .25s ease; box-shadow:0 16px 30px -18px rgba(15,23,42,0.25); }
+.mobile-menu.is-open { transform:translateY(0); opacity:1; pointer-events:auto; }
+.dark .mobile-menu { background:rgba(6,12,28,0.97); border-bottom-color:rgba(0,180,255,0.2); box-shadow:0 16px 30px -18px rgba(0,0,0,0.6); }
+.mobile-menu a { font-weight:500; font-size:.95rem; color:#334155; text-decoration:none; padding:14px 4px; border-bottom:1px solid rgba(15,23,42,0.06); }
+.mobile-menu a:last-child { border-bottom:none; }
+.mobile-menu a.active { color:var(--primary-dark); font-weight:600; }
+.dark .mobile-menu a { color:#e8ecff; border-bottom-color:rgba(0,150,255,0.1); }
+.dark .mobile-menu a.active { color:#00c8ff; }
+.mobile-menu-label { font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#94a3b8; padding:14px 4px 4px; }
+.dark .mobile-menu-label { color:#5b6b96; }
+@media (min-width:769px) { .mobile-menu { display:none !important; } }
+@media (max-width:768px) { .nav-links { display:none; } .burger { display:flex; } }
+
+.nav-drop { position:relative; }
+.nav-drop > button { font-weight:500; font-size:.9rem; color:#475569; background:none; border:none; cursor:pointer;
+    display:flex; align-items:center; gap:5px; padding:6px 0; font-family:inherit; line-height:1; }
+.nav-drop > button:hover { color:#0f172a; }
+.dark .nav-drop > button { color:#8899cc; }
+.dark .nav-drop > button:hover { color:#fff; }
+.nav-drop svg { width:12px; height:12px; transition:transform .2s ease; }
+.nav-drop.is-open > button svg { transform:rotate(180deg); }
+.nav-drop-menu { position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%) translateY(-6px);
+    min-width:190px; background:rgba(255,255,255,0.98); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(15,23,42,0.08); border-radius:12px; padding:8px; box-shadow:0 16px 30px -14px rgba(15,23,42,0.25);
+    opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease; }
+.nav-drop.is-open .nav-drop-menu { opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+.nav-drop:hover .nav-drop-menu, .nav-drop:focus-within .nav-drop-menu { opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+.nav-drop:hover > button svg, .nav-drop:focus-within > button svg { transform:rotate(180deg); }
+.dark .nav-drop-menu { background:rgba(6,12,28,0.98); border-color:rgba(0,180,255,0.2); box-shadow:0 16px 30px -14px rgba(0,0,0,0.55); }
+.nav-drop-menu a { display:flex; align-items:center; gap:8px; padding:9px 12px; border-radius:8px; font-size:.88rem; font-weight:500; color:#334155; text-decoration:none; }
+.nav-drop-menu a:hover { background:rgba(59,130,246,0.08); color:#1d4ed8; }
+.dark .nav-drop-menu a { color:#c9d3f0; }
+.dark .nav-drop-menu a:hover { background:rgba(0,144,255,0.12); color:#00c8ff; }
+
+/* Contenu rédigé (pages cours/exercices/controles/efm) */
+.contenu-redige { line-height:1.85; }
+.contenu-redige h2 { font-size:1.35rem; font-weight:800; margin-top:2rem; margin-bottom:.75rem; color:#1d4ed8; }
+.dark .contenu-redige h2 { color:#5aa9ff; }
+.contenu-redige h3 { font-size:1.1rem; font-weight:700; margin-top:1.5rem; margin-bottom:.5rem; color:#1f2937; }
+.dark .contenu-redige h3 { color:#e8ecff; }
+.contenu-redige p { margin-bottom:1rem; color:#374151; }
+.dark .contenu-redige p { color:#c3cbe6; }
+.contenu-redige ul, .contenu-redige ol { margin:0 0 1rem 1.4rem; color:#374151; }
+.dark .contenu-redige ul, .dark .contenu-redige ol { color:#c3cbe6; }
+.contenu-redige li { margin-bottom:.4rem; }
+.contenu-redige code { background:rgba(59,130,246,0.1); color:#1d4ed8; padding:2px 6px; border-radius:4px; font-size:.9em; }
+.dark .contenu-redige code { background:rgba(0,144,255,0.15); color:#5aa9ff; }
+.contenu-redige pre { background:#0f172a; color:#e2e8f0; padding:1rem; border-radius:10px; overflow-x:auto; margin-bottom:1rem; }
+.contenu-redige pre code { background:none; color:inherit; padding:0; }
+.contenu-redige blockquote { border-inline-start:4px solid var(--primary); padding:.5rem 1rem; background:rgba(59,130,246,0.06); border-radius:0 8px 8px 0; margin-bottom:1rem; color:#374151; }
+.dark .contenu-redige blockquote { color:#c3cbe6; background:rgba(0,144,255,0.08); }
+.contenu-redige table { width:100%; border-collapse:collapse; margin-bottom:1.25rem; font-size:.92rem; }
+.contenu-redige th, .contenu-redige td { border:1px solid #d1d5db; padding:.55rem .75rem; text-align:start; color:#374151; }
+.dark .contenu-redige th, .dark .contenu-redige td { border-color:#374151; color:#c3cbe6; }
+.contenu-redige th { background:rgba(59,130,246,0.08); font-weight:700; color:#1d4ed8; }
+.dark .contenu-redige th { background:rgba(0,144,255,0.12); color:#5aa9ff; }
+.exam-meta { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:.5rem 1rem; background:rgba(59,130,246,0.05); border:1px solid rgba(59,130,246,0.15); border-radius:12px; padding:1rem 1.2rem; margin-bottom:1.5rem; font-size:.88rem; }
+.dark .exam-meta { background:rgba(0,144,255,0.06); border-color:rgba(0,144,255,0.18); }
+.exam-meta div span { display:block; }
+.exam-meta .exam-label { font-size:.72rem; text-transform:uppercase; letter-spacing:.04em; color:#64748b; font-weight:700; }
+.dark .exam-meta .exam-label { color:#7d8bb3; }
+.exam-meta .exam-value { color:#1f2937; font-weight:600; }
+.dark .exam-meta .exam-value { color:#e8ecff; }
+.exam-pts { float:inline-end; background:rgba(16,185,129,0.12); color:#059669; font-weight:700; font-size:.78rem; padding:2px 10px; border-radius:999px; margin-inline-start:.5rem; }
+.dark .exam-pts { background:rgba(16,185,129,0.18); color:#34d399; }
+
+/* Bouton + réponses de correction */
+.correction-toggle-wrap { display:flex; justify-content:center; margin: 1.75rem 0; }
+.correction-toggle-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:999px; border:none; cursor:pointer;
+    font-family:inherit; font-weight:700; font-size:.9rem; color:#fff; letter-spacing:.01em;
+    background:linear-gradient(135deg,#10b981,#059669); box-shadow:0 8px 20px -6px rgba(16,185,129,0.55);
+    transition:transform .2s ease, box-shadow .2s ease, background .3s ease; }
+.correction-toggle-btn:hover { transform:translateY(-2px); box-shadow:0 12px 24px -6px rgba(16,185,129,0.65); }
+.correction-toggle-btn:active { transform:translateY(0); }
+.correction-toggle-btn i { transition:transform .3s ease; }
+.correction-toggle-btn.is-active i { transform:rotate(180deg); }
+.correction-toggle-btn.is-active { background:linear-gradient(135deg,#ef4444,#dc2626); box-shadow:0 8px 20px -6px rgba(239,68,68,0.55); }
+.correction-toggle-btn.is-active:hover { box-shadow:0 12px 24px -6px rgba(239,68,68,0.65); }
+
+.correction-answer { display:none; align-items:flex-start; gap:8px; margin-top:.4rem; padding:.55rem .85rem;
+    background:rgba(16,185,129,0.08); border-inline-start:3px solid #10b981; border-radius:0 8px 8px 0;
+    color:#047857; font-weight:600; font-size:.92em; opacity:0; transform:translateY(-4px);
+    transition:opacity .35s ease, transform .35s ease; }
+.dark .correction-answer { background:rgba(16,185,129,0.12); color:#34d399; }
+.correction-answer i { margin-top:3px; flex-shrink:0; }
+.contenu-redige.show-correction .correction-answer { display:flex; opacity:1; transform:translateY(0); }
+
+.correction-cell { display:none; color:#047857; font-weight:700; opacity:0; transition:opacity .35s ease; }
+.dark .correction-cell { color:#34d399; }
+.contenu-redige.show-correction .correction-cell { display:inline; opacity:1; }
+.contenu-redige.show-correction .placeholder-cell { display:none; }
+
+.tf-answer { display:inline-flex; align-items:center; gap:5px; margin-inline-start:.5rem; padding:1px 10px; border-radius:999px;
+    font-weight:700; font-size:.8em; opacity:0; transform:scale(.85); transition:opacity .3s ease, transform .3s ease; }
+.tf-answer.tf-true { background:rgba(16,185,129,0.15); color:#059669; }
+.tf-answer.tf-false { background:rgba(239,68,68,0.15); color:#dc2626; }
+.dark .tf-answer.tf-true { background:rgba(16,185,129,0.2); color:#34d399; }
+.dark .tf-answer.tf-false { background:rgba(239,68,68,0.2); color:#f87171; }
+.contenu-redige.show-correction .tf-answer { opacity:1; transform:scale(1); }
+
+</style>
+    
+</head>
+<body class="text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+    <header class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="../../../../index.html" class="brand">
+                <span class="brand-mark"><img src="../../../../logo.png" alt="Infrastructure Digitale"></span>
+                <span class="brand-name">Infrastructure&nbsp;<strong>Digitale</strong></span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <div class="nav-drop" id="modulesDrop">
+                    <button type="button" aria-haspopup="true" aria-expanded="false">
+                        Modules
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="nav-drop-menu">
+                        <a href="../../../../modules/annee1/index.html"><i class="fas fa-book-reader"></i> 1ère année</a>
+                        <a href="../../../../modules/annee2/index.html"><i class="fas fa-laptop-code"></i> 2ème année</a>
+                    </div>
+                </div>
+                <a href="../../../../applications.html">Applications</a>
+                <a href="../../../../apropos.html">À propos</a>
+                <a href="../../../../confidentialite.html">Confidentialité</a>
+                <a href="../../../../contact.html">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button id="themeToggle" type="button" class="theme-toggle" aria-label="Activer le thème sombre">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.6 6.6 0 0 0 10.5 10.5Z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"/></svg>
+                </button>
+                <button class="burger" id="burgerBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <span class="mobile-menu-label">Modules</span>
+            <a href="../../../../modules/annee1/index.html"><i class="fas fa-book-reader mr-2"></i>1ère année</a>
+            <a href="../../../../modules/annee2/index.html"><i class="fas fa-laptop-code mr-2"></i>2ème année</a>
+            <a href="../../../../applications.html">Applications</a>
+            <a href="../../../../apropos.html">À propos</a>
+            <a href="../../../../confidentialite.html">Confidentialité</a>
+            <a href="../../../../contact.html">Contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 w-full">
+        <nav class="text-sm text-gray-500 dark:text-gray-400 mb-6 flex flex-wrap items-center gap-1" aria-label="Fil d'Ariane">
+            <a href="../../../../index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Accueil</a>
+            <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
+            <a href="../../../../modules/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Modules</a>
+            <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
+            <a href="../../../../modules/annee1/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">1ère année</a>
+            <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
+            <a href="../../../../modules/annee1/M101/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">M101</a>
+            <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
+            <a href="../../../../modules/annee1/M101/efm/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">EFM</a>
+            <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
+            <span class="text-gray-700 dark:text-gray-300 font-medium">EFM 3</span>
+        </nav>
+
+        <div class="animate-fadeIn">
+            <div class="mb-6">
+                <span class="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-300 text-xs font-bold mb-3">EFM 3</span>
+                <h1 class="text-3xl font-extrabold mb-2">Examen de fin de module — avec correction (Fès-Meknès)</h1>
+                <p class="text-gray-500 dark:text-gray-400">Module M101 — Métier et formation en Infrastructure Digitale</p>
+            </div>
+            <article class="contenu-redige bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-200 dark:border-gray-700" id="examArticle">
+                <div class="exam-meta">
+                    <div><span class="exam-label">Direction régionale</span><span class="exam-value">Fès-Meknès</span></div>
+                    <div><span class="exam-label">Filière</span><span class="exam-value">Infrastructure Digital</span></div>
+                    <div><span class="exam-label">Année de formation</span><span class="exam-value">1A</span></div>
+                    <div><span class="exam-label">Niveau</span><span class="exam-value">TS</span></div>
+                    <div><span class="exam-label">Module</span><span class="exam-value">M101 — Métier et Formation</span></div>
+                    <div><span class="exam-label">Durée de l'épreuve</span><span class="exam-value">1h30</span></div>
+                    <div><span class="exam-label">Type d'épreuve</span><span class="exam-value">Théorique</span></div>
+                    <div><span class="exam-label">Barème</span><span class="exam-value">/40</span></div>
+                    <div><span class="exam-label">Année scolaire</span><span class="exam-value">2022/2023</span></div>
+                </div>
+                <p><strong>1)</strong> Que signifie les termes suivants :<span class="exam-pts">4 pts</span></p>
+                <ul>
+                    <li>OFPPT
+                        <div class="correction-answer"><i class="fas fa-check-circle"></i> Office de la Formation Professionnelle et de la Promotion du Travail</div>
+                    </li>
+                    <li>CAD
+                        <div class="correction-answer"><i class="fas fa-check-circle"></i> Comité d'Auto Discipline</div>
+                    </li>
+                </ul>
+                <p><strong>2)</strong> Citer les conditions d'accès à l'OFPPT pour le diplôme TISD.<span class="exam-pts">4 pts</span></p>
+                <div class="correction-answer"><i class="fas fa-check-circle"></i> Être Bachelier, Licencié, ou stagiaire bénéficiant du système de passerelles ; la formation Technicien Spécialisé (TS) dure 2 ans.</div>
+
+                <p><strong>3)</strong> Quelles sont vos motivations pour le choix de la filière de votre formation ?<span class="exam-pts">4 pts</span></p>
+                <div class="correction-answer"><i class="fas fa-check-circle"></i> Réponse libre et personnelle — le stagiaire explique son intérêt pour le numérique, l'informatique, les réseaux ou la sécurité, et ses perspectives d'emploi dans le secteur.</div>
+
+                <p><strong>4)</strong> Citer les différents types de formation.<span class="exam-pts">4 pts</span></p>
+                <div class="correction-answer"><i class="fas fa-check-circle"></i> Formation initiale — Formation qualifiante — Cours du soir</div>
+
+                <p><strong>5)</strong> Qu'est-ce qu'on entend par formation diplômante ?</p>
+                <div class="correction-answer"><i class="fas fa-check-circle"></i> C'est la formation initiale dont le cursus est sanctionné par un diplôme marquant la fin du parcours ; après l'obtention du diplôme, le lauréat est apte à exercer son métier.</div>
+
+                <p><strong>6)</strong> Quelle est la différence entre formation en présentiel et formation à distance ?<span class="exam-pts">4 pts</span></p>
+                <div class="correction-answer"><i class="fas fa-check-circle"></i> La formation en présentiel (résidentielle) se déroule 100% au sein de l'établissement avec cours théoriques et travaux pratiques ; la formation à distance (FAD) se fait hors de l'établissement via des outils numériques, et les deux modes combinés forment la formation hybride.</div>
+
+                <p><strong>7)</strong> Citer les différents types d'évaluations et examens.<span class="exam-pts">4 pts</span></p>
+                <div class="correction-answer"><i class="fas fa-check-circle"></i> Contrôles continus (CC) — Évaluations de fin de module (EFM) — Examen de fin de formation (EFF)</div>
+
+                <p><strong>8)</strong> Citer deux noms d'entreprises privées qui emploient dans votre métier et parler de leurs activités.<span class="exam-pts">4 pts</span></p>
+                <div class="correction-answer"><i class="fas fa-check-circle"></i> Réponse libre — exemples : Orange Maroc / Maroc Telecom (opérateurs télécoms et infrastructures réseau), Dell Technologies / HP / Capgemini / IB Maroc (intégration de systèmes, cloud, cybersécurité et infogérance).</div>
+                <p><strong>9)</strong> Répondre par Vrai ou Faux :<span class="exam-pts">4 pts</span></p>
+                <ul>
+                    <li>A. Le stagiaire doit être bien vêtu et coiffé.<span class="tf-answer tf-true"><i class="fas fa-check"></i> Vrai</span></li>
+                    <li>B. Le stagiaire doit respecter son emploi du temps.<span class="tf-answer tf-true"><i class="fas fa-check"></i> Vrai</span></li>
+                    <li>C. Le stagiaire peut utiliser les moyens de radiocommunication dans les espaces de formation.<span class="tf-answer tf-false"><i class="fas fa-times"></i> Faux</span></li>
+                </ul>
+                <p><strong>10)</strong> Compléter le tableau des mesures de comportement suivant :<span class="exam-pts">4 pts</span></p>
+                <table>
+                    <thead>
+                        <tr><th>Cumul des retards</th><th>Cumul des absences</th><th>Points à déduire</th><th>Sanctions</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>20 retards</td><td>5 journées</td><td><span class="placeholder-cell">…………</span><span class="correction-cell">-5</span></td><td><span class="placeholder-cell">…………</span><span class="correction-cell">Blâme (CD)</span></td></tr>
+                        <tr><td>24 retards</td><td>6 journées</td><td><span class="placeholder-cell">…………</span><span class="correction-cell">-6</span></td><td><span class="placeholder-cell">…………</span><span class="correction-cell">Exclusion de 2 jours (CD)</span></td></tr>
+                    </tbody>
+                </table>
+            </article>
+            <div class="correction-toggle-wrap">
+                <button type="button" id="toggleCorrectionBtn" class="correction-toggle-btn" aria-pressed="false">
+                    <i class="fas fa-eye"></i>
+                    <span id="toggleCorrectionLabel">Voir la correction</span>
+                </button>
+            </div>
+            <div class="mt-8 flex justify-between items-center text-sm">
+                <a href="index.html" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
+                    <i class="fas fa-arrow-left mr-1"></i> Retour à la liste « EFM »
+                </a>
+            </div>
+        </div>
+
+    </main>
+    <footer class="mt-8 border-t border-gray-200 dark:border-gray-700 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 text-center md:text-left">
+                    <h3 class="text-lg font-bold text-blue-600 dark:text-blue-400">Infrastructure Digitale</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Ressources pédagogiques pour étudiants OFPPT</p>
+                </div>
+                <div class="flex space-x-4 mb-4 md:mb-0">
+                    <a href="https://facebook.com/youssefelcaid1" target="_blank" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400" aria-label="Facebook"><i class="fab fa-facebook text-xl"></i></a>
+                    <a href="https://instagram.com/youssefelcaid1" target="_blank" class="text-gray-500 hover:text-pink-600 dark:hover:text-pink-400" aria-label="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="https://youtube.com/professeuryoussef1" target="_blank" class="text-gray-500 hover:text-red-600 dark:hover:text-red-400" aria-label="YouTube"><i class="fab fa-youtube text-xl"></i></a>
+                    <a href="https://wa.me/212708482810" target="_blank" class="text-gray-500 hover:text-green-600 dark:hover:text-green-400" aria-label="WhatsApp"><i class="fab fa-whatsapp text-xl"></i></a>
+                </div>
+            </div>
+            <div class="text-center mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <p class="text-xs text-gray-500 dark:text-gray-400">&copy; <span id="currentYear"></span> Infrastructure Digitale – Professeur Youssef. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        (function () {
+            var btn = document.getElementById('toggleCorrectionBtn');
+            var label = document.getElementById('toggleCorrectionLabel');
+            var article = document.getElementById('examArticle');
+            var icon = btn ? btn.querySelector('i') : null;
+            if (btn && article) {
+                btn.addEventListener('click', function () {
+                    var showing = article.classList.toggle('show-correction');
+                    btn.classList.toggle('is-active', showing);
+                    btn.setAttribute('aria-pressed', showing ? 'true' : 'false');
+                    label.textContent = showing ? 'Masquer la correction' : 'Voir la correction';
+                    if (icon) {
+                        icon.classList.toggle('fa-eye', !showing);
+                        icon.classList.toggle('fa-eye-slash', showing);
+                    }
+                });
+            }
+        })();
+        
+(function () {
+    var navbar = document.getElementById('navbar');
+    var burgerBtn = document.getElementById('burgerBtn');
+    var mobileMenu = document.getElementById('mobileMenu');
+    var themeToggle = document.getElementById('themeToggle');
+    var drop = document.getElementById('modulesDrop');
+
+    window.addEventListener('scroll', function () {
+        navbar.classList.toggle('scrolled', window.scrollY > 8);
+    }, { passive: true });
+
+    function applyTheme(isDark) {
+        document.documentElement.classList.toggle('dark', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeToggle.setAttribute('aria-label', isDark ? 'Activer le thème clair' : 'Activer le thème sombre');
+    }
+    var saved = localStorage.getItem('theme');
+    applyTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+    themeToggle.addEventListener('click', function () { applyTheme(!document.documentElement.classList.contains('dark')); });
+
+    function openMenu() {
+        burgerBtn.setAttribute('aria-expanded', 'true');
+        mobileMenu.classList.add('is-open');
+        document.addEventListener('keydown', onKeydown);
+        document.addEventListener('click', onOutsideClick, true);
+    }
+    function closeMenu() {
+        burgerBtn.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('is-open');
+        document.removeEventListener('keydown', onKeydown);
+        document.removeEventListener('click', onOutsideClick, true);
+    }
+    function onKeydown(e) { if (e.key === 'Escape') closeMenu(); }
+    function onOutsideClick(e) { if (!mobileMenu.contains(e.target) && !burgerBtn.contains(e.target)) closeMenu(); }
+    burgerBtn.addEventListener('click', function () {
+        burgerBtn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+    });
+
+    if (drop) {
+        var dbtn = drop.querySelector('button');
+        function closeDrop() { drop.classList.remove('is-open'); dbtn.setAttribute('aria-expanded', 'false'); }
+        function toggleDrop() {
+            var open = drop.classList.toggle('is-open');
+            dbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        dbtn.addEventListener('click', function (e) { e.stopPropagation(); toggleDrop(); });
+        document.addEventListener('click', function (e) { if (!drop.contains(e.target)) closeDrop(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrop(); });
+    }
+})();
+
+    </script>
+</body>
+</html>
