@@ -2,6 +2,11 @@
 <html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
+    <script>
+    (function(){try{var t=localStorage.getItem('theme');
+    if(t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches){
+    document.documentElement.classList.add('dark');}}catch(e){}})();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EFM – M205 – Infrastructure Digitale</title>
     <meta name="description" content="EFM du module M205 : Administration d'un environnement Cloud.">
@@ -12,7 +17,7 @@
       gtag('js', new Date());
       gtag('config', 'G-1TMFJG7WBV');
     </script>
-    <link rel="icon" type="image/png" href="../../../../logo.png">
+    <link rel="icon" type="image/png" href="/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -148,8 +153,8 @@ body { font-family: 'Inter', sans-serif; transition: background-color .3s, color
 <body class="text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
     <header class="navbar" id="navbar">
         <div class="nav-inner">
-            <a href="../../../../index.html" class="brand">
-                <span class="brand-mark"><img src="../../../../logo.png" alt="Infrastructure Digitale"></span>
+            <a href="/index.html" class="brand">
+                <span class="brand-mark"><img src="/logo.png" alt="Infrastructure Digitale"></span>
                 <span class="brand-name">Infrastructure&nbsp;<strong>Digitale</strong></span>
             </a>
             <nav class="nav-links" id="navLinks">
@@ -159,14 +164,14 @@ body { font-family: 'Inter', sans-serif; transition: background-color .3s, color
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div class="nav-drop-menu">
-                        <a href="../../../../modules/annee1/index.html"><i class="fas fa-book-reader"></i> 1ère année</a>
-                        <a href="../../../../modules/annee2/index.html"><i class="fas fa-laptop-code"></i> 2ème année</a>
+                        <a href="/modules/annee1/index.html"><i class="fas fa-book-reader"></i> 1ère année</a>
+                        <a href="/modules/annee2/index.html"><i class="fas fa-laptop-code"></i> 2ème année</a>
                     </div>
                 </div>
-                <a href="../../../../applications.html">Applications</a>
-                <a href="../../../../apropos.html">À propos</a>
-                <a href="../../../../confidentialite.html">Confidentialité</a>
-                <a href="../../../../contact.html">Contact</a>
+                <a href="/applications.html">Applications</a>
+                <a href="/apropos.html">À propos</a>
+                <a href="/confidentialite.html">Confidentialité</a>
+                <a href="/contact.html">Contact</a>
             </nav>
             <div class="nav-actions">
                 <button id="themeToggle" type="button" class="theme-toggle" aria-label="Activer le thème sombre">
@@ -180,24 +185,24 @@ body { font-family: 'Inter', sans-serif; transition: background-color .3s, color
         </div>
         <div class="mobile-menu" id="mobileMenu">
             <span class="mobile-menu-label">Modules</span>
-            <a href="../../../../modules/annee1/index.html"><i class="fas fa-book-reader mr-2"></i>1ère année</a>
-            <a href="../../../../modules/annee2/index.html"><i class="fas fa-laptop-code mr-2"></i>2ème année</a>
-            <a href="../../../../applications.html">Applications</a>
-            <a href="../../../../apropos.html">À propos</a>
-            <a href="../../../../confidentialite.html">Confidentialité</a>
-            <a href="../../../../contact.html">Contact</a>
+            <a href="/modules/annee1/index.html"><i class="fas fa-book-reader mr-2"></i>1ère année</a>
+            <a href="/modules/annee2/index.html"><i class="fas fa-laptop-code mr-2"></i>2ème année</a>
+            <a href="/applications.html">Applications</a>
+            <a href="/apropos.html">À propos</a>
+            <a href="/confidentialite.html">Confidentialité</a>
+            <a href="/contact.html">Contact</a>
         </div>
     </header>
 
     <main class="flex-grow max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 w-full">
         <nav class="text-sm text-gray-500 dark:text-gray-400 mb-6 flex flex-wrap items-center gap-1" aria-label="Fil d'Ariane">
-            <a href="../../../../index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Accueil</a>
+            <a href="/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Accueil</a>
             <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
-            <a href="../../../../modules/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Modules</a>
+            <a href="/modules/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Modules</a>
             <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
-            <a href="../../../../modules/annee2/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">2ème année</a>
+            <a href="/modules/annee2/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">2ème année</a>
             <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
-            <a href="../../../../modules/annee2/M205/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">M205</a>
+            <a href="/modules/annee2/M205/index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition">M205</a>
             <i class="fas fa-chevron-right text-[10px] mx-1 opacity-50"></i>
             <span class="text-gray-700 dark:text-gray-300 font-medium">EFM</span>
         </nav>
