@@ -7,7 +7,7 @@
     <meta name="description" content="Ressources complètes pour la 1ère année Infrastructure Digitale OFPPT - Cours, exercices, contrôles et EFM des modules M101 à M108 et EGTS106">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome pour les icônes -->
@@ -227,35 +227,6 @@
                 min-height: 3rem;
             }
         }
-
-        /* ---------- DROPDOWN "Modules" ---------- */
-        .nav-drop { position: relative; }
-        .nav-drop > button {
-            font-weight: 500; font-size: .9rem; color: #475569; background: none; border: none; cursor: pointer;
-            display: flex; align-items: center; gap: 5px; padding: 6px 0; font-family: inherit; line-height: 1;
-        }
-        .nav-drop > button:hover { color: #0f172a; }
-        .dark .nav-drop > button { color: #8899cc; }
-        .dark .nav-drop > button:hover { color: #fff; }
-        .nav-drop svg { width: 12px; height: 12px; transition: transform .2s ease; }
-        .nav-drop.is-open > button svg { transform: rotate(180deg); }
-        .nav-drop-menu {
-            position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(-6px);
-            min-width: 190px; background: rgba(255,255,255,0.98); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(15,23,42,0.08); border-radius: 12px; padding: 8px;
-            box-shadow: 0 16px 30px -14px rgba(15,23,42,0.25);
-            opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
-        }
-        .nav-drop.is-open .nav-drop-menu { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-        .nav-drop:hover .nav-drop-menu, .nav-drop:focus-within .nav-drop-menu { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-        .nav-drop:hover > button svg, .nav-drop:focus-within > button svg { transform: rotate(180deg); }
-        .dark .nav-drop-menu { background: rgba(6,12,28,0.98); border-color: rgba(0,180,255,0.2); box-shadow: 0 16px 30px -14px rgba(0,0,0,0.55); }
-        .nav-drop-menu a { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 8px; font-size: .88rem; font-weight: 500; color: #334155; text-decoration: none; }
-        .nav-drop-menu a:hover { background: rgba(59,130,246,0.08); color: #1d4ed8; }
-        .dark .nav-drop-menu a { color: #c9d3f0; }
-        .dark .nav-drop-menu a:hover { background: rgba(0,144,255,0.12); color: #00c8ff; }
-        .mobile-menu-label { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #94a3b8; padding: 14px 4px 4px; }
-        .dark .mobile-menu-label { color: #5b6b96; }
     </style>
     <script>
         tailwind.config = {
@@ -367,28 +338,18 @@
 <body class="text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
     <header class="navbar" id="navbar">
         <div class="nav-inner">
-            <a href="/index.html" class="brand">
+            <a href="index.html" class="brand">
                 <span class="brand-mark">
-                    <img src="/logo.png" alt="Infrastructure Digitale">
+                    <img src="logo.png" alt="Infrastructure Digitale">
                 </span>
                 <span class="brand-name">Infrastructure&nbsp;<strong>Digitale</strong></span>
             </a>
 
             <nav class="nav-links" id="navLinks">
-                <div class="nav-drop" id="modulesDrop">
-                    <button type="button" aria-haspopup="true" aria-expanded="false">
-                        Modules
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </button>
-                    <div class="nav-drop-menu">
-                        <a href="/modules/annee1/index.html"><i class="fas fa-book-reader"></i> 1ère année</a>
-                        <a href="/modules/annee2/index.html"><i class="fas fa-laptop-code"></i> 2ème année</a>
-                    </div>
-                </div>
-                <a href="/applications.html" data-nav>Applications</a>
-                <a href="/apropos.html" data-nav>À propos</a>
-                <a href="/confidentialite.html" data-nav>Confidentialité</a>
-                <a href="/contact.html" data-nav>Contact</a>
+                <a href="applications.html" data-nav>Applications</a>
+                <a href="apropos.html" data-nav>À propos</a>
+                <a href="confidentialite.html" data-nav>Confidentialité</a>
+                <a href="contact.html" data-nav>Contact</a>
             </nav>
 
             <div class="nav-actions">
@@ -403,18 +364,15 @@
         </div>
 
         <div class="mobile-menu" id="mobileMenu">
-            <span class="mobile-menu-label">Modules</span>
-            <a href="/modules/annee1/index.html" data-nav><i class="fas fa-book-reader mr-2"></i>1ère année</a>
-            <a href="/modules/annee2/index.html" data-nav><i class="fas fa-laptop-code mr-2"></i>2ème année</a>
-            <a href="/applications.html" data-nav>Applications</a>
-            <a href="/apropos.html" data-nav>À propos</a>
-            <a href="/confidentialite.html" data-nav>Confidentialité</a>
-            <a href="/contact.html" data-nav>Contact</a>
+            <a href="applications.html" data-nav>Applications</a>
+            <a href="apropos.html" data-nav>À propos</a>
+            <a href="confidentialite.html" data-nav>Confidentialité</a>
+            <a href="contact.html" data-nav>Contact</a>
         </div>
     </header>
 
     <main class="flex-grow max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 w-full">
-        <a href="/index.html" class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mb-6 font-medium transition duration-300">
+        <a href="index.html" class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mb-6 font-medium transition duration-300">
             <i class="fas fa-arrow-left mr-2"></i>
             Retour à l'accueil
         </a>
@@ -830,22 +788,6 @@
         
         // توليد الوحدات عند تحميل الصفحة
         document.addEventListener('DOMContentLoaded', loadSiteData);
-    </script>
-
-    <script>
-        (function () {
-            var drop = document.getElementById('modulesDrop');
-            if (!drop) return;
-            var btn = drop.querySelector('button');
-            function closeDrop() { drop.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); }
-            function toggleDrop() {
-                var open = drop.classList.toggle('is-open');
-                btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-            }
-            btn.addEventListener('click', function (e) { e.stopPropagation(); toggleDrop(); });
-            document.addEventListener('click', function (e) { if (!drop.contains(e.target)) closeDrop(); });
-            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrop(); });
-        })();
     </script>
 </body>
 </html>
